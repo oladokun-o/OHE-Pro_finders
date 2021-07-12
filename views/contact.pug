@@ -1,0 +1,81 @@
+extends layout
+
+block content
+	include menu 
+	.page-contn.p-0
+		.page-width.p-0.mt-5.pt-5.pt-md-0
+			.contact_us.container-fluid
+				.error-contn.text-center.col-12
+					.error
+				h2.head-tag.text-center.p-md-2.pt-md-0.pt-1.pb-1 contact us 
+				.p-3.pb-5.pl-md-5.pr-md-5.pb-md-5.pt-md-2
+					.contact-us-contn.container-fluid
+						.row.pl-md-5.pr-md-0.pb-md-0.pt-md-0
+							.col-12.col-md-5.p-0.d-md-none.d-block
+								.contact-img-contn
+							.col-12.col-md-7.p-0.contact-form-contn.p-4.pt-5.pb-5           
+								article  Can’t find the answer you’re looking for? Don't worry! Get in touch with the OHE Support team, we will be glad to assist you.
+								article  You have better chances of a fast response time if you select chat at the bottom right corner of the screen,
+									a(href="/login").pl-2 login 
+									|for a better experience.
+								.row.mb-4
+									.col-12.p-3
+										.contact-phone
+											h4.thick.title-img Contact Info
+											a(href='tel://1234567920')
+												.icon-contn.mt-3.mb-2
+														i.lni.lni-phone
+														p.pl-4 +2348000000000
+											a(href='mailto:info@ohe.com')
+												.icon-contn.mt-3
+														i.lni.lni-envelope
+														p.pl-4 info@ohe.com            
+									.col-12.p-0
+										.container-fluid
+											.text.text-left
+												.col-12.p-4.text-center
+													h2 OR
+												article Fill in the form below:
+												form#contactForm.contactForm
+													.form-group
+														label(for="name").pt-3
+															h5 Name
+																span.theme-color *
+														input#name.form-control.mt-1(name='name' placeholder='Name' type='text' required)  
+													.form-group
+														label(for="email")
+															h5 Email
+																span.theme-color *
+														input#email.form-control(name='email' placeholder='Email' type='email' required)  
+													.form-group
+														label(for="subject")
+															h5 Subject
+																span.theme-color *
+														input#subject.form-control(name='subject' placeholder='Subject' type='text' required)  
+													.form-group
+														label(for="msg")
+															h5 Message
+																span.theme-color *
+														textarea#msg.form-control(name='message' cols='30' rows='4' placeholder='Create a message here' required)  
+													.form-group.text-center.p-3
+														button(type="submit").primary-btn.contact-btn send message                           
+								.w-100.social-media.mt-5
+									h3 Follow us here
+									.container-fluid.text-center.p-0
+										.row.pt-2.p-0.mt-4.mb-4
+											.col-3.follow-links
+												a(href="#", title="Follow us on Twitter")
+													i.lni.lni-twitter-filled
+											.col-3.follow-links
+												a(href="#", title="Follow us on Facebook")
+													i.lni.lni-facebook-filled
+											.col-3.follow-links
+												a(href="#", title="Follow us on Instagram for latest updates")
+													i.lni.lni-instagram-filled
+											.col-3.follow-links
+												a(href="#", title="Follow us on Linkedin for latest updates")
+													i.lni.lni-linkedin-original
+							.col-12.col-md-5.p-0.d-md-block.d-none
+								.contact-img-contn
+			include footer
+		

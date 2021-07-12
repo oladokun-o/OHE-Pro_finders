@@ -1,0 +1,152 @@
+extends layout
+block content
+	include menu
+	.page-contn.p-0
+		.page-width.p-0.mt-5.mt-md-0
+			.container-fluid.mt-5.pt-5.pt-md-4.mt-md-0.help-contn
+				h2.head-tag.text-center.p-md-2.pt-md-0.pt-5.pb-5 frequently asked questions
+			.container-fluid.faq-categories.d-flex.justify-content-center.pt-4
+				.col-12.col-md-6
+					.container-fluid.text-center
+						.row
+							.col-4.categories-btn.m-0.p-0
+								button.general-btn.active-category-btn general 
+							.col-4.categories-btn.m-0.p-0 
+								button.payments-btn payments
+							.col-4.categories-btn.m-0.p-0
+								button.account-btn account
+			.d-flex.justify-content-center.p-0
+				.col-md-7.col-12.p-0
+					.container-fluid
+						.row
+							.col-12.general
+								#accordion.panel-group.p-3(role='tablist' aria-multiselectable='true')
+									.panel.panel-default
+										#headingOne.panel-heading(role='tab')
+											.panel-title
+												button.first-btn(role='button' data-toggle='collapse' data-parent='#accordion' href='#collapseOne' aria-expanded='false' aria-controls='collapseOne')
+													i.more-less.lni.lni-circle-minus.pr-3
+													| Why OHE?
+										#collapseOne.panel-collapse.collapse.show(role='tabpanel' aria-labelledby='headingOne')
+											.panel-body.p-3
+												| Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+									.panel.panel-default
+										#headingTwo.panel-heading(role='tab')
+											.panel-title
+												button.collapsed(role='button' data-toggle='collapse' data-parent='#accordion' href='#collapseTwo' aria-expanded='false' aria-controls='collapseTwo')
+													i.more-less.lni.lni-circle-plus.pr-3
+													| When will i get my answer?
+										#collapseTwo.panel-collapse.collapse(role='tabpanel' aria-labelledby='headingTwo')
+											.panel-body.p-3
+												| Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+									.panel.panel-default
+										#headingThree.panel-heading(role='tab')
+											.panel-title
+												button.collapsed(role='button' data-toggle='collapse' data-parent='#accordion' href='#collapseThree' aria-expanded='false' aria-controls='collapseThree')
+													i.more-less.lni.lni-circle-plus.pr-3
+													| How do i change my password?
+										#collapseThree.panel-collapse.collapse(role='tabpanel' aria-labelledby='headingThree')
+											.panel-body.p-3
+												| Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+									.panel.panel-default
+										#headingFour.panel-heading(role='tab')
+											.panel-title
+												button.collapsed(role='button' data-toggle='collapse' data-parent='#accordion' href='#collapseFour' aria-expanded='false' aria-controls='collapseFour')
+													i.more-less.lni.lni-circle-plus.pr-3
+													| This sounds great. Where do i sign up?
+										#collapseFour.panel-collapse.collapse(role='tabpanel' aria-labelledby='headingFour')
+											.panel-body.last-body.p-3
+												| Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+							.col-12.payments.hide
+								#accordion.panel-group.p-3(role='tablist' aria-multiselectable='true')
+									.panel.panel-default
+										#headingFive.panel-heading(role='tab')
+											.panel-title
+												button.first-btn(role='button' data-toggle='collapse' data-parent='#accordion' href='#collapseFive' aria-expanded='false' aria-controls='collapseFive')
+													i.more-less.lni.lni-circle-minus.pr-3
+													| What type of payment process does OHE use?
+										#collapseFive.panel-collapse.collapse.show(role='tabpanel' aria-labelledby='headingFive')
+											.panel-body.p-3
+												| Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+									.panel.panel-default
+										#headingSix.panel-heading(role='tab')
+											.panel-title
+												button.collapsed(role='button' data-toggle='collapse' data-parent='#accordion' href='#collapseSix' aria-expanded='false' aria-controls='collapseSix')
+													i.more-less.lni.lni-circle-plus.pr-3
+													| Why was my payment declined?
+										#collapseSix.panel-collapse.collapse(role='tabpanel' aria-labelledby='headingSix')
+											.panel-body.p-3
+												| Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+									.panel.panel-default
+										#headingSeven.panel-heading(role='tab')
+											.panel-title
+												button.collapsed(role='button' data-toggle='collapse' data-parent='#accordion' href='#collapseSeven' aria-expanded='false' aria-controls='collapseSeven')
+													i.more-less.lni.lni-circle-plus.pr-3
+													| Why do i have to pay a fee to post my question?
+										#collapseSeven.panel-collapse.collapse(role='tabpanel' aria-labelledby='headingSeven')
+											.panel-body.p-3
+												| Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+									.panel.panel-default
+										#headingEight.panel-heading(role='tab')
+											.panel-title
+												button.collapsed(role='button' data-toggle='collapse' data-parent='#accordion' href='#collapseEight' aria-expanded='false' aria-controls='collapseEight')
+													i.more-less.lni.lni-circle-plus.pr-3
+													| How much does it cost?
+										#collapseEight.panel-collapse.collapse(role='tabpanel' aria-labelledby='headingEight')
+											.panel-body.last-body.p-3
+												| Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+							.col-12.account.border.hide
+								#accordion.panel-group.p-3(role='tablist' aria-multiselectable='true')
+									.panel.panel-default
+										#headingNine.panel-heading(role='tab')
+											.panel-title
+												button.first-btn(role='button' data-toggle='collapse' data-parent='#accordion' href='#collapseNine' aria-expanded='false' aria-controls='collapseNine')
+													i.more-less.lni.lni-circle-minus.pr-3
+													| How can i close my account?
+										#collapseNine.panel-collapse.collapse.show(role='tabpanel' aria-labelledby='headingNine')
+											.panel-body.p-3
+												| Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+									.panel.panel-default
+										#headingTen.panel-heading(role='tab')
+											.panel-title
+												button.collapsed(role='button' data-toggle='collapse' data-parent='#accordion' href='#collapseTen' aria-expanded='false' aria-controls='collapseTen')
+													i.more-less.lni.lni-circle-plus.pr-3
+													| How do i change my email address?
+										#collapseTen.panel-collapse.collapse(role='tabpanel' aria-labelledby='headingTen')
+											.panel-body.p-3
+												| Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+									.panel.panel-default
+										#headingEleven.panel-heading(role='tab')
+											.panel-title
+												button.collapsed(role='button' data-toggle='collapse' data-parent='#accordion' href='#collapseEleven' aria-expanded='false' aria-controls='collapseEleven')
+													i.more-less.lni.lni-circle-plus.pr-3
+													| How do i change my password?
+										#collapseEleven.panel-collapse.collapse(role='tabpanel' aria-labelledby='headingEleven')
+											.panel-body.p-3
+												| Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+									.panel.panel-default
+										#headingTwelve.panel-heading(role='tab')
+											.panel-title
+												button.collapsed(role='button' data-toggle='collapse' data-parent='#accordion' href='#collapseTwelve' aria-expanded='false' aria-controls='collapseTwelve')
+													i.more-less.lni.lni-circle-plus.pr-3
+													| How do i change my settings?
+										#collapseTwelve.panel-collapse.collapse(role='tabpanel' aria-labelledby='headingTwelve')
+											.panel-body.last-body.p-3
+												| Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+			.jumbotron.jumbotron-fluid.bg-none.m-md-0
+				.container-fluid 
+					.display-4.head-tag.text-center.pb-3 Contact Support 
+					.lead.text-center
+						p We understand you may have questions that are not answered in our FAQ section.
+						p If you cannot find the answer to your question, please feel free to contact support
+			.d-flex.justify-content-center.p-0
+				.col-12.col-md-5.pb-md-4
+					.jumbotron.jumbotron-fluid.bg-pri.p-md-0.pb-md-3.mb-md-5
+						.container-fluid 
+							.display-4.head-tag.text-center.pb-3
+								img(src="/images/headphones.png").headphone
+							.lead.text-center
+								p For technical and customer service support, please contact us at
+									a.pl-2(href="mailto:info@oprofinder.com") info@oprofinder.com
+			include footer	
+	

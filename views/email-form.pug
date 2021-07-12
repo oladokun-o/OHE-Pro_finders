@@ -1,0 +1,30 @@
+extends layout
+
+block content
+	include menu
+	.page-contn.p-0
+		.page-width.p-0.pt-4
+			.pt-1
+				.form-gap
+				.error-contn.text-center.col-12
+					if (mail_msg)
+						.error #{mail_msg}
+					else 
+						.error.fade-out
+				.container.fluid.pt-5
+					.row          
+						.col-12.d-flex.justify-content-center
+							.col-md-4.col-md-offset-4
+								input#user-name(type="text", value=fullname).hide
+								input#user-id(type="text", value=userid).hide
+								div
+									form.email-form
+										.text-center
+											h3.text-center.pt-3.thick Update Email Address
+											.panel-body
+												.form.pt-3
+													.form-group.text-center
+														label(for='pass').text-left Enter email address
+															input#email.mt-3.form-control(type='email', name='email', value='',required)
+													.form-group.text-center
+														button(type="submit").primary-btn.update-email update email

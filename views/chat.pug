@@ -1,0 +1,78 @@
+script.
+	var firstname = '!{firstname}';
+.chat-body.container-fluid.p-0.chat-bg.col-md-8.col-lg-9.col-12
+	.chat-header.container-fluid
+		.row
+			.col-4.p-3.pl-3.agent-name
+				.d-flex.p-0.m-0
+					//.agent-status 
+						i.fa.fa-user
+					.agent-name.pl-2.text-left
+						|Faulty Car
+						.agent-title Car Mechanic
+			.col-6.p-3
+			.col-2.pl-2.dot-menu.text-right.pt-3.pr-2
+				button
+					i.lni.lni-more
+				.chat-options.position-absolute.fade-out
+					ul.p-0.m-0.text-left
+						li.muter
+							span.pr-2
+								i.lni.lni-volume-mute.muter-icon
+							span.muter-text Mute chat
+						li
+							span.pr-2
+								i.lni.lni-close
+							| End chat
+	.chat-content.container-fluid.pt-3
+		ul.chat-list
+				li.chat-title-contn
+					.chat-title
+						| Linda (support) joined the chat
+				li.bubbleWrapper#myId
+					.inlineContainer
+						.agentBubble.chat-bubble
+							| Hello i am here to help connect you with the right person to answer your question to your satisfaction
+					.agent-chat-name Linda
+						span.agent-chat-time 08:41
+				li.bubbleWrapper
+					.inlineContainer.client
+						.clientBubble.chat-bubble
+							| alright, thanks
+							//span.msg-stat
+								i.lni.lni-checkmark-circle
+					.client-chat-name #{firstname}
+						span.client-chat-time 08:55
+				li.chat-title-contn
+					.chat-title
+						| Linda added Mike to the chat
+	.chat-footer.container-fluid.pl-0.pr-0
+		.container-fluid.p-0
+			.row
+				.col-1.pl-4.pt-2.pb-2.pr-0.pl-lg-5
+					button.send-emoji
+						i.lni.lni-emoji-happy
+				.col-9.pl-3.plg-md-2.pt-2.pb-2
+					form.chat-form
+						input.chat-box(required)
+						button.send-chat(type="submit")
+								i.fa.fa-paper-plane
+				.col-2.pl-0.pt-2.pb-2.pr-4
+					.row
+						.col-6.p-0.text-left.text-lg-right
+							button.send-attachment.postion-relative
+								i.lni.lni-paperclip
+								.attachment-opt.position-absolute.text-left.attachments-slide-right
+									.attachment-one.attachments.attachments-slide-right.mb-3
+										i.lni.lni-add-files
+										p.pt-1 Document
+									.attachment-two.attachments.attachments-slide-right.mb-3 
+										i.lni.lni-camera
+										p.pt-1 Camera
+									.attachment-three.attachments.attachments-slide-right.mb-3
+										i.lni.lni-gallery
+										p.pt-1 Gallery
+						.col-6
+		.container-fluid.border-top.emoji-box.closed.position-relative
+			a.close-emoji-box.position-absolute.border-0.ml-3.pb-2
+				i.lni.lni-chevron-down

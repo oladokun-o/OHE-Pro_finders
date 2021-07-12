@@ -1,0 +1,86 @@
+@media only screen and (max-width: 768px) {
+    body {
+        position: relative;
+        font-family: 'Montserrat', sans-serif;
+        height: 100%;
+    }
+    main {
+        padding: 20px !important;
+    }
+    .page-width {
+        width: 100%;
+    }
+    .sub-headline {
+        font-size: 3rem;
+        font-weight: bold;
+    }
+    .subber-headline {
+        font-size: 2.5rem;
+    }
+    .headline {
+        font-size: 3rem;
+    }
+    .page-contn-image {
+        background-position: right;
+    }
+    .wrapper-body {
+        width: 100%;
+    }
+    .wrapper {
+        width: 100%;
+    }
+    .wave {
+        transform: rotate(90deg) scale(5) translateX(-5px);
+        top: 50%;
+    }
+    .steps_images {
+        height: 200px;
+        display: flex;
+        align-items: center;
+    }
+    .how_it_works_steps_contn {
+        display: flex;
+        align-items: center;
+    }
+    .contact-img-contn {
+        height: 250px;
+    }
+    .head-tag {
+        line-height: 1.5;
+        font-size: 40px;
+    }
+    .help-contn {
+        height: 295px;
+    }
+    .search-img {
+        position: absolute;
+        transform: translateY(-80px);
+        z-index: -1;
+    }
+    .reply-contn {
+        position: absolute;
+        top: 55px;
+    }
+    .footer li,
+    .free-title-footer {
+        font-size: medium !important;
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    .sub-headline {
+        font-size: 2rem;
+        font-weight: bold;
+    }
+    .subber-headline {
+        font-size: 1.5rem;
+    }
+    .footer-nav {
+        font-size: medium !important;
+    }
+    .search-img {
+        position: absolute;
+        transform: translateY(-75px);
+        z-index: -1;
+    }
+}

@@ -1,0 +1,140 @@
+extends layout
+
+block content
+  include scrollTop  
+  include menu
+  .page-contn-image.p-0
+    .page-width.p-0
+      .image-contn.container-fluid.pl-lg-4.mt-3.pb-5
+        .row     
+          .image-float.col-md-5.col-lg-5.col-sm-12.col-12.p-4.pt-5.pb-5
+            .sub-headline Speak to a pro today!
+            .search-jobs.form-group.mt-2
+              input#search(type="search",onkeyup="searchDB(this)",autocomplete="off", name="searchjobs").form-control
+              span.search-icon
+                i.lni.lni-keyword-research            
+                span(class="typewrite" data-period="2000" data-type='[ "Speak to a Doctor", "Speak to an Engineer", "Speak to a Therapist" ]')
+            .subber-headline.pb-5 Chat with all kinds of Experts for personalized help, 24/7.
+          .image-wrapper.col-md-7.col-lg-7.col-sm-12.col-12.text-center.pt-5.pb-5
+            .headline.font-italic.pt-5.mt-5.pb-5 "New ways to solve your problems"
+            a(href="/signup")
+              button.primary-btn get started
+  .wrapper-body.container-fluid.p-0
+    .wrapper
+      .body-wrapper.p-0.container-fluid          
+        .body-wrapper.container-fluid
+          .container-fluid.how-it-works.m-0.p-0
+            .row
+              .col-12.col-md-6.p-md-5.how-it-works-contn.p-4
+                h2.head-tag how it works
+                .how-it-works-step.step_one.active_step
+                  h3.how-it-works-headtext 1. Search for an expert
+                  p.how-it-works-bodytext Search for any expert, in any category, anytime of the day.
+                .d-block.d-md-none
+                  .how-it-works-step-one-contn
+                    .how-it-works-step-image
+                      img(src="/images/step_one.jpg")
+                .how-it-works-step.step_two
+                  h3.how-it-works-headtext 2. let us match you
+                  p.how-it-works-bodytext Get connected within minutes to an expert.
+                .d-block.d-md-none
+                  .how-it-works-step-two-contn.fade-out
+                    .how-it-works-step-image      
+                      img(src="/images/step_two.jpg")
+                .how-it-works-step.step_three
+                  h3.how-it-works-headtext 3. chat with the expert
+                  p.how-it-works-bodytext You can chat with the expert till you have your answer.
+                .d-block.d-md-none
+                  .how-it-works-step-three-contn.fade-out
+                    .how-it-works-step-image
+                      img(src="/images/step_three.jpg")
+              .col-md-6.d-none.d-md-block.p-md-5.p-4
+                .d-flex.justify-content-center.align-items-center.col-12.hundred-percent
+                  .how-it-works-step-one-contn
+                      .how-it-works-step-image
+                        img(src="/images/step_one.jpg")
+                  .how-it-works-step-two-contn.fade-out
+                      .how-it-works-step-image                      
+                        img(src="/images/step_two.jpg")
+                  .how-it-works-step-three-contn.fade-out
+                      .how-it-works-step-image
+                        img(src="/images/step_three.jpg")
+          .container-fluid.use_ohe.m-0
+            .row
+              .col-12.p-4.use_ohe_contn.p-md-5
+                h2.head-tag.text-center.pt-3 why you should use OHE
+                p.body-text.pt-3.pb-3.text-center OHE connects entrepreneurs, home and business owners to a world of pros. Your car broke down? But you have no idea what to do? Just ask! Our top-rated experts have the necessary skills and experience to help you get ahead.
+                .container-fluid.mt-4.pb-3.pt-2
+                  .row
+                    .col-12.col-md-4.mb-5
+                      .use_ohe_image_contn.pt-3
+                        i.lni.lni-investment
+                        .use_ohe_image_bg
+                      p.body-text-head.text-center.pt-4 every answer saves you money
+                      p.body-text.text-center Join members who save money and meet pros who can deliver on demand.
+                    .col-12.col-md-4.mb-5
+                      .use_ohe_image_contn.pt-3
+                        i.lni.lni-certificate
+                        .use_ohe_image_bg
+                      p.body-text-head.text-center.pt-4 certified experts
+                      p.body-text.text-center All our pros go through our skills testing process, this includes license verification, skills, abilties test and reviews.
+                    .col-12.col-md-4.mb-5
+                      .use_ohe_image_contn.pt-3
+                        i.lni.lni-timer
+                        .use_ohe_image_bg
+                      p.body-text-head.text-center.pt-4 save time and energy
+                      p.body-text.text-center Connect from any device, anytime. No waiting in que. Save valuable time at home.
+                    .col-12.text-center.d-flex.justify-content-center.align-items-center
+                      .see-how-it-works-bg  
+                        a(href="/how-it-works")
+                          button.primary-btn see how it works
+          .container-fluid.categories.p-4.p-md-5
+            .row.p-2.p-lg-4
+              .col-12.pr-5.pb-2.pl-0.pt-0.pb-5
+                h2.head-tag.text-left.pt-3 categories
+              .col-12.col-md-4
+                .category.pl-3.pb-5.pt-4.mt-5.m-md-0.pl-lg-5.pl-md-3
+                  p.body-text-head Engineering
+                  ul
+                    a(href="/jobs")
+                      li Electrician
+                    a(href="/jobs")
+                      li Plumber
+                    a(href="/jobs")
+                      li Car Mechanics
+                    a(href="/jobs")
+                      li Generator Mechanics
+              .col-12.col-md-4
+                .category.pl-3.pb-5.pt-4.mt-5.m-md-0.pl-lg-5.pl-md-3
+                  p.body-text-head Agriculture
+                  ul
+                    a(href="/jobs")
+                      li Animal Scientist
+                    a(href="/jobs")
+                      li Veterinary Doctor
+                    a(href="/jobs")
+                      li Taxonomist
+                    a(href="/jobs")
+                      li Foresters
+              .col-12.col-md-4
+                .category.pl-3.pb-5.pt-4.mt-5.m-md-0.pl-lg-5.pl-md-3
+                  p.body-text-head Travels
+                  ul
+                    a(href="/jobs")
+                      li Study in UK
+                    a(href="/jobs")
+                      li Study in Canada
+                    a(href="/jobs")
+                      li Study in USA
+                    a(href="/jobs")
+                      li Study in China
+              .col-12.text-center.d-flex.justify-content-center.align-items-center.pt-5
+                .see-all-categories-bg
+                  a(href="/jobs")
+                    button.see-all-categories-btn.primary-btn all categories
+                      i.lni.lni-arrow-right.pl-2
+        include footer
+          
+                                    
+              
+          

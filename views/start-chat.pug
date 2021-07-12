@@ -1,0 +1,40 @@
+doctype html
+html.theme-light
+	head
+		meta(charset="UTF-8")
+		meta(http-equiv="X-UA-Compatible" content="ie=edge")
+		meta(name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0")    
+		title= title
+		link(rel='icon', type="image/png",  href='/images/OHE-Logo.png')
+		link(rel='icon', type="image/x-icon", href='/images/OHE-Logo.png')
+		link(rel="shortcut icon", href="/images/OHE-Logo.png", type="image/x-icon")
+		link(rel='stylesheet', href='/stylesheets/style.css')
+		link(rel='stylesheet', href='/stylesheets/LineIcons.css')
+		link(rel='stylesheet', href='/bootstrap.css')
+		link(rel='stylesheet', href='/all.css')
+		link(rel='stylesheet', href='/stylesheets/small.css')
+		link(rel='stylesheet', href='/stylesheets/wide.css')
+		link(rel='stylesheet', href='/stylesheets/animations.css')
+		link(rel="preconnect",href="https://fonts.gstatic.com")
+		link(rel='preconnect', href='https://cdn.lineicons.com/2.0/LineIcons.css')
+		link(rel="stylesheet", href="/hamburgers.min.css")
+		link(rel="stylesheet", href="/stylesheets/menu.css")
+		link(rel="preconnect" href="https://fonts.gstatic.com")
+		link(href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@500&display=swap" rel="stylesheet")
+		script(src="/javascripts/loader.js" defer)
+		script(src='https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.1/socket.io.js')   
+	body.body-theme.preloader-active
+		.content
+			div
+				p Welcome to Chat App
+					form(action="/room" method="POST")
+						input(type="text" placeholder="Enter your Name" class="username" name="username" required)
+						input(type="text" placeholder="Enter Room Name" class="roomname" name="roomname" required)
+						input(type="submit" value="Enter")
+		script(src="/jquery.slim.min.js")
+		script(src="/jquery.min.js")
+		//script(src="/javascripts/prereq.js")    
+		//script(src="/javascripts/mail.js")    
+		script(src="/all.js")
+		script(src="/bootstrap.min.js")
+		//script(src="/javascripts/chat.js") 

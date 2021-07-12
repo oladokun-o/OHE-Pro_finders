@@ -1,0 +1,62 @@
+extends layout
+
+block content
+  include menu
+  .page-contn.p-0
+    .page-width.p-0.mt-5
+      .container-fluid.how_it_works.mt-5.pt-5.pb-4.pt-md-0.mt-md-0
+        a(href="/faq")
+          img(src="/images/splash.jpg", alt="FAQ").splash
+        h2.head-tag.text-center.p-md-5.pt-md-0.pt-1.pb-1 how it works
+        .row
+          .col-md-8.col-4
+            .row
+              img(src="/images/steps-wave.png").wave
+              .col-12.col-md-4.steps_images
+                .container-fluid.p-4.p-md-4 
+                  img(src="/images/step_one.jpg")
+              .col-12.col-md-4.steps_images
+                .container-fluid.p-4.p-md-4 
+                  img(src="/images/step_two.jpg")
+              .col-12.col-md-4.steps_images
+                .container-fluid.p-4.p-md-4 
+                  img(src="/images/step_three.jpg")    
+          .col-md-4.col-8.how_it_works_steps_contn
+            .how_it_works_steps
+              h3.how-it-works-headtext ask for help anytime
+              p.how-it-works-bodytext Members enjoy 24/7 access to cerified Experts, including doctors, lawyers, tech support, mechanics, vets and more.
+              .text-left
+                a(href="/signup")
+                  button.primary-btn sign me up 
+                    i.lni.lni-chevron-right.pl-2
+        .container-fluid.user_temp.pt-5
+          .row.user_temp_content.pt-5.p-md-5
+            .col-12.col-md-6.p-md-5.pt-5.pb-5
+              .row
+                .col-2.chat_image_contn.pb-4
+                  .chat_image
+                    img(src="/images/user-temp.jpg")
+                .col-10.chat_bubble_contn.pt-4
+                  .chat_bubble
+                    p.bubble-bodytext Hello, how can i help with your car problem?                
+                .col-10.chat_bubble_contn.pt-4
+                  .chat_bubble.white_bubble
+                    p.bubble-bodytext Do you think I could sell my toyota, and get an suv big enough for the whole family?
+                .col-2.chat_image_contn.pb-4
+                  .chat_image
+                .col-2.chat_image_contn.pb-4.mt-4
+                  .chat_image
+                    img(src="/images/user-temp.jpg")
+                .col-10.chat_bubble_contn.pt-4.mt-4
+                  .chat_bubble.max-content
+                    p.bubble-bodytext Certainly!
+                .col-2.chat_image_contn.pb-4
+                  .chat_image
+                .col-10.chat_bubble_contn.pt-4
+                  .chat_bubble
+                    p.bubble-bodytext What model is your Toyota car?
+            .col-12.col-md-6.d-flex.align-items-center.text-left.p-md-0.pt-5
+              .how_it_works_steps#connect_bodytext
+                h3.how-it-works-headtext an expert will be connected to you in minutes
+                p.how-it-works-bodytext After you reach out, we will match you with an expert who specializes in your situation. Talk, chat, even send documents and photos.
+      include footer

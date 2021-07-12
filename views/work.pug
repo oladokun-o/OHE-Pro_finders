@@ -1,0 +1,134 @@
+extends layout
+
+block content
+  style.
+    .acc-card .card-header li{
+      font-size: 15px;
+      font-weight: bold;
+      width: 100%;
+      text-align: left;
+      cursor: pointer;
+    }
+    .acc-card .card {    
+      border-radius:0 !important;
+      border-bottom: 2px solid #f5d0ba !important;
+    }
+    .acc-card .card-body li {
+      cursor: pointer;      
+      font-size: 15px;
+
+    }
+    .acc-card .card li:hover{
+      text-decoration: none;
+    }
+   
+  include menu 
+  .page-contn.p-0
+    .page-width.p-0.mt-5.mt-md-1
+      .container-fluid.mt-5.pt-5.pt-md-0.pb-5
+        .d-flex.justify-content-center.px-md-5.work-wrap
+          .container-fluid.pt-5.pb-5.pt-lg-0.pb-lg-0
+            .row
+              .col-md-7.col-12.p-0
+                .search-jobs.form-group.mt-1
+                  form.search-form
+                    input#search.search(type="search"/*,onkeyup="searchDB(this)"*/,autocomplete='on', name="searchjobs", placeholder="Search for any keyword e.g law" required).form-control
+                    span.d-md-none.filter-icon
+                      i.fa.fa-caret-down.pl-1.caret
+                    span.search-icon
+                      button.m-3
+                        i.lni.lni-keyword-research
+                    .hide
+                .container-fluid.border-top.work-categories.sm-work.fade-out.d-md-none
+                  span.close-icon
+                    i.lni.lni-close
+                  mixin category
+                    ul#accordion.p-0.text-left.pb-3.acc-card
+                      .card.p-0.bg-none.border-0
+                        #headingOne.card-header.p-0.bg-none.border-0
+                          a.mb-0.p-0
+                            li.p-0.btn.btn-link.m-0(data-toggle='collapse' data-target='#collapseOne' aria-expanded='true' aria-controls='collapseOne')
+                              | Categories
+                        #collapseOne.collapse(aria-labelledby='headingOne' data-parent='#accordion')
+                          .card-body.p-0
+                            mixin categories(name)
+                              li.categories= name
+                            ul.p-0.m-0
+                              +categories('Agriculture')
+                              +categories('Artisans & Engineers')
+                              +categories('Arts')
+                              +categories('Business & Finance')
+                              +categories('Cleaning & Maintenance')
+                              +categories('Computer')
+                              +categories('Design')
+                              +categories('Eductaion Training ')
+                              +categories('Food prep & Food Related')
+                              +categories('Health Care')
+                              +categories('Legal Services ')
+                              +categories('Management')
+                              +categories('Media ')
+                              +categories('Personal Care & Travels ')
+                              +categories('Production Services ')
+                              +categories('Safety & Security ')
+                              +categories('Social Services ')
+                              +categories('Sport')
+                      .card.border-0.bg-none
+                        #headingTwo.card-header.p-0.bg-none.border-0
+                          a.mb-0.p-0
+                            li.btn.p-0.m-0.btn-link.collapsed(data-toggle='collapse' data-target='#collapseTwo' aria-expanded='false' aria-controls='collapseTwo')
+                              | General Questions
+                        #collapseTwo.collapse(aria-labelledby='headingTwo' data-parent='#accordion')
+                          .card-body.p-0
+                            mixin questions(general)
+                              li.questions= general
+                            ul.p-0.m-0 
+                              +questions('How do I get my kids to stop fighting?')
+                              +questions('How do I fix my car’s alternator?')
+                              +questions('What is my car worth?')
+                              +questions('How can I lower my business taxes this year?')
+                              +questions('What do you think it would cost to do a kitchen remodel?')
+                              //+questions('')
+                              //+questions('')
+                              //+questions('')
+                      .card.border-0.bg-none
+                        #headingThree.card-header.p-0.bg-none.border-0
+                          a.mb-0.p-0
+                            li.btn.p-0.m-0.btn-link.collapsed(data-toggle='collapse' data-target='#collapseThree' aria-expanded='false' aria-controls='collapseThree')
+                              | Medical Related
+                        #collapseThree.collapse(aria-labelledby='headingThree' data-parent='#accordion')
+                          .card-body.p-0
+                            mixin questions(medical)
+                              li.questions= medical
+                            ul.p-0.m-0 
+                              +questions('I was bitten by a wasp about an hour ago. What should i do?')
+                              +questions('If I am fully vaccinated is it safe to have non-vaccinated person in my house who does not wear mask?')
+                      .card.border-0.bg-none
+                        #headingFour.card-header.p-0.bg-none.border-0
+                          a.mb-0.p-0
+                            li.btn.p-0.m-0.btn-link.collapsed(data-toggle='collapse' data-target='#collapseFour' aria-expanded='false' aria-controls='collapseFour')
+                              | Home Improvement Questions
+                        #collapseFour.collapse(aria-labelledby='headingFour' data-parent='#accordion')
+                          .card-body.p-0.pb-3
+                            mixin questions(home)
+                              li.questions= home
+                            ul.p-0.m-0 
+                              +questions('Should my electrician install conduit or surface?')
+                              +questions('How Do You Install a Light Fixture?')
+                              +questions('How Do You Clean Painted Walls?')
+                      .hide.card.border-0.bg-none
+                        #headingFive.card-header.p-0.bg-none.border-0
+                          a.mb-0.p-0
+                            li.btn.p-0.m-0.btn-link.collapsed(data-toggle='collapse' data-target='#collapseFive' aria-expanded='false' aria-controls='collapseFive')
+                              | Other Questions
+                        #collapseFive.collapse(aria-labelledby='headingFive' data-parent='#accordion')
+                          .card-body.p-0.pb-3
+                            | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.														
+                  +category
+                .container-fluid.work-list.bg-none 
+                  .search-img
+                    img(src="/images/search.png")
+                .container-fluid.border.reply-contn.p-0.m-0.fade-out                  
+              .col-md-5.col-12.pt-0.mt-0.p-0.pl-md-3.pr-md-3.pt-md-0.d-md-block.d-none
+                .container.work-categories.pl-4.pt-2.pr-4
+                  +category
+      include footer

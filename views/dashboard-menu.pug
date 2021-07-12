@@ -1,0 +1,154 @@
+block content 
+	.Closepanel.container-fluid#CloseMenu(onclick="Closemypanel()").hide.d-md-none.d-xl-none
+	#HiddenPanel.hidden-panel.d-lg-none.d-md-none.d-xl-none
+		.hiddenpanel-bg
+			span.hidden-panel-close(data-js='hidden-panel-close')
+				i.lni.lni-close
+			.hidden-panel-content.p-0
+				.p-2.pl-4.pr-4.pb-0
+					.col-4.col-md-2.col-lg-2.col-xl-2.pt-lg-3.pt-md-3.pt-xl-3.p-2
+						a(href="/")
+							img.brand-logo-img(src="/images/OHE-Logo.png", alt="")
+				ul.mt-4.index-menu.text-left.menu-item
+					a(href='/-dashboard')
+						li.text-left.p-4.pl-5.active.-dashboardbtn
+							i.lni.lni-home.pr-3
+							span dashboard 
+					a(href='/-chats') 
+						li.text-left.p-4.pl-5.-chatsbtn
+							i.far.fa-comment-alt
+							span.pl-3 Chats
+					a(href='/-account') 
+						li.text-left.p-4.pl-5.-settingsbtn
+							i.lni.lni-cog
+							span.pl-3 Settings
+					a(href='/-help') 
+						li.text-left.p-4.pl-5.-help-centerbtn
+							i.lni.lni-help
+							span.pl-3 Help Center                                  
+					.p-3.pl-5.pr-5
+						a(href='/logout').logout
+							li.text-center.p-3.login
+								i.lni.lni-power-switch.pr-3          
+								span logout
+	.container-fluid
+		.row 
+			.col-lg-3.col-md-4.lg-menu.d-none.d-md-block.p-0
+				.hidden-panel.hidden-panel-lg
+					.hiddenpanel-bg
+						.hidden-panel-content.p-0
+							.p-2.pl-4.pr-4.pb-0
+								.col-4.col-md-2.col-lg-2.col-xl-2.pt-lg-3.pt-md-3.pt-xl-3.p-2
+									a(href="/")
+										img.brand-logo-img(src="/images/OHE-Logo.png", alt="")
+							ul.index-menu.text-left.pb-5.pr-4.menu-item
+								a(href='/-dashboard')
+									li.text-left.p-4.pl-5.-dashboardbtn
+										i.lni.lni-home.pr-3
+										span dashboard
+								a(href='/-chats') 
+									li.text-left.p-4.pl-5.-chatsbtn
+										i.far.fa-comment-alt
+										span.pl-3 Chats
+								a(href='/-account') 
+									li.text-left.p-4.pl-5.-settingsbtn
+										i.lni.lni-cog
+										span.pl-3 Settings
+								a(href='/-help') 
+									li.text-left.p-4.pl-5.-help-centerbtn
+										i.lni.lni-help
+										span.pl-3 Help Center                                  
+								.p-3.pl-5.pr-5.mb-5.pb-5
+									a(href='/logout').logout
+										li.text-center.p-3.login
+											i.lni.lni-power-switch.pr-3          
+											span logout
+			.col-md-8.col-lg-9
+				.main-header.p-md-0.p-2.pl-3
+					.col-2.col-md-4.col-lg-3.p-0.avatar-contn-sm
+						.dropdown-contn
+							button.dropbtn.m-0.p-0.bg-none.d-md-none
+								.user-avatar.-medium.-initial.p-0.-online-bubble
+									p #{initials}										
+							.dropdown.large-menu
+								.dropdown-content
+									a.p-2.-edit-profile.text-center
+										//.user-avatar.-small.-initial
+											p.p-0.m-0 #{initials}
+										span.p-0.m-0.names #{fullname}
+									hr.m-0.hr
+													
+									a(href='/-account').-edit-profile
+										.pl-3
+											i.lni.lni-user
+											span.pl-3 Edit profile
+									|
+									a(href='/-chats').-chat
+										.pl-3
+											i.far.fa-comment-alt
+											span.pl-3 Chats
+									|     
+									a(href='#')
+										.pl-3
+											i.lni.lni-cog
+											span.pl-3 Settings
+									hr.m-0.hr
+									a(href='/logout').logout
+										.pl-3
+											i.lni.lni-power-switch
+											span.pl-3 Logout
+					.col-md-8.col-lg-9.d-none.d-md-block.p-0
+						.container-fluid.pr-md-4.md-header
+							.row
+								.col-11.p-3.pl-4
+										.row.nav-buttons
+											.col-10.text-left.position-relative.d-flex.pl-3.p-0
+												button.bg-none.p-0.border-0.white#btnFullscreen.mr-4
+													i.lni.lni-frame-expand#btnFullscreenicon                 
+											.col-2.text-right.position-relative
+												button(type="button").bg-none.p-0.border-0.white.-notice.position-relative
+													i.fas.fa-bell.ringer
+													.wide-notification.notifications.position-absolute.bg-light
+								.col-1
+									ul.mt-1.mb-1.large-menu
+										.dropdown-contn
+											button.dropbtn.m-0.p-0.bg-none
+												.user-avatar.-medium.-initial.p-0.-online-bubble
+													p #{initials}										
+											.dropdown
+												.dropdown-content
+													a.p-2.-edit-profile.text-center
+														//.user-avatar.-small.-initial
+															p.p-0.m-0 #{initials}
+														span.p-0.m-0.names #{fullname}
+													hr.m-0.hr
+													
+													a(href='/-account').-edit-profile
+														.pl-3
+															i.lni.lni-user
+															span.pl-3 Edit profile
+													|
+													a(href='/-chats').-chat
+														.pl-3
+															i.far.fa-comment-alt
+															span.pl-3 Chats
+													|     
+													a(href='#')
+														.pl-3
+															i.lni.lni-cog
+															span.pl-3 Settings
+													hr.m-0.hr
+													a(href='/logout').logout
+														.pl-3
+															i.lni.lni-power-switch
+															span.pl-3 Logout
+					.col-9.d-block.d-md-none.text-left.nav-buttons.pt-2.pl-0.position-relative
+						button(type="button").bg-none.p-0.border-0.white.-notice.position-relative
+							i.fas.fa-bell.ringer
+							.notifications.position-absolute.bg-light.text-center
+					.col-1.menu-btn.text-right#MenuIcon.p-0.d-md-none
+						button(type="button" data-js='menu-toggle').pr-0.hamburger.hamburger--minus.menu-toggle
+							span.hamburger-box
+								span.hamburger-inner          
+
+		

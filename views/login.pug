@@ -1,0 +1,61 @@
+extends layout
+
+block content
+  include menu 
+  .page-contn.p-0
+    .page-width.p-0.mt-5.pt-4.pt-md-1
+      .alert-contn.justify-content-center.text-center.col-12
+        if (errmsg)
+          .col-lg-4.col-md-4.alert #{errmsg}
+        else 
+          .col-lg-4.col-md-4.alert.fade-out
+      .container-fluid          
+        .welcome-text.container-fluid.text-center
+          h2.head-tag.text-center.pt-4 Login   
+      .container-fluid.form-parent.p-2
+        .form-container.off-canvas.col-md-5.col-12.p-2
+          form#formsignin.form-signin
+            .form-group
+              label(for='Username') Email
+              .input-group
+                span.input-group-addon
+                  i.lni.lni-envelope.login-form-mail
+                input#Username.form-control.border-left(type='email' name='email' required)            
+            .form-group.passwordcontn
+              label(for='password') Password
+              .input-group
+                span.input-group-addon
+                  i.lni.lni-lock.login-form-mail
+                input#password.form-control.border-left(type='password' name='password' autocomplete="on" required)
+                i(onclick="showPassword()" type="checkbox" id="Eye").fa.fa-eye.eyes          
+            .row
+              .checkbox.col-6
+                label
+                  input(type='checkbox' value='').p-0.m-0              
+                  |  Remember me
+              .col-6.text-right
+                a(href="/forgot-password") Forgot Password?
+            .text-center.pt-3.pb-3
+              button.primary-btn(type="submit").text-center
+                span Login
+              h4.pl-4.pr-4.m-2 OR
+              .container-fluid.p-0.m-0
+                .row.p-0
+                  .col-12.p-0.m-0.mt-3
+                    .d-flex.justify-content-center.align-items-center.p-0.pb-3
+                      .col-12.text-center
+                        a(href="/google").secondary-btn
+                          span.google                   
+                            i.lni.lni-google.pr-3
+                            | Login with Google+
+                  .col-12.p-0.m-0.mt-3
+                    .d-flex.justify-content-center.align-items-center.p-0.pb-3
+                      .col-12.text-center
+                        a(href="/facebook").secondary-btn
+                          span.fb                 
+                            i.lni.lni-facebook.pr-3
+                            | Login with Facebook
+            .pt-2.pb-4
+            span.pr-2.pb-5 New to OHE?
+              a(href="/signup").ml-2 Sign up
+

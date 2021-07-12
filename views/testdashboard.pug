@@ -1,0 +1,43 @@
+extends layout
+
+block content
+	include dashboard-head
+	include dashboard-menu 
+	.app-container.container-fluid.p-0
+		.app-content.container-fluid.m-0
+			.row 
+				.d-md-block.col-md-4.col-lg-3.p-0
+				.col-12.col-md-8.col-lg-9.main-content.p-0
+					.main-dashboard
+						.-dashboard
+							.intros.pt-4.pl-4.pb-2
+								h4 
+									|Welcome 
+									- let fullname = 'oladokun'
+									span.fullname #{user}
+									span.hand-wave.pl-2 👋🏽
+							.-dashboard-options.container-fluid.pl-2
+								.d-flex.justify-content-center.work-wrap
+									.container-fluid.pt-1
+										.row
+											.col-12.p-0.col-md-6.col-lg-5
+												.search-jobs.form-group.mt-1
+													form.search-form
+														input#search.search(type="search"/*,onkeyup="searchDB(this)"*/,autocomplete='on', name="searchjobs", placeholder="Search for any keyword e.g law" required).form-control
+														span.search-icon.hide
+															i.lni.lni-keyword-research
+														span.filter-icon.p-0
+															button.m-3
+																i.lni.lni-keyword-research.pl-1
+												.container-fluid.work-list.bg-none 
+													.search-img
+														img(src="/images/search.png")
+												.container-fluid.reply-contn.p-0.m-0.fade-out                  
+						.-chats.border.hide 
+							include chat
+						.-settings.border.hide 
+							h1 setting
+						.-help-center.border.hide
+							h1 help center
+	include dashboard-scripts
+					
