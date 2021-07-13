@@ -19,13 +19,6 @@ const {Server} = require('socket.io')
 const WebSockets = require('../utils/WebSockets')
 var app = express();
 app.use(compression());
-//accessing global env variables
-const aws = require('aws-sdk');
-
-let herokuConfig = new aws.S3({
-  PORT: process.env.PORT,
-});
-console.log(herokuConfig.PORT)
 //routes 
 const indexRouter = require("../routes/index")
 const userRouter = require("../routes/user")
