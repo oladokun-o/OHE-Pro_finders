@@ -5,16 +5,15 @@ block content
   .page-contn.p-0
     .page-width.p-0.mt-5.pt-4.pt-md-1
       .alert-contn.justify-content-center.text-center.col-12
-        if (errmsg)
-          .col-lg-4.col-md-4.alert #{errmsg}
-        else 
-          .col-lg-4.col-md-4.alert.fade-out
+        script.
+          var LoginErrorMsg = '!{errmsg}';
+        .col-lg-4.col-md-4.alert.fade-out
       .container-fluid          
         .welcome-text.container-fluid.text-center
           h2.head-tag.text-center.pt-4 Login   
       .container-fluid.form-parent.p-2
         .form-container.off-canvas.col-md-5.col-12.p-2
-          form#formsignin.form-signin
+          form#formsignin.form-signin(action="/dashboard" method="POST")
             .form-group
               label(for='Username') Email
               .input-group
@@ -58,4 +57,4 @@ block content
             .pt-2.pb-4
             span.pr-2.pb-5 New to OHE?
               a(href="/signup").ml-2 Sign up
-
+  script(src="/javascripts/requests.js")    

@@ -12,8 +12,6 @@ const compression = require('compression');
 const mongoose = require('mongoose');
 const db = require('../config/index').get(process.env.NODE_ENV);
 var passport = require('passport');
-var fs = require('fs');
-var handlebars = require('handlebars');
 //websokets
 const {Server} = require('socket.io')
 const WebSockets = require('../utils/WebSockets')
@@ -32,6 +30,8 @@ app.use("/users", userRouter);
 
 // middlewares
 //const { decode } = require('../middlewares/jwt')
+
+
 
 //mongo connection
 require("../config/mongo")
@@ -58,8 +58,7 @@ app.use(express.static('node_modules/hamburgers/dist'));
 app.use(express.static('node_modules/@fortawesome/fontawesome-free/css/'));
 app.use(express.static('node_modules/@fortawesome/fontawesome-free/webfonts/'));
 app.use(express.static('node_modules/@fortawesome/fontawesome-free/js//'));
-
-// catch 404 and forward to error handler
+ // catch 404 and forward to error handler
 app.use(function(req, res, next) {
     next(createError(404));
 });
@@ -69,7 +68,7 @@ app.use(function(err, req, res, next) {
     // set locals, only providing error in development
     res.locals.message = err.message;
     res.locals.error = req.app.get('env') === 'development' ? err : {};
-    console.log(err)
+
     // render the error page
     res.status(err.status || 500);
     res.render('error', { title: 'Error!' });
@@ -87,3 +86,4 @@ server.listen(port);
 server.on("listening", () => {
     console.log(`Listening on port:: http://localhost:${port}/`)
 });
+module.exports = app;

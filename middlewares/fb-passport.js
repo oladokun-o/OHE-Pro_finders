@@ -1,6 +1,6 @@
 const FacebookStrategy = require('passport-facebook').Strategy;
 const mongoose = require('mongoose');
-const db = require('../config/config').get(process.env.NODE_ENV);
+const db = require('../config/index').get(process.env.NODE_ENV);
 const User = require('../models/user');
 var express = require('express');
 var app = express();

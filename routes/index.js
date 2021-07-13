@@ -1,13 +1,20 @@
 // controllers
-const user = require('../controllers/user.js')
+const loggeduser = require('../controllers/authenticate')
+//const user = require('../controllers/user.js')
 const router = require('express').Router();
 const encode = require('../middlewares/jwt')
 const { auth } = require('../middlewares/auth');
-const User = require('../models/user')
+//const User = require('../models/user')
 const bodyParser = require('body-parser');
 router.use(bodyParser.urlencoded({ extended: false }));
 var cookieParser = require('cookie-parser');
 router.use(cookieParser());
+var passport = require('passport');
+//passport middleware
+router.use(passport.initialize());
+router.use(passport.session());
+require('../middlewares/google-passport')(passport);
+require('../middlewares/fb-passport')(passport);
 
 router
     /* GET home page. */
@@ -42,77 +49,12 @@ router
     .get('/faq', (req, res) => {
         res.render('help', { title: 'Help Center' });
     })
-    .get('/login', function(req, res, next) {
-        /*let token = req.cookies.auth
-        User.findByToken(token, function (err,user) {
-            if (user) {
-                var firstStr = user.firstname,
-                        lastStr = user.lastname,
-                        Initials = firstStr.charAt(0) + '.' + lastStr.charAt(0);
-                res.render(
-                    'dashboard', {
-                        title: 'Dashboard',
-                            firstname: user.firstname,
-                            lastname: user.lastname,
-                            initials: Initials,
-                            id: user.id
-                    });
-            } else {*/
-                res.render('login',{title:'Login'});
-            //}
-        //  });
-    })
-    .post('/dashboard', function(req, res) {
-        let token = req.cookies.auth
-        User.findOne({ 'email': req.body.email }, function(err, user) {
-                    if (!user) return res.status(500).send('Email not found in database').render('login', { title: 'Login', errmsg: 'Email not found in database' });
-
-                    user.comparepassword(req.body.password, (err, isMatch) => {
-                        if (!isMatch) return res.status(500).send('Wrong password!')
-
-                        user.generateToken((err, user) => {
-                            if (err) {
-                                console.log('could not log in user, something happened:',err)
-                                return res.status(500).send('An error occured, please try again later')
-                            }
-                            var firstStr = user.firstname,
-                                lastStr = user.lastname,
-                                Initials = firstStr.charAt(0) + '.' + lastStr.charAt(0)
-                            var logindetails = {firstStr,lastStr,Initials}
-                               
-                            //console.log(token)
-                            /*res.cookie('auth', user.token).render(
-                                'dashboard', {
-                                    title: 'Dashboard',
-                                    firstname: user.firstname,
-                                    lastname: user.lastname,
-                                    fullname: user.firstname + ' ' + user.lastname,
-                                    initials: Initials,
-                                    id: user.id
-                            });*/
-                            res.status(200).send({logindetails:logindetails});
-                        });
-                    });
-                });
-    })
-    .post('/register', function(req, res) {
-    // taking a user
-    const newuser = new User(req.body);
-
-    if (newuser.password != newuser.password2) return res.status(500).send('Passwords do not match');
-
-    User.findOne({ email: newuser.email }, function(err, user) {
-        if (user) return res.status(500).send('Email already taken');
-
-        newuser.save((err, doc) => {
-            if (err) {
-                res.status(500).send('An error occured, please try again later');
-                console.log('could not create user:' + doc);
-            }
-            res.status(200).send('Sign Up successful!')//.redirect('login')
-        });
-    });
-    })
+    .get('/login', loggeduser.onGetLogin)
+    .post('/dashboard', loggeduser.onPostDashboard)
+    .post('/register', loggeduser.onRegister)
+    .get(['/-dashboard', '/-chats','/-jobs','/-account','/-help'], loggeduser.onGetLoggedInPages)
+    .get('/dashboard', loggeduser.onGetLogin)
+    .get('/logout', auth, loggeduser.onGetLogout)
     .post('/login/:userId', encode, (req, res, next) => {
         return res
             .status(200)
@@ -120,6 +62,12 @@ router
                 success: true,
                 authorization: req.authToken,
             });
-    });
-
+    })
+    .post('/get-updates', loggeduser.onGetUpdates)
+    .post('/reset-password', loggeduser.onPostResetPassword)
+    .get('/reset-password/:token', loggeduser.onGetResetPasswordToken)
+    .post('/reset-password/:token', loggeduser.onPostResetPasswordToken)
+    .post('/jobs', loggeduser.onPostJobs)
+    .get('/google', passport.authenticate('google', { scope: ['profile', 'email'] }))
+    .get('/google/callback', passport.authenticate('google', { failureRedirect: '/login' }), loggeduser.onGetGoogleCB)
 module.exports = router;

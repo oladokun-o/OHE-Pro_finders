@@ -5,10 +5,10 @@ html.theme-light
     meta(http-equiv="X-UA-Compatible" content="ie=edge")
     meta(name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0")    
     title= title
+    link(rel='stylesheet', href='/stylesheets/style.css')
     link(rel='icon', type="image/png",  href='/images/OHE-Logo.png')
     link(rel='icon', type="image/x-icon", href='/images/OHE-Logo.png')
     link(rel="shortcut icon", href="/images/OHE-Logo.png", type="image/x-icon")
-    link(rel='stylesheet', href='/stylesheets/style.css')
     link(rel='stylesheet', href='/stylesheets/LineIcons.css')
     link(rel='stylesheet', href='/bootstrap.min.css')
     link(rel='stylesheet', href='/bootstrap-grid.min.css')
@@ -23,19 +23,20 @@ html.theme-light
     link(rel="preconnect" href="https://fonts.gstatic.com")
     //link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous")
     link(href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@500&display=swap" rel="stylesheet")
-    script(src="/javascripts/loader.js" defer)    
+    script(src="/javascripts/loader.js" defer)
+    script(src="/jquery.slim.min.js") 
   body.body-theme.preloader-active
+    script.
+      0
     block content
 
     script(src="/jquery.slim.min.js")
     script(src="/jquery.min.js")
     script(src="/javascripts/prereq.js")    
     script(src="/javascripts/mail.js")
-    script(src="/javascripts/requests.js")    
     script(src="/all.js")
     script(src="/bootstrap.min.js")
     //script(src="/javascripts/chat.js")
-    script(src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous")
     script( src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous")
 
 

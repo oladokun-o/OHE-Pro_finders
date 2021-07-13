@@ -28,7 +28,7 @@ $('.get-update-form').on('submit', function(e) {
                 })
             },
             error: function(ajaxContext) {
-                $('.error').fadeIn('fast', function() { $('.error').html('Something went wrong, try again') });
+                $('.error').fadeIn('fast', function() { $('.error').html(ajaxContext.responseText) });
                 setTimeout(
                     function() {
                         $('.error').fadeOut('fast', function() {
@@ -97,8 +97,8 @@ $('.forgot-form').on('submit', function(e) {
                     setTimeout(
                         function() {
                             $('.error').fadeOut('fast');
-                            $('.error').html('')
-                        }, 5000)
+                            //$('.error').html('')
+                        }, 3000)
                     $('.proceed-forgot-mail').html('<span> failed <i class="lni lni-close red"></i></span>')
                     $('.proceed-forgot-mail').attr("disabled", true);
                     $('.forgot-form').each(function() {

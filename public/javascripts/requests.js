@@ -1,38 +1,3 @@
-//login
-$('.form-signin').on('submit', function (e) {
-    var loginBtn = $('.primary-btn'),
-        loginBtnIcon = $('.primary-btn span'),
-        alertContn = $('.alert')
-    loginBtnIcon.html('<span><i class="lni lni-spinner-arrow fa-spin"></i></span>')
-    loginBtn.attr("disabled", true);
-    loginBtn.addClass('nullified');
-        e.preventDefault();
-      setTimeout(() => {
-            $.ajax({
-            method: 'POST',
-            url: '/dashboard',
-            data: {
-                email: $("#Username").val().trim(),
-                password: $("#password").val().trim()
-            },
-            success: function(response) {
-                console.log(response)
-                loginBtnIcon.html('<i class="lni lni-checkmark green"></i>')
-            },
-            error: function(response) {
-                //console.log(response.responseText)
-                alertContn.fadeIn('fast')
-                setTimeout(() => {
-                    alertContn.fadeOut('fast')                   
-                }, 3000);
-                alertContn.html(response.responseText)
-                loginBtnIcon.html('login')
-                loginBtn.removeAttr('disabled')
-                loginBtn.removeClass('nullified');
-            }
-        })
-      }, 1000);
-})
 //signup
 $('.form-signup').on('submit', function (e) {
     var singupBtn = $('.primary-btn'),
@@ -74,3 +39,12 @@ $('.form-signup').on('submit', function (e) {
         })
       }, 1000);
 })
+
+//login
+var alertContn = $('.alert');
+if (LoginErrorMsg) {
+    alertContn.fadeIn('fast').html(LoginErrorMsg)
+    setTimeout(() => {
+            alertContn.fadeOut('slow')
+    }, 3000);
+}
