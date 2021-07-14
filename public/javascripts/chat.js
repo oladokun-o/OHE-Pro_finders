@@ -1,4 +1,3 @@
-
 //chat ui
 var muterBtn = $('.muter'),
     muterIcon = $('.muter-icon'),
@@ -125,8 +124,36 @@ $(document).on("click", function(event) {
 });
 
 var chatDay = new Date(),
-    msgStat = $('.msg-stat');
+    msgStat = $('.msg-stat'),
+    chatInitiator = $('.start-chat'),
+    chatData = [];
+chatData[0] = 'c4f0e902a3c84afbac231f343d7b450e';
+chatData[1] = 'f3ade31a7d334e2d8d3bdcf8202c3d1a';
+    //console.log(userId)
 
+chatInitiator.on('click', function (e) {
+    e.preventDefault()
+    $.ajax({
+        //contentType: "application/json",
+        method: 'POST',
+        url: '/room/initiate',
+        data: {
+            _id: chatData[0],
+            userIds: chatData[0],
+            support: chatData[1],
+            type: 'consumer-to-support',
+            firstname: firstname,
+            lastname: lastname,
+            email: email
+        },
+        success: function (response) {
+            console.log(response.responseText)
+        },
+        error: function (response) {
+            console.log(response.responseText)
+        }
+    })
+})
 chatForm.on('submit',function(e){
     e.preventDefault()
     let message = chatBox.val(),

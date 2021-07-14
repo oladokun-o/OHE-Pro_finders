@@ -18,7 +18,8 @@ module.exports = function(passport) {
                 firstname: email._json.family_name,
                 lastname: email._json.given_name,
                 //image: email.photos[0].value
-                email: email._json.email
+                email: email._json.email,
+                type: 'consumer'
             }
             try {
                 let user = await User.findOne({ email: email._json.email });

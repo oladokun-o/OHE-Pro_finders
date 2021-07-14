@@ -46,18 +46,20 @@ module.exports = {
                         }
                         var firstStr = user.firstname,
                             lastStr = user.lastname,
-                            Initials = firstStr.charAt(0) + '.' + lastStr.charAt(0);
+                            Initials = firstStr.charAt(0) + '.' + lastStr.charAt(0)
                             
                           //console.log(token)
-                        res.cookie('auth', user.token).render(
-                            'dashboard', {
-                                title: 'Dashboard',
-                                firstname: user.firstname,
-                                lastname: user.lastname,
-                                fullname: user.firstname + ' ' + user.lastname,
-                                initials: Initials,
-                                id: user.id
-                            });
+                        res.header('authorization', 'Bearer ' + user.token)
+                        res.cookie('auth', user.token)
+                        res.render('dashboard', {
+                            title: 'Dashboard',
+                            firstname: user.firstname,
+                            lastname: user.lastname,
+                            fullname: user.firstname + ' ' + user.lastname,
+                            initials: Initials,
+                            id: user.id,
+                            email: user.email
+                        });
                     });
                 });
             });

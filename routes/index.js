@@ -2,7 +2,7 @@
 const loggeduser = require('../controllers/authenticate')
 //const user = require('../controllers/user.js')
 const router = require('express').Router();
-const encode = require('../middlewares/jwt')
+const jwt = require('../middlewares/jwt')
 const { auth } = require('../middlewares/auth');
 //const User = require('../models/user')
 const bodyParser = require('body-parser');
@@ -55,7 +55,7 @@ router
     .get(['/-dashboard', '/-chats', '/-jobs', '/-account', '/-help'], loggeduser.onGetLoggedInPages)
     .get('/dashboard', loggeduser.onGetLogin)
     .get('/logout', auth, loggeduser.onGetLogout)
-    .post('/login/:userId', encode, (req, res, next) => {
+    .post('/login/:userId', jwt.encode, (req, res, next) => {
         return res
             .status(200)
             .json({

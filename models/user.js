@@ -6,7 +6,7 @@ const salt = 10;
 const crypto = require('crypto');
 //const { uuid } = require('uuid');
 
-module.exports = USER_TYPES = {
+module.exports = USER_TYPES ={
     CONSUMER: "consumer",
     SUPPORT: "support",
 };
@@ -108,7 +108,7 @@ userSchema.methods.comparepassword = function(password, cb) {
 userSchema.methods.generateToken = function(cb) {
         var user = this;
         var token = jwt.sign(user._id.toHexString(), confiq.SECRET);
-
+            
         user.token = token;
         user.save(function(err, user) {
             if (err) return cb(err);

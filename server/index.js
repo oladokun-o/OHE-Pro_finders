@@ -17,21 +17,18 @@ const {Server} = require('socket.io')
 const WebSockets = require('../utils/WebSockets')
 var app = express();
 app.use(compression());
+// middlewares
+
 //routes 
 const indexRouter = require("../routes/index")
 const userRouter = require("../routes/user")
-//const chatRoomRouter = require("../routes/chatRoom")
+const chatRoomRouter = require("../routes/chatRoom")
 //const deleteRouter = require("../routes/delete")
 
 app.use("/", indexRouter);
 app.use("/users", userRouter);
-//app.use("/room", decode, chatRoomRouter);
+app.use("/room", chatRoomRouter);
 //app.use("/delete", deleteRouter);
-
-// middlewares
-//const { decode } = require('../middlewares/jwt')
-
-
 
 //mongo connection
 require("../config/mongo")

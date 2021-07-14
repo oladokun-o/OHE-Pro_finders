@@ -1,5 +1,8 @@
 script.
-	var firstname = '!{firstname}';
+	var firstname = '!{firstname}',
+		lastname = '!{lastname}'
+		userId = '!{id}',
+		email = '!{email}'
 .chat-body.container-fluid.p-0.chat-bg.col-md-8.col-lg-9.col-12
 	.chat-header.container-fluid
 		.row
@@ -24,28 +27,31 @@ script.
 							span.pr-2
 								i.lni.lni-close
 							| End chat
+						li.start-chat
+							span.pr-2
+								| Start Chat
 	.chat-content.container-fluid.pt-3
 		ul.chat-list
-				li.chat-title-contn
-					.chat-title
-						| Linda (support) joined the chat
-				li.bubbleWrapper#myId
-					.inlineContainer
-						.agentBubble.chat-bubble
-							| Hello i am here to help connect you with the right person to answer your question to your satisfaction
-					.agent-chat-name Linda
-						span.agent-chat-time 08:41
-				li.bubbleWrapper
-					.inlineContainer.client
-						.clientBubble.chat-bubble
-							| alright, thanks
-							//span.msg-stat
-								i.lni.lni-checkmark-circle
-					.client-chat-name #{firstname}
-						span.client-chat-time 08:55
-				li.chat-title-contn
-					.chat-title
-						| Linda added Mike to the chat
+			li.chat-title-contn
+				.chat-title
+					| Linda (support) joined the chat
+			li.bubbleWrapper#myId
+				.inlineContainer
+					.agentBubble.chat-bubble
+						| Hello i am here to help connect you with the right person to answer your question to your satisfaction
+				.agent-chat-name Linda
+					span.agent-chat-time 08:41
+			li.bubbleWrapper
+				.inlineContainer.client
+					.clientBubble.chat-bubble
+						| alright, thanks
+						//span.msg-stat
+							i.lni.lni-checkmark-circle
+				.client-chat-name #{firstname}
+					span.client-chat-time 08:55
+			li.chat-title-contn
+				.chat-title
+					| Linda added Mike to the chat
 	.chat-footer.container-fluid.pl-0.pr-0
 		.container-fluid.p-0
 			.row
@@ -56,7 +62,7 @@ script.
 					form.chat-form
 						input.chat-box(required)
 						button.send-chat(type="submit")
-								i.fa.fa-paper-plane
+							i.fa.fa-paper-plane
 				.col-2.pl-0.pt-2.pb-2.pr-4
 					.row
 						.col-6.p-0.text-left.text-lg-right

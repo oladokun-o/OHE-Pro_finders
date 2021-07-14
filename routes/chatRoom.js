@@ -1,14 +1,13 @@
-import express from 'express';
 // controllers
-import chatRoom from '../controllers/chatRoom.js';
-
-const router = express.Router();
+const chatRoom = require('../controllers/chatRoom')
+const router = require('express').Router();
+const jwt = require('../middlewares/jwt')
 
 router
-    .get('/', chatRoom.getRecentConversation)
-    .get('/:roomId', chatRoom.getConversationByRoomId)
-    .post('/initiate', chatRoom.initiate)
-    .post('/:roomId/message', chatRoom.postMessage)
-    .put('/:roomId/mark-read', chatRoom.markConversationReadByRoomId)
+    //.get('/', chatRoom.getRecentConversation)
+    //.get('/:roomId', chatRoom.getConversationByRoomId)
+    .post('/initiate', jwt.decode, chatRoom.initiate)
+    //.post('/:roomId/message', chatRoom.postMessage)
+    //.put('/:roomId/mark-read', chatRoom.markConversationReadByRoomId)
 
-export default router;
+module.exports = router;

@@ -1,13 +1,20 @@
 // utils
-import makeValidation from '@withvoid/make-validation';
+const makeValidation = require('@withvoid/make-validation')
+const bodyParser = require('body-parser');
+const router = require('express').Router();
+
+router.use(bodyParser.urlencoded({ extended: true }));
+
 //models
-import ChatRoomModel, { CHAT_ROOM_TYPES } from '../models/ChatRoom.js';
-import ChatMessageModel from '../models/ChatMessage.js';
-import UserModel from '../models/user.js'
-export default {
-    initiate: async(req, res) => {
+const CHAT_ROOM_TYPES = require('../models/ChatRoom')
+const ChatRoomModel = require('../models/ChatRoom')
+//const ChatMessageModel = require('../models/ChatMessage')
+const UserModel = require('../models/user.js')
+module.exports = {
+  initiate: async (req, res) => {
+    var bodyy = req.body.userIds
         try {
-            const validation = makeValidation(types => ({
+            /*const validation = makeValidation(types => ({
               payload: req.body,
               checks: {
                 userIds: { 
@@ -17,18 +24,19 @@ export default {
                 type: { type: types.enum, options: { enum: CHAT_ROOM_TYPES } },
               }
             }));
-            if (!validation.success) return res.status(400).json({ ...validation });
-        
-            const { userIds, type } = req.body;
-            const chatInitiator = req.userId;
-            const allUserIds = [...userIds, chatInitiator];
-            const chatRoom = await ChatRoomModel.initiateChat(allUserIds, type, chatInitiator);
-            return res.status(200).json({ success: true, chatRoom });
-          } catch (error) {
+            if (!validation.success) return res.status(400).json({ ...validation, bodyy });
+        */  //console.log(req.body)
+            const userIds = [req.body.userIds,req.body.support];
+            const chatInitiator = [req.body.userIds,req.body.firstname+' '+req.body.lastname,req.body.email];
+            const type = req.body.type
+            const chatRoom = await ChatRoomModel.initiateChat(userIds, type, chatInitiator);
+          res.status(200).json({ success: true, chatRoom });
+        } catch (error) {
+          console.log('success')
             return res.status(500).json({ success: false, error: error })
           }
     },
-    postMessage: async(req, res) => {
+    /*postMessage: async(req, res) => {
       try {
         const { roomId } = req.params;
         const validation = makeValidation(types => ({
@@ -94,5 +102,5 @@ export default {
         console.log(error);
         return res.status(500).json({ success: false, error });
       }
-    },
+    },*/
 }

@@ -16,7 +16,8 @@ $('.form-signup').on('submit', function (e) {
                 lastname: $("#Lastname").val().trim(),
                 email: $("#EmailAddress").val().trim(),
                 password: $("#passwordI").val().trim(),
-                password2: $("#passwordII").val().trim()
+                password2: $("#passwordII").val().trim(),
+                type: 'consumer'
             },
             success: function(response) {
                 //console.log(response.responseText)
