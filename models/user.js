@@ -6,6 +6,11 @@ const salt = 10;
 const crypto = require('crypto');
 //const { uuid } = require('uuid');
 
+module.exports = USER_TYPES = {
+    CONSUMER: "consumer",
+    SUPPORT: "support",
+};
+
 const userSchema = mongoose.Schema({
     googleId: {
         type: String,

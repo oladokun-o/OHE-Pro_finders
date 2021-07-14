@@ -18,28 +18,28 @@ require('../middlewares/fb-passport')(passport);
 
 router
     /* GET home page. */
-    .get('/', function(req, res, next) {
-    res.render('', { title: 'OHE' });
+    .get('/', function (req, res, next) {
+        res.render('', { title: 'OHE' });
     })
-    .get('/contact', function(req, res, next) {
+    .get('/contact', function (req, res, next) {
         res.render('contact', { title: 'Contact Us' });
     })
-    .get('/blog', function(req, res, next) {
+    .get('/blog', function (req, res, next) {
         res.render('blog', { title: 'Blog' });
     })
     .get('/privacy', function (req, res, next) {
         res.render('privacy-policies', { title: 'Terms and conditions' });
     })
-    .get('/jobs', function(req, res, next) {
+    .get('/jobs', function (req, res, next) {
         res.render('work', { title: 'Browse Jobs' });
     })
-    .get('/how-it-works', function(req, res, next) {
+    .get('/how-it-works', function (req, res, next) {
         res.render('how-it-works', { title: 'How it works' });
     })
-    .get('/signup', function(req, res, next) {
+    .get('/signup', function (req, res, next) {
         res.render('signup', { title: 'Sign Up' });
     })
-    .get('/forgot-password', function(req, res, next) {
+    .get('/forgot-password', function (req, res, next) {
         res.render('forgot-password', { title: 'Forgot your password?' });
     })
     .get('/error-page', (req, res) => {
@@ -52,7 +52,7 @@ router
     .get('/login', loggeduser.onGetLogin)
     .post('/dashboard', loggeduser.onPostDashboard)
     .post('/register', loggeduser.onRegister)
-    .get(['/-dashboard', '/-chats','/-jobs','/-account','/-help'], loggeduser.onGetLoggedInPages)
+    .get(['/-dashboard', '/-chats', '/-jobs', '/-account', '/-help'], loggeduser.onGetLoggedInPages)
     .get('/dashboard', loggeduser.onGetLogin)
     .get('/logout', auth, loggeduser.onGetLogout)
     .post('/login/:userId', encode, (req, res, next) => {
@@ -68,6 +68,8 @@ router
     .get('/reset-password/:token', loggeduser.onGetResetPasswordToken)
     .post('/reset-password/:token', loggeduser.onPostResetPasswordToken)
     .post('/jobs', loggeduser.onPostJobs)
+    .post('/contact-us', loggeduser.onPostContact)
     .get('/google', passport.authenticate('google', { scope: ['profile', 'email'] }))
     .get('/google/callback', passport.authenticate('google', { failureRedirect: '/login' }), loggeduser.onGetGoogleCB)
+    .post('/client-message', loggeduser.onPostClientMsg)
 module.exports = router;

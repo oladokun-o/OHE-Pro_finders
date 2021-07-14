@@ -20,6 +20,7 @@ module.exports = {
                     title: 'Dashboard',
                     firstname: user.firstname,
                     lastname: user.lastname,
+                    fullname: user.firstname + ' ' + user.lastname,
                     initials: Initials,
                     id: user.id
                 });
@@ -151,7 +152,7 @@ module.exports = {
             if (FbUserData.fbId !== undefined || GooUserData.gooId !== undefined) {
                 // Tell client the user logs in with face book login
                 var Relogger = req.body.email;
-                console.log(Relogger + ' ' + 'logs in OHE with ' + ' ' + logintype + ' ' + ' login!');
+                //console.log(Relogger + ' ' + 'logs in OHE with ' + ' ' + logintype + ' ' + ' login!');
                 res.status(500).send(Relogger + ' ' + 'logs in OHE with ' + ' ' + logintype + ' ' + ' login!');
             } else {
                 user.generatePasswordReset();
@@ -271,26 +272,100 @@ module.exports = {
     onGetGoogleCB: async function  (req,res) {
         let token = req.cookies.auth
     User.findByToken(token, function (err,user) {
-        if (user) {
-            res.render(
-                'dashboard', {
-                    title: 'Dashboard',
-                    firstname: user.firstname,
-                });
-        } else {
-            User.findOne({ email: req.user.email }, function(err, user) {
+        if (err) {
+            return res.redirect('login')
+        } else if (!user) {
+        
+            User.findOne({ email: req.user.email }, function (err, user) {
                 if (!user) return res.render('login', { title: 'Login', errmsg: "Email already exists" });
 
+                var firstStr = user.firstname,
+                    lastStr = user.lastname,
+                    Initials = firstStr.charAt(0) + '.' + lastStr.charAt(0);
                 user.generateToken((err, user) => {
                     if (err) return res.redirect('login');
                     res.cookie('auth', user.token).render(
                         'dashboard', {
-                            title: 'Dashboard',
-                            firstname: user.firstname,
-                        });
+                        title: 'Dashboard',
+                        firstname: user.firstname,
+                        lastname: user.lastname,
+                        fullname: user.firstname + ' ' + user.lastname,
+                        initials: Initials,
+                        id: user.id
+                    });
                 })
             })
         }
-    });
+        })
+    },
+    onPostContact: async function  (req,res) {
+        fs.readFile('./utils/emails/auto-reply.html', { encoding: 'utf-8' }, function(err, html) {
+            if (err) {
+                console.log(err);
+            } else {
+                var template = handlebars.compile(html);
+                var replacements = {
+                    username: req.body.name,
+                };
+                var htmlToSend = template(replacements);
+                var userData = {
+                    from: db.SMTP_USER,
+                    to: req.body.email,
+                    subject: 'We got your message! Here’s what to expect',
+                    html: htmlToSend
+                }
+            }
+
+            transporter.sendMail(userData, function(err, info) {
+                if (err) {
+                    console.log(err);
+                    res.status(500).send('Something went wrong, please try again later'); // <----- HERE
+                } else {
+                    console.log("Successfully sent  to user.");
+                    res.send("OK"); // <------------- HERE
+                }
+            })
+        })
+        fs.readFile('./utils/emails/new-contact.html', { encoding: 'utf-8' }, function(err, html) {
+            if(err){
+                console.log(err)
+            } else {
+                var template = handlebars.compile(html);
+                var messages = {
+                    name: req.body.name,
+                    email: req.body.email,
+                    subject: req.body.subject,
+                    message: req.body.message
+                };
+                
+                var userMsgs = template(messages);
+                var userDatatoOwner = {
+                    from: db.SMTP_USER,
+                    to: 'olanrewaju.oe@gmail.com,oladipupooladokun@gmail.com',
+                    subject: 'New Contact Message',
+                    html: userMsgs
+                }
+                //console.log(userDatatoOwner)
+            }
+            transporter.sendMail(userDatatoOwner, function(err, info) {
+                if (err) {
+                    console.log(err);
+                    res.status(500).send('Error sending user info back'); // <----- HERE
+                } else {
+                    console.log("Successfully sent email back to help center.");
+                    res.send("OK"); // <------------- HERE
+                }
+            })
+        })
+    },
+    onPostClientMsg: async function  (req,res) {
+        var messageDetails = req.body.subject,
+        token = req.cookies.auth;
+    if(token){
+        res.status(200).send('success');
+        console.log(messageDetails)
+    } else{
+        res.status(500).send('error');
+    }
     }
 }
