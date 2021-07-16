@@ -124,36 +124,7 @@ $(document).on("click", function(event) {
 });
 
 var chatDay = new Date(),
-    msgStat = $('.msg-stat'),
-    chatInitiator = $('.start-chat'),
-    chatData = [];
-chatData[0] = 'c4f0e902a3c84afbac231f343d7b450e';
-chatData[1] = 'f3ade31a7d334e2d8d3bdcf8202c3d1a';
-    //console.log(userId)
-
-chatInitiator.on('click', function (e) {
-    e.preventDefault()
-    $.ajax({
-        //contentType: "application/json",
-        method: 'POST',
-        url: '/room/initiate',
-        data: {
-            _id: chatData[0],
-            userIds: chatData[0],
-            support: chatData[1],
-            type: 'consumer-to-support',
-            firstname: firstname,
-            lastname: lastname,
-            email: email
-        },
-        success: function (response) {
-            console.log(response.responseText)
-        },
-        error: function (response) {
-            console.log(response.responseText)
-        }
-    })
-})
+    msgStat = $('.msg-stat');
 chatForm.on('submit',function(e){
     e.preventDefault()
     let message = chatBox.val(),
@@ -182,3 +153,160 @@ function showMessage(message,Fname){
         '<li class="bubbleWrapper"><div class="inlineContainer client"><div class="clientBubble chat-bubble">'+' '+ message +' '+'</div></div><div class="client-chat-name">'+Fname+'<span class="client-chat-time">'+chatDay.getHours()+':'+chatDay.getMinutes()+'</span></div></li>'
         )
 }
+
+    $(document).on("click", function(event) {
+        var $trigger = $(".chat-search-form");
+        if ($trigger !== event.target && !$trigger.has(event.target).length) {
+            $('.chat-reply-contn').fadeOut("fast");
+        }
+    });
+
+var chatQuestion = $('.chat-info'),
+    chatType = $('.agent-type'),
+    chatAgentNeeded = $('.chat-reply-contn'),
+    clearAgentNeeded = $('.agent-type i'),
+    startChatBtn = $('.start-chat-btn'),
+    clearStartChatForm = $('.clear-start-chat-form');
+
+chatAgentNeeded.on('click', function (e) {
+    if (chatQuestion.hasClass('chat-info-filled')) {
+        validateStartChatBtn()
+    }
+    let chatAgentNeededOpt = e.target.textContent;
+    chatType.fadeIn('slow').removeClass('fade-out')
+    $('.agent-type-opt').val(chatAgentNeededOpt)
+    $('.search,.filter-icon button').addClass('nullified').attr('disabled',true)
+});
+clearAgentNeeded.on('click', function () {
+    unvalidateStartChatBtn()
+    chatType.fadeOut('slow').addClass('fade-out')
+    setTimeout(() => {
+        $('.agent-type-opt').val('');
+    }, 1500);
+    $('.search,.filter-icon button').removeClass('nullified').removeAttr('disabled')
+})
+function validateStartChatBox() {
+    chatQuestion.addClass('chat-info-filled')
+    if (chatType.hasClass('fade-out')) {
+        unvalidateStartChatBtn()
+    } else (
+        validateStartChatBtn()
+    )
+}
+function unvalidateStartChatBox() {
+    chatQuestion.removeClass('chat-info-filled')
+}
+function validateStartChatBtn() {
+    startChatBtn.removeClass('nullified').removeAttr('disabled')
+}
+function unvalidateStartChatBtn() {
+    startChatBtn.addClass('nullified').attr('disabled',true)
+}
+if (Object.keys(chatQuestion.val()).length !== 0) {
+        validateStartChatBox()
+}
+chatQuestion.on('keyup', function () {
+     if (Object.keys(chatQuestion.val()).length == 0) {
+         unvalidateStartChatBox()
+         unvalidateStartChatBtn()
+     } else {
+        validateStartChatBox()
+    } 
+})
+chatQuestion.on('blur', function () {
+   if (Object.keys(chatQuestion.val()).length == 0) {
+       unvalidateStartChatBox()
+       unvalidateStartChatBtn()
+}
+})
+function clearChatForm() {
+    $('.search').val('')
+    unvalidateStartChatBox()
+    unvalidateStartChatBtn()
+    chatType.fadeOut('slow').addClass('fade-out')
+    setTimeout(() => {
+        $('.agent-type-opt').val('');
+        chatQuestion.val('')
+    }, 2000);
+    $('.search,.filter-icon button').removeClass('nullified').removeAttr('disabled')
+}
+clearStartChatForm.on('click', function () {
+    clearChatForm()
+})
+var chatHeader = $('.chat-header'),
+    chatBody = $('.chat-list'),
+    chatFooter = $('.chat-footer');
+function startChat() {
+    chatInitiatorBox.fadeOut('slow')
+    setTimeout(() => {
+        chatHeader.fadeIn('slow').removeClass('fade-out')
+    chatBody.fadeIn('slow').removeClass('fade-out')
+    chatFooter.fadeIn('slow').removeClass('fade-out')
+    }, 1000);
+}
+function endChat() {
+    chatHeader.fadeOut('slow').addClass('fade-out')
+    chatBody.fadeOut('slow').addClass('fade-out')
+    chatFooter.fadeOut('slow').addClass('fade-out')
+    $('.chat-loader').fadeOut('fast')
+    setTimeout(() => {
+        chatInitiatorContent.animate({
+            opacity: '1'
+        })
+        chatInitiatorBox.fadeIn('slow')
+        chatInitiatorContent.fadeIn('slow')
+    }, 1000);
+}
+var startChatForm = $('.start-chat-form'),
+    agentSelected = $('.agent-type-opt'),
+    chatInitiatorContent = $('.chat-initiator-content'),
+    chatInitiatorBox = $('.chat-initiator');
+    //console.log(userId)
+
+startChatForm.on('submit', function (e) {
+    e.preventDefault()
+    chatInitiatorContent.animate({
+        opacity: '0.5'
+    })
+    chatInitiatorContent.fadeOut('slow')
+    setTimeout(() => {
+        clearChatForm()
+        chatInitiatorBox.fadeIn('slow').append('<div class="chat-loader"><i class="fa fa-spinner fa-spin"></i></div>')
+    }, 1500);
+   setTimeout(() => {
+        $.ajax({
+        //contentType: "application/json",
+        method: 'POST',
+        url: '/room/initiate',
+        data: {
+            _id: userId,
+            userIds: userId,
+            type: 'consumer-to-support',
+            firstname: firstname,
+            lastname: lastname,
+            email: email,
+            agentType: agentSelected.val(),
+            clientQuestion: chatQuestion.val()
+        },
+        success: function (response) {
+            startChat()
+            //console.log(response)
+        },
+        error: function (response) {
+            $('.alert').removeClass('fade-out')
+            $('.alert').fadeIn('slow')
+            if (response.responseJSON.stat == false) {
+                $('.alert').html(response.responseJSON.message)
+                $('.chat-loader').fadeOut('fast')
+                chatInitiatorBox.append('<div class="text-center pt-5 mt-5 chat-session-btns container-fluid"><a class="primary-btn">Continue chat</a><span class="m-3"></span><a class="primary-btn">Start new chat</a></div>')
+            } else {
+                $('.alert').html(response.responseJSON.message)
+            setTimeout(() => {
+                $('.alert').fadeOut('slow')
+            }, 3000);
+            }
+            console.log(response.responseJSON.message)
+        }
+    })
+   }, 3000);
+})

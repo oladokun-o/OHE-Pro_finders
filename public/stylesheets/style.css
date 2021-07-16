@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
+
 body {
     position: relative;
     font-family: 'Montserrat', sans-serif !important;
@@ -82,6 +83,7 @@ body.preloader-active {
     0% {
         -webkit-transform: rotate(0deg);
     }
+
     100% {
         -webkit-transform: rotate(360deg);
     }
@@ -91,6 +93,7 @@ body.preloader-active {
     0% {
         transform: rotate(0deg);
     }
+
     100% {
         transform: rotate(360deg);
     }
@@ -717,6 +720,7 @@ img {
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@500&display=swap');
+
 .body-text {
     font-size: 1.2rem;
     color: #4d4d4d;
@@ -756,6 +760,18 @@ img {
 .primary-btn:hover {
     background: #dd6524 !important;
 }
+
+.secondary-btn {
+    text-transform: uppercase;
+    border: none;
+    border-radius: 2px;
+    padding: 10px 25px 10px 25px;
+    background: white !important;
+    color: var(--font-color) !important;
+    font-weight: 600;
+    transition: all 0.50s;
+}
+
 
 .full-height {
     height: 100vh;
@@ -946,7 +962,7 @@ img {
 }
 
 .nullified {
-    opacity: 0.6;
+    opacity: 0.6 !important;
 }
 
 .how-it-works-title {
@@ -1458,6 +1474,7 @@ img {
     from {
         transform: scale(0);
     }
+
     to {
         transform: scale(1);
     }
@@ -1467,6 +1484,7 @@ img {
     from {
         transform: scale(0);
     }
+
     to {
         transform: scale(1);
     }
@@ -1478,6 +1496,7 @@ img {
         top: 0em;
         left: -1.6em;
     }
+
     to {
         width: 2.4em;
         top: 4.3em;
@@ -1492,6 +1511,7 @@ img {
         top: 0em;
         left: -1.6em;
     }
+
     to {
         width: 2.4em;
         top: 4.3em;
@@ -1506,6 +1526,7 @@ img {
         top: 5.1em;
         left: 3.2em;
     }
+
     to {
         width: 4em;
         top: 3.7em;
@@ -1520,6 +1541,7 @@ img {
         top: 5.1em;
         left: 3.2em;
     }
+
     to {
         width: 4em;
         top: 3.7em;
@@ -1651,7 +1673,8 @@ img {
     padding: 15px;
     cursor: pointer;
 }
-.reply:last-child{
+
+.reply:last-child {
     border-bottom: 1px solid #f5d0ba;
 }
 
@@ -1683,13 +1706,14 @@ img {
     font-size: small;
     color: #414040;
 }
-.search-icon button{
+
+.search-icon button {
     background: #ef6d26;
     border: none;
     border-top-right-radius: .25rem;
     border-bottom-right-radius: .25rem;
     height: 37.61px;
-    color:white;
+    color: white;
     font-size: 20px;
     padding-left: 10px;
     padding-right: 10px;

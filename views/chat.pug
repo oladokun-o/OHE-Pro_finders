@@ -4,7 +4,9 @@ script.
 		userId = '!{id}',
 		email = '!{email}'
 .chat-body.container-fluid.p-0.chat-bg.col-md-8.col-lg-9.col-12
-	.chat-header.container-fluid
+	.alert-contn.justify-content-center.text-center.col-12
+		.col-lg-4.col-md-4.alert.fade-out
+	.chat-header.container-fluid.fade-out
 		.row
 			.col-4.p-3.pl-3.agent-name
 				.d-flex.p-0.m-0
@@ -27,32 +29,53 @@ script.
 							span.pr-2
 								i.lni.lni-close
 							| End chat
-						li.start-chat
-							span.pr-2
-								| Start Chat
 	.chat-content.container-fluid.pt-3
-		ul.chat-list
-			li.chat-title-contn
+		.chat-initiator
+			.chat-initiator-content
+				.d-flex.justify-content-center.p-0
+					.chat-initiator-btns.text-center.col-12.col-md-6.col-lg-5
+						.search-jobs.form-group.mt-1
+							form.chat-search-form
+								input#search.search(type="search"/*,onkeyup="searchDB(this)"*/,autocomplete='on', name="searchjobs", placeholder="Search and select an expert here" required).form-control
+								span.filter-icon.p-0
+									button.m-3
+										i.lni.lni-keyword-research.pl-1
+				.d-flex.justify-content-center.p-0
+					.col-12.col-md-6.col-lg-5.position-relative
+						.container-fluid.chat-reply-contn.p-0.m-0.col-12.col-md-6.col-lg-5
+				form.m-0.p-0.start-chat-form
+					.d-flex.justify-content-center.p-0
+						.col-12.col-md-6.col-lg-5.position-relative
+							.agent-type.pl-0.pt-0.pb-3.text-left.position-relative.fade-out
+								input(required disabled type="text").agent-type-opt
+								i.lni.lni-close.cancel-agent-type
+					.d-flex.justify-content-center.p-0
+						.col-12.col-md-6.col-lg-5.position-relative
+							textarea#chat-info.chat-info(type="text" placeholder="Enter your question here" required).form-control.position-relative
+					.text-center.d-flex.justify-content-center
+						button.primary-btn.btn-shadow.m-1.start-chat-btn.nullified(type="submit" disabled) start chat
+						a.secondary-btn.red.btn-shadow.m-1.clear-start-chat-form cancel
+		ul.chat-list.fade-out
+			//li.chat-title-contn
 				.chat-title
 					| Linda (support) joined the chat
-			li.bubbleWrapper#myId
+			//li.bubbleWrapper#myId
 				.inlineContainer
 					.agentBubble.chat-bubble
 						| Hello i am here to help connect you with the right person to answer your question to your satisfaction
 				.agent-chat-name Linda
 					span.agent-chat-time 08:41
-			li.bubbleWrapper
+			//li.bubbleWrapper
 				.inlineContainer.client
 					.clientBubble.chat-bubble
 						| alright, thanks
-						//span.msg-stat
 							i.lni.lni-checkmark-circle
 				.client-chat-name #{firstname}
 					span.client-chat-time 08:55
-			li.chat-title-contn
+			//li.chat-title-contn
 				.chat-title
 					| Linda added Mike to the chat
-	.chat-footer.container-fluid.pl-0.pr-0
+	.chat-footer.container-fluid.pl-0.pr-0.fade-out
 		.container-fluid.p-0
 			.row
 				.col-1.pl-4.pt-2.pb-2.pr-0.pl-lg-5

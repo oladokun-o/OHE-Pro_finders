@@ -42,10 +42,11 @@ $('.form-signup').on('submit', function (e) {
 })
 
 //login
-var alertContn = $('.alert');
+var alertBox = $('.alert');
 if (LoginErrorMsg) {
-    alertContn.fadeIn('fast').html(LoginErrorMsg)
+    alertBox.removeClass('fade-out')
+    alertBox.html(LoginErrorMsg)
     setTimeout(() => {
-            alertContn.fadeOut('slow')
+            alertBox.addClass('fade-out')
     }, 3000);
 }

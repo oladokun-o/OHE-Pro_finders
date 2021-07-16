@@ -370,3 +370,38 @@ $('.search-form').on('submit', function(e) {
     })
 
 })
+$('.chat-search-form').on('submit', function(e) {
+    e.preventDefault()
+  
+    $.ajax({
+        method: 'POST',
+        url: '/jobs',
+        data: {
+            subject: $('.chat-search-form input').val()
+        },
+        success: function(response) {
+                //const firstreq = JSON.stringify(response.responseText)
+                //$('.reply-contn').fadeIn('fast', function() { $('.reply-contn').html('<div class="reply">' + response + '<div/>') });
+                $('.search').removeAttr('disabled')
+                $('.search-loader').fadeOut('fast')
+                var jobsArray = response;
+                var jobshtml = $.map(jobsArray,function (value) {
+                    return('<li class="reply">'+ value + '</li>');
+                })
+                $(".chat-reply-contn").fadeIn('fast').html(jobshtml.join(''))
+               /* setTimeout(() => {
+                    $.each(jobsArray, function(index, value) {
+                        $('.chat-reply-contn').fadeIn('fast', function() {
+                            $(".chat-reply-contn").append('<div class="reply">'+ index + value + '</div>');
+                        })
+                    });
+                }, 200);
+                console.log(response)*/
+        },
+        //error: function(response) {
+            //$('.chat-reply-contn').fadeIn('fast').html('<div class="reply">Not Found</div>')
+        //}
+
+    })
+
+})
