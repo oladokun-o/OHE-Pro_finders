@@ -7,7 +7,7 @@ var fs = require('fs');
 var handlebars = require('handlebars');
 const transporter = require('../utils/mailer')
 router.use(bodyParser.urlencoded({ extended: true }));
-
+const Support = require('../models/support')
 //models
 const CHAT_ROOM_TYPES = require('../models/ChatRoom')
 const ChatRoomModel = require('../models/ChatRoom')
@@ -23,7 +23,7 @@ module.exports = {
         agentType = req.body.agentType,
         clientMessage = req.body.clientQuestion,
         clientName = req.body.firstname + ' ' + req.body.lastname;
-        console.log(agentType,clientMessage)
+        //console.log(agentType,clientMessage)
       /*const validation = makeValidation(types => ({
         payload: req.body,
         checks: {
@@ -40,51 +40,96 @@ module.exports = {
       //set chatroomid
       const chatRoomId = chatRoom.chatRoomId;
       //send request as mail to agent
-      function sendRequestToAgent() {
+      if (chatRoom.isNew == true) {
+        console.log('yuess')
+        Support.findOne({ _id: '60eef3f7f5177f28600f277e' }, (err, user) => {
+        if (user) {
+          user.generateChatRoomToken();
+          user.save();
+          let link = "http://" + req.headers.host + "/reply-client/" + user.resetChatRoomToken,
+            supportEmail = user.email,
+            sendSupportEmailStatCode = '200',
+            msg = "OK";
+          sendEmail(link, supportEmail)
+        } else {
+          let link = '500',
+            supportEmail = 'An error occured, please try again later';
+          //use link and supportemail as error
+          sendEmail(link, supportEmail)
+        }
+          
+      })
+      
+      function sendEmail(link,supportEmail) {
         fs.readFile('./utils/emails/start-chat.html', { encoding: 'utf-8' }, function(err, html) {
         if (err) {
             console.log(err);
         } else {
-            var template = handlebars.compile(html);
+          var template = handlebars.compile(html);
+          //console.log(link,supportEmail)
             var replacements = {
               username: clientName,
               message: clientMessage,
               agent: agentType,
-              room: chatRoomId
+              room: chatRoomId,
+              link: link// + '/' + chatRoomId
             };
             var htmlToSend = template(replacements);
-            var userData = {
+            const userData = {
                 from: db.SMTP_USER,
-                to: 'oladipupooladokun@gmail.com',
+                to: supportEmail,
                 subject: 'Chat Session Request',
                 html: htmlToSend
-            }
+          }
+          let supportStatCode = link;
+          getUserData(userData,supportStatCode)
         }
-
-        transporter.sendMail(userData, function(err, info) {
-            if (err) {
-                console.log(err);
-                res.status(500).send('Something went wrong, please try again later'); // <----- HERE
-            } else {
-                console.log("Successfully sent request to start chat.");
-                res.send("OK"); // <------------- HERE
-            }
         })
-    })
+      }
+      function getUserData(userData,supportStatCode) {
+        //console.log(supportStatCode)
+        if (supportStatCode == 500) {
+          let statCode = 500,
+                msg = 'No support user found';
+              startChat(statCode,msg)
+        } else {
+          transporter.sendMail(userData, function (err, info) {
+            if (err) {
+              //console.log(err);
+              let statCode = 500,
+                msg = 'Could not send email to support';
+              startChat(statCode,msg)
+            } else {
+              //console.log("Successfully sent request to start chat.");
+              let statCode = 200,
+                msg = "email sent to support";
+              startChat(statCode,msg)
+            }
+          })
+        }
+        }
+      } else {
+        let statCode = 301,
+          msg = 'roomerr';
+        startChat(statCode,msg)
       }
       //console.log(chatRoomId)
       //check if chatroom exists
-      if (chatRoom.isNew == true) {
+      function startChat(statCode,msg) {
+        if (chatRoom.isNew == true && statCode == 200) {
         //if it does not exist
-        sendRequestToAgent()
-      return res.status(200).send(chatRoom.message)
-      } else {
+        return res.status(200).send(chatRoom.message)
+        } else if (statCode == 500) {
+          console.log(msg)
+          return res.status(500).json({stat: false,errtype: 'mailerr', message:'An error occured, please try again later'})
+        } else if (msg == 'roomerr' || statCode == 301){
         //if it does
-      return res.status(500).json({stat: false, message:'A chatroom initiated by you is still in session. <br> Do you want to resume chat session or start a new one?'})
+      return res.status(500).json({stat: false,errtype:'roomerr', message:'A chatroom initiated by you is still in session. <br> Do you want to resume chat session or start a new one?'})
     }
+      }
     } catch (error) {
       console.log(error)
-      return res.status(500).send('An error occured, please try again')
+      return res.status(500).json({stat: false,errtype:'mailerr',message:'An error occured, please try again'})
     }
     },
     /*postMessage: async(req, res) => {

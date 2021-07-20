@@ -32,7 +32,7 @@ if(dashboard.hasClass('hide')){
     settings.addClass('hide')
     helpcenter.addClass('hide')
 }
-removesearchicon()
+
 }
 function setting() {
         //settings button
@@ -106,7 +106,7 @@ $('.-edit-profile').click(function(e) {
     sessionStorage.setItem('currentpage', targetUrl);
     setting()
 })
-$('.-chat').click(function(e) {
+function gotoChat(e){
     e.preventDefault();
     var targetUrl = $(this).attr('href'),
         targetTitle = $(this).attr('title')
@@ -114,7 +114,12 @@ $('.-chat').click(function(e) {
     window.history.pushState({ url: "" + targetUrl + "" }, targetTitle, targetUrl);
     sessionStorage.setItem('currentpage', targetUrl);
     Chats()
+}
+$('.-chat').click(function (e) {
+   // e.preventDefault();
+   gotoChat(e)
 })
+
 $('.logout').on('click', function(){
     window.location = '/logout'
 })

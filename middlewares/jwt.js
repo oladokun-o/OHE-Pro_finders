@@ -21,7 +21,7 @@ module.exports = {
     }
 },
  decode: async (req, res, next) => {
-     var jwtToken = req.cookies.auth.match(/[^\s.]+/g)[0],
+     var //jwtToken = req.cookies.auth.match(/[^\s.]+/g)[0],
          token = req.cookies.auth;
      //console.log(db.SECRET)
     if (!token) {

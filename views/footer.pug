@@ -38,27 +38,26 @@ block content
 									li.mb-0 Create an account
 								a(href="/jobs")
 									ul#accordion.p-0.text-left.pb-3.m-0
-											.card.p-0.bg-none.border-0
-												#headinOne.card-header.p-0.bg-none.border-0
-													a.mb-0.p-0
-														li.p-0.btn.btn-link.m-0(data-toggle='collapse' data-target='#FootercollapseFooter' aria-expanded='true' aria-controls='collapseFooter')
-															| Categories
-															i.fa.fa-caret-down.ml-1
-												#FootercollapseFooter.collapse(aria-labelledby='headinOne' data-parent='#accordion')
-													.card-body.p-0
-														mixin categories(name)
-															li.categories= name
-														ul.p-0.m-0
-															p.free-title-footer.m-0.p-0 On signup, every first user have a free trial to ask just one question for free in any of the following categories:
-															+categories('Agriculture')
-															+categories('Artisans & Engineers')
-															+categories('Arts')
-															+categories('Business & Finance')
-															+categories('Cleaning & Maintenance')
-															+categories('Computer')
-															a(href="/jobs")
-																+categories('See more..')
-															
+										.card.p-0.bg-none.border-0
+											#headinOne.card-header.p-0.bg-none.border-0
+												a.mb-0.p-0
+													li.p-0.btn.btn-link.m-0(data-toggle='collapse' data-target='#FootercollapseFooter' aria-expanded='true' aria-controls='collapseFooter')
+														| Categories
+														i.fa.fa-caret-down.ml-1
+											#FootercollapseFooter.collapse(aria-labelledby='headinOne' data-parent='#accordion')
+												.card-body.p-0
+													mixin categories(name)
+														li.categories= name
+													ul.p-0.m-0
+														+categories('Agriculture')
+														+categories('Artisans & Engineers')
+														+categories('Arts')
+														+categories('Business & Finance')
+														+categories('Cleaning & Maintenance')
+														+categories('Computer')
+														a(href="/jobs")
+															+categories('See more..')
+
 						.col-md-6.col-lg-3.col-12.pb-4
 							h6.footer-title OHE
 							ul
@@ -151,4 +150,3 @@ block content
 								| &copy; 2019-2021 OHE. All rights reserved.
 								a(href="/privacy").pl-md-3 Privacy policy
 								a(href="/contact").pl-md-3 Contact Us.
-		

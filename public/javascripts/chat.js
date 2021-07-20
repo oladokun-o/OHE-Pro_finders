@@ -175,7 +175,7 @@ chatAgentNeeded.on('click', function (e) {
     let chatAgentNeededOpt = e.target.textContent;
     chatType.fadeIn('slow').removeClass('fade-out')
     $('.agent-type-opt').val(chatAgentNeededOpt)
-    $('.search,.filter-icon button').addClass('nullified').attr('disabled',true)
+    $('.chat-search-form input,.chat-search-form > .filter-icon button').addClass('nullified').attr('disabled',true)
 });
 clearAgentNeeded.on('click', function () {
     unvalidateStartChatBtn()
@@ -183,7 +183,7 @@ clearAgentNeeded.on('click', function () {
     setTimeout(() => {
         $('.agent-type-opt').val('');
     }, 1500);
-    $('.search,.filter-icon button').removeClass('nullified').removeAttr('disabled')
+    $('.chat-search-form input,.chat-search-form > .filter-icon button').removeClass('nullified').removeAttr('disabled')
 })
 function validateStartChatBox() {
     chatQuestion.addClass('chat-info-filled')
@@ -228,7 +228,7 @@ function clearChatForm() {
         $('.agent-type-opt').val('');
         chatQuestion.val('')
     }, 2000);
-    $('.search,.filter-icon button').removeClass('nullified').removeAttr('disabled')
+    $('.chat-search-form input,.chat-search-form > .filter-icon button').removeClass('nullified').removeAttr('disabled')
 }
 clearStartChatForm.on('click', function () {
     clearChatForm()
@@ -265,6 +265,8 @@ var startChatForm = $('.start-chat-form'),
 
 startChatForm.on('submit', function (e) {
     e.preventDefault()
+    let message = chatQuestion.val(),
+        Fname = firstname;
     chatInitiatorContent.animate({
         opacity: '0.5'
     })
@@ -290,23 +292,48 @@ startChatForm.on('submit', function (e) {
         },
         success: function (response) {
             startChat()
+            showMessage(message,Fname)
             //console.log(response)
         },
         error: function (response) {
             $('.alert').removeClass('fade-out')
             $('.alert').fadeIn('slow')
-            if (response.responseJSON.stat == false) {
+            if (response.responseJSON.errtype == 'roomerr') {
                 $('.alert').html(response.responseJSON.message)
                 $('.chat-loader').fadeOut('fast')
-                chatInitiatorBox.append('<div class="text-center pt-5 mt-5 chat-session-btns container-fluid"><a class="primary-btn">Continue chat</a><span class="m-3"></span><a class="primary-btn">Start new chat</a></div>')
+                $('.chat-session-btns').removeClass('fade-out').fadeIn('fast')
             } else {
                 $('.alert').html(response.responseJSON.message)
+                endChat()
             setTimeout(() => {
                 $('.alert').fadeOut('slow')
             }, 3000);
             }
-            console.log(response.responseJSON.message)
         }
     })
    }, 3000);
+})
+var dashAgentNeeded = $('.reply-contn'),
+    chatSearchInput = $('.chat-search-form input'),
+    searchFormInput = $('.search-form input');
+dashAgentNeeded.on('click', function (e) {
+    let dashAgentNeededOpt = e.target.textContent,
+        searchFormVal = searchFormInput.val();
+    gotoChat(e)
+    chatSearchInput.val(searchFormVal);
+    chatType.fadeIn('slow').removeClass('fade-out')
+    $('.agent-type-opt').val(dashAgentNeededOpt)
+    $('.chat-search-form input,.chat-search-form > .filter-icon button').addClass('nullified').attr('disabled',true)
+});
+
+//handle chat session 
+var resumeChatBtn = $('.-resume-chat'),
+    initiateChatBtn = $('.-start-chat');
+//get previous oonvos and resume chat if it is still available
+resumeChatBtn.on('click', function () {
+    if ($('.chat-sessions-btns').hasClass('fade-out')) {
+        console.log(20000)
+    } else {
+        console.log(25000)
+    }
 })

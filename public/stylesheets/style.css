@@ -1657,8 +1657,9 @@ img {
 .reply-contn {
     background: white;
     box-shadow: 0 2px 4px 0 #00000018;
-    min-height: 300px;
     max-width: 100%;
+    border-left: 1px solid #f5d0ba;
+    border-right: 1px solid #f5d0ba;
 }
 
 .error-reply {

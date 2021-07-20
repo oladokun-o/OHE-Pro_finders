@@ -356,6 +356,7 @@ span.agent-chat-time {
     text-transform: uppercase;
     color: white !important;
     border-radius: 2px !important;
+    cursor: pointer;
 }
 
 .secondary-btn:hover {

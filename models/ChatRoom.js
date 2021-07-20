@@ -60,4 +60,7 @@ chatRoomSchema.statics.getChatRoomByRoomId = async function  (roomId) {
     throw error
   }
 }
+
+
+
 module.exports = mongoose.model("ChatRoom", chatRoomSchema);
