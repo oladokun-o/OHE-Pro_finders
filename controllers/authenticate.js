@@ -34,6 +34,42 @@ module.exports = {
     onPostDashboard: async (req, res) => {
         let token = req.cookies.auth
         try {
+            if (req.cookies.type == 'support') {
+                Support.findByToken(token, (err, user) => {
+                Support.findOne({ 'email': req.body.email }, function (err, user) {
+                    if (!user) {
+                        return res.render('login', { title: 'Login', errmsg: 'Uh oh, you should not be here.<br>This page is for authorized personnel only' });
+                    } else {
+                    user.comparepassword(req.body.password, (err, isMatch) => {
+                        if (!isMatch) return res.render('login', { title: 'Login', errmsg: "Wrong password!" });
+
+                        user.generateToken((err, user) => {
+                            if (err) {
+                                console.log('could not log in user, something happened:', err)
+                                return res.render('login', { title: 'Login', errmsg: 'An error occured, please try again later' });
+                            }
+                            var firstStr = user.firstname,
+                                lastStr = user.lastname,
+                                Initials = firstStr.charAt(0) + '.' + lastStr.charAt(0)
+                            
+                            //console.log(token)
+                            res.header('authorization', 'Bearer ' + user.token)
+                            res.cookie('auth', user.token)
+                            res.render('dashboard', {
+                                title: 'Dashboard',
+                                firstname: user.firstname,
+                                lastname: user.lastname,
+                                fullname: user.firstname + ' ' + user.lastname,
+                                initials: Initials,
+                                id: user.id,
+                                email: user.email
+                            });
+                        });
+                    });
+                    }
+                });
+            })
+            } else {
             User.findByToken(token, (err, user) => {
                 User.findOne({ 'email': req.body.email }, function (err, user) {
                     if (!user) return res.render('login', { title: 'Login', errmsg: 'Email not found in database' });
@@ -66,7 +102,9 @@ module.exports = {
                     });
                 });
             });
+            }  
         } catch (error) {
+            console.log(error)
             return res.redirect('login');
             //console.log(error)
         }
@@ -116,6 +154,8 @@ module.exports = {
             if (err) return res.status(400).send(err);
             res.render('index', { title: 'OHE' });
         });
+        req.clearCookie('type', { path: '/' })
+        req.session.destroy
     },
     onGetUpdates: async function (req, res) {
         const getUpdatesMailData = {
@@ -373,12 +413,11 @@ module.exports = {
         }
     },
     onGetRoomFromEmail: async function (req, res) {
-        Support.findOne({ setChatRoomToken: req.params.token, ChatRoomTokenExpires: { $gt: Date.now() } })
-            .then((user) => {
-                if (!user) return res.status(401).render('error-page', { title: 'Error!', pwderr: 'Access token is invalid or has expired.' })
-                //Redirect user to form with the email address
-                res.render('login', { title: 'Login', user: user });
-            })
-            .catch(err => res.status(500).render('error-page', { pwderr: err.message }));
+        Support.findOne({ setChatRoomToken: req.params.token, ChatRoomTokenExpires: { $gt: Date.now() } }, (err, user) => {
+            if (!user) return res.status(401).render('error-page', { title: 'Error!', pwderr: 'Access token is invalid or has expired.' })
+             //Redirect user to form with the email address
+            res.cookie('type', 'support')
+            res.render('login', { title: 'Login', user: user, type: user.type });
+        })
     }
 }

@@ -72,5 +72,5 @@ router
     .get('/google', passport.authenticate('google', { scope: ['profile', 'email'] }))
     .get('/google/callback', passport.authenticate('google', { failureRedirect: '/login' }), loggeduser.onGetGoogleCB)
     .post('/client-message', loggeduser.onPostClientMsg)
-    .get('/reply-client/:roomId', loggeduser.onGetRoomFromEmail)
+    .get('/reply-client/:token', loggeduser.onGetRoomFromEmail)
 module.exports = router;
