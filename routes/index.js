@@ -73,4 +73,21 @@ router
     .get('/google/callback', passport.authenticate('google', { failureRedirect: '/login' }), loggeduser.onGetGoogleCB)
     .post('/client-message', loggeduser.onPostClientMsg)
     .get('/reply-client/:token', loggeduser.onGetRoomFromEmail)
+    .post('/update-email', loggeduser.onChangeEmail)
+    .get('/update-email/:email/:token', (req, res) => {
+        User.findOne({ updateEmailToken: req.params.token, updateEmailExpires: { $gt: Date.now() } })
+            .then((user) => {
+                if (!user) return res.status(401).render('error-page', { title: 'Error!', pwderr: 'For security reasons, email update token is invalid or has expired.' });
+
+                //confirm user and login automatically
+                var usermail = req.params.email;
+                //set new email and save
+                user.email = usermail
+                user.save((err) => {
+                    if (err) return res.status(500);
+                    else { res.render('stat', { title: 'OHE', email: usermail }); }
+                })
+            })
+            .catch(err => res.status(500).render('error-page', { pwderr: err.message }));
+    });
 module.exports = router;

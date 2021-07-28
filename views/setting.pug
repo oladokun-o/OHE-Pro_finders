@@ -1,0 +1,69 @@
+.p-0
+	.setting-header.pl-3.pt-3.pr-3.container-fluid.pb-0
+		.row
+			.col-4.text-left.prev-btn
+				.d-md-none
+					button
+						i.lni.lni-chevron-left
+						| Home
+			.col-4.text-center.page-title
+				p Settings
+			.col-4.text-right
+				button.nullified.save-btn Save
+			.col-12.text-left.sub-page-title.pb-0.pt-0
+				p.mb-3.mt-0 Profile settings
+	.setting-body.pl-0.pr-0.pt-0.pb-4
+		.dp.d-flex.justify-content-center.p-4
+			.user-avatar.-large.-initial.p-0 #{initials}
+		.container-fluid
+			button.edit-profile-btn Edit Profile
+				i.lni.lni-pencil-alt.pl-2
+		.form-group.pl-4.pr-4.pt-0
+			form.profile-form
+				.container-fluid.p-0
+					.row
+						.col-12.col-md-6
+							.profile-input-contn.p-0
+								label(for="firstname").m-0 Firstname
+								.profile-input
+									input#firstname(type="text" value=firstname disabled)
+						.col-12.col-md-6.mt-3.mt-md-0
+							.profile-input-contn.p-0
+								label(for="firstname").m-0 Lastname
+								.profile-input
+									input#firstname(type="text" value=lastname disabled)
+						.col-12.col-md-6.mt-3
+							.profile-input-contn.p-0
+								label(for="email").m-0 Email Address
+								.profile-input
+									input#email(type="text" value=email disabled)
+						.col-12.col-md-6.mt-3
+							.profile-input-contn.p-0
+								label(for="phone").m-0 Phone Number
+								.profile-input
+									input#phone(type="text" value='' disabled)
+						.col-12.mt-3
+							.profile-input-contn.p-0
+								label(for="addressI").m-0 Address 1 (optional)
+								.profile-input
+									input#addressI(type="text" value='' disabled)
+						.col-12.mt-3
+							.profile-input-contn.p-0
+								label(for="addressII").m-0 Address 2 (optional)
+								.profile-input
+									input#addressII(type="text" value='' disabled)
+	.setting-header.pl-3.pt-0.pr-3.container-fluid.pb-0
+		.row
+			.col-12.text-left.sub-page-title.pb-0
+				p.mb-3.mt-3 Other settings
+	.setting-body.p-0
+		ul.m-0.p-0
+			a
+				li.container-fluid
+					.row
+						.col-1
+							i.lni.lni-envelope
+						.col-9
+							|Communication preferences
+						.col-2.text-right
+							i.lni.lni-chevron-right

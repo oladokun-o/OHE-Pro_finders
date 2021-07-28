@@ -1,0 +1,108 @@
+@media only screen and (min-width: 768px) {
+    .page-title p {
+        font-size: large;
+    }
+}
+
+.setting-header {
+    font-size: medium !important;
+    font-weight: normal;
+    letter-spacing: 0.5px;
+    background: #dddbda80;
+}
+
+.prev-btn button {
+    color: #ef6d26 !important;
+    cursor: pointer;
+    width: max-content;
+}
+
+.prev-btn i {
+    font-size: small;
+}
+
+.primary-font-clr {
+    color: #3d3d3d;
+}
+
+.sub-page-title {
+    font-weight: bold;
+    font-size: small;
+    color: #ef6c2677;
+}
+
+.setting-body ul:first-child {
+    border-top: 1.5px solid #80808023;
+}
+
+.setting-body li {
+    list-style-type: none;
+    padding-left: 30px !important;
+    padding-top: 15px !important;
+    padding-bottom: 15px !important;
+    padding-right: 15px !important;
+    border-bottom: 1.5px solid #80808023;
+    cursor: pointer;
+    color: #ef6d26 !important;
+
+}
+
+.setting-body li:hover {
+    background: #dddbda31;
+    transition: all .50s;
+}
+
+.profile-input-contn input {
+    background: #bbb9b880;
+    border-radius: 10px;
+    width: 100%;
+    height: 65px;
+    padding-top: 25px;
+    padding-left: 10px;
+    position: relative;
+    border: none;
+}
+
+.profile-input-contn input:focus {
+    outline: 2px solid #ef6d26;
+    border: none;
+}
+
+.profile-input-contn,
+.profile-input {
+    position: relative;
+}
+
+.profile-input-contn label {
+    color: #ef6d26;
+    position: absolute;
+    padding: 10px;
+    z-index: 1;
+}
+
+.edit-email {
+    cursor: pointer;
+}
+
+.save-btn {
+    color: #ef6c2669 !important;
+}
+
+.nullified {
+    cursor: default !important;
+}
+
+.-save-active {
+    cursor: pointer;
+    color: #ef6d26 !important;
+}
+
+.setting-header button,
+.setting-body button {
+    border: none;
+}
+
+.edit-profile-btn{
+    padding: 10px;
+    color: #ef6d26 !important;
+}

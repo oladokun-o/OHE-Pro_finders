@@ -497,3 +497,6 @@
     padding-left: 10px;
     color: yellowgreen !important;
 }
+.menu-item li {
+    list-style-type: none;
+}

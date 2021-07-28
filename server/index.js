@@ -32,9 +32,6 @@ app.use("/room", chatRoomRouter);
 
 //mongo connection
 require("../config/mongo")
-mongoose.set('useNewUrlParser', true);
-mongoose.set('useFindAndModify', false);
-mongoose.set('useCreateIndex', true);
 //set port
 var port = db.PORT;
 

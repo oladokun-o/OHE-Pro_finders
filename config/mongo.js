@@ -1,5 +1,8 @@
 const mongoose = require('mongoose');
 const db = require('./index').get(process.env.NODE_ENV);
+mongoose.set('useNewUrlParser', true);
+mongoose.set('useFindAndModify', false);
+mongoose.set('useCreateIndex', true);
 
 mongoose.connect(db.DATABASE, {
     useNewUrlParser: true,

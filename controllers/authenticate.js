@@ -24,7 +24,8 @@ module.exports = {
                     lastname: user.lastname,
                     fullname: user.firstname + ' ' + user.lastname,
                     initials: Initials,
-                    id: user.id
+                    id: user.id,
+                    email: user.email
                 });
             } else {
                 res.render('login', { title: 'Login' })
@@ -150,12 +151,18 @@ module.exports = {
     },
     onGetLogout: async function (req, res) {
         let token = req.cookies.auth;
+        res.status(200).clearCookie('auth',
+            {
+                path: '/',
+                secure: false,
+                httpOnly: false,
+                domain: 'localhost',
+                sameSite: true,
+            });
         req.user.deleteToken(token, (err, user) => {
             if (err) return res.status(400).send(err);
-            res.render('index', { title: 'OHE' });
+             res.redirect('login');
         });
-        req.clearCookie('type', { path: '/' })
-        req.session.destroy
     },
     onGetUpdates: async function (req, res) {
         const getUpdatesMailData = {
@@ -339,6 +346,57 @@ module.exports = {
                         });
                     })
                 })
+            }
+        })
+    },
+    onChangeEmail: async function  (req,res) {
+        User.emailCheck(req.body.email, (err, user) => {
+            if (user) {
+                // Tell client that the email does exists.
+                console.log('that email is associated with an account in database');
+                res.status(500).send('Email address already exists in our database');
+            } else if (!user) {
+                User.findById({ _id: req.body.userid }, (err, user) => {
+                    if (user) {
+                        user.generateEmailUpdate();
+                        user.save();
+                        //using reset password token for updat email token ass well hehe
+                        let link = "http://" + req.headers.host + "/update-email/" + req.body.email + '/' + user.updateEmailToken;
+                        fs.readFile('./utils/emails/update-email.html', { encoding: 'utf-8' }, function (err, html) {
+                            if (err) {
+                                console.log(err);
+                            } else {
+                                var template = handlebars.compile(html);
+                                var replacements = {
+                                    username: req.body.fullname,
+                                    usermail: req.body.email,
+                                    link: link,
+                                };
+                                var emailUpdate = template(replacements);
+                                var updateEmailData = {
+                                    from: db.SMTP_USER,
+                                    to: req.body.email,
+                                    subject: req.body.subject,
+                                    html: emailUpdate
+                                }
+                            }
+
+                            transporter.sendMail(updateEmailData, function (err, info) {
+                                if (err) {
+                                    console.log(err);
+                                    res.status(500).send('Something went wrong, please try again later'); // <----- HERE
+                                } else {
+                                    console.log("Successfully sent update mail.");
+                                    res.send("OK"); // <------------- HERE
+                                }
+                            })
+                        });
+                    } else {
+                        console.log('something went wrong somewhere');
+                        res.status(500).send('Something went wrong somewhere, please try again later');
+                    }
+                })
+
             }
         })
     },
