@@ -88,6 +88,8 @@
 .edit-profile-btn {
     padding: 10px;
     color: #ef6d26 !important;
+    position: relative;
+    z-index: 10;
 }
 
 .profile-form {
