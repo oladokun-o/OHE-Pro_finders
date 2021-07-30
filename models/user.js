@@ -49,6 +49,18 @@ const userSchema = mongoose.Schema({
         minlength: 8
 
     },
+    phone: {
+        type: String,
+        required: false,
+    },
+    addressI: {
+        type: String,
+        required: false,
+    },
+    addressII: {
+        type: String,
+        required: false,
+    },
     token: {
         type: String
     },

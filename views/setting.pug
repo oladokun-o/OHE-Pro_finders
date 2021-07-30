@@ -1,16 +1,28 @@
 .p-0
+	.email-update-modal.col-12.col-md-8.col-lg-9.p-0.force-fade-out
+		.email-update-content.col-10.col-md-6.pt-3.pb-3.pl-0.pr-0
+			button.close-email-modal.primary-btn.pt-0.pb-0.pl-1.pr-1
+				i.lni.lni-close
+			.col-12.col-md-12.email-update-box
+				form.email-update-form
+					label(for="newemail") New Email Address:
+					.input-group.p-0
+						input.inputAnimation.form-control#newemail.newemail(type='email' name="newemail" placeholder="Email" aria-label='Email' aria-describedby='basic-addon2' autocomplete="on" required)
+						.input-group-append.p-0
+							button(type="submit").input-group-text#basic-addon2.submit-email.primary-btn.border-0
+								i.lni.lni-chevron-right
 	.setting-header.pl-3.pt-3.pr-3.container-fluid.pb-0
 		.row
 			.col-4.text-left.prev-btn
 				.d-md-none
-					button
+					button.-go-home
 						i.lni.lni-chevron-left
 						| Home
 			.col-4.text-center.page-title
 				p Settings
 			.col-4.text-right
-				button.nullified.save-btn Save
-			.col-12.text-left.sub-page-title.pb-0.pt-0
+
+			.col-12.text-left.sub-page-title.pb-0.pt-0.pl-4
 				p.mb-3.mt-0 Profile settings
 	.setting-body.pl-0.pr-0.pt-0.pb-4
 		.dp.d-flex.justify-content-center.p-4
@@ -35,28 +47,31 @@
 						.col-12.col-md-6.mt-3
 							.profile-input-contn.p-0
 								label(for="email").m-0 Email Address
+									button(title="change your email address" type="button").change-email
+										i.lni.lni-pencil-alt.pl-2
 								.profile-input
-									input#email(type="text" value=email disabled)
+									input#email(type="email" value=email disabled required)
 						.col-12.col-md-6.mt-3
 							.profile-input-contn.p-0
-								label(for="phone").m-0 Phone Number
+								label(for="phone").m-0 Phone Number (optional)
 								.profile-input
-									input#phone(type="text" value='' disabled)
+									input#phone(type="tel" value=phone pattern="[0-9]+" maxlength="11" disabled)
 						.col-12.mt-3
 							.profile-input-contn.p-0
 								label(for="addressI").m-0 Address 1 (optional)
 								.profile-input
-									input#addressI(type="text" value='' disabled)
+									input#addressI(type="text" value=addressI disabled)
 						.col-12.mt-3
 							.profile-input-contn.p-0
 								label(for="addressII").m-0 Address 2 (optional)
 								.profile-input
-									input#addressII(type="text" value='' disabled)
-	.setting-header.pl-3.pt-0.pr-3.container-fluid.pb-0
+									input#addressII(type="text" value=addressII disabled)
+						button(type="submit" disabled).nullified.save-btn Save
+	//.setting-header.pl-3.pt-0.pr-3.container-fluid.pb-0
 		.row
-			.col-12.text-left.sub-page-title.pb-0
+			.col-12.text-left.sub-page-title.pb-0.pl-4
 				p.mb-3.mt-3 Other settings
-	.setting-body.p-0
+	//.setting-body.p-0
 		ul.m-0.p-0
 			a
 				li.container-fluid

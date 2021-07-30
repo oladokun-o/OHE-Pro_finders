@@ -34,7 +34,7 @@ block content
 	.container-fluid
 		.row 
 			.col-lg-3.col-md-4.lg-menu.d-none.d-md-block.p-0
-				.hidden-panel.hidden-panel-lg
+				.hidden-panel.hidden-panel-lg(onClick="checkIfFormIsLoading()")
 					.hiddenpanel-bg
 						.hidden-panel-content.p-0
 							.p-2.pl-4.pr-4.pb-0
@@ -64,7 +64,7 @@ block content
 											i.lni.lni-power-switch.pr-3          
 											span logout
 			.col-md-8.col-lg-9
-				.main-header.p-md-0.p-2.pl-3
+				.main-header.p-md-0.p-2.pl-3(onClick="checkIfFormIsLoading()")
 					.col-2.col-md-4.col-lg-3.p-0.avatar-contn-sm
 						.dropdown-contn
 							button.dropbtn.m-0.p-0.bg-none.d-md-none

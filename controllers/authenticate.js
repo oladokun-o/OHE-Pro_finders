@@ -25,7 +25,10 @@ module.exports = {
                     fullname: user.firstname + ' ' + user.lastname,
                     initials: Initials,
                     id: user.id,
-                    email: user.email
+                    email: user.email,
+                    phone: user.phone,
+                    addressI: user.addressI,
+                    addressII: user.addressII,
                 });
             } else {
                 res.render('login', { title: 'Login' })
@@ -63,7 +66,10 @@ module.exports = {
                                 fullname: user.firstname + ' ' + user.lastname,
                                 initials: Initials,
                                 id: user.id,
-                                email: user.email
+                                email: user.email,
+                                phone: user.phone,
+                                addressI: user.addressI,
+                                addressII: user.addressII,
                             });
                         });
                     });
@@ -97,7 +103,10 @@ module.exports = {
                                 fullname: user.firstname + ' ' + user.lastname,
                                 initials: Initials,
                                 id: user.id,
-                                email: user.email
+                                email: user.email,
+                                phone: user.phone,
+                                addressI: user.addressI,
+                                addressII: user.addressII,
                             });
                         });
                     });
@@ -142,12 +151,16 @@ module.exports = {
                     lastname: user.lastname,
                     fullname: user.firstname + ' ' + user.lastname,
                     initials: Initials,
-                    id: user.id
+                    id: user.id,
+                    email: user.email,
+                    phone: user.phone,
+                    addressI: user.addressI,
+                    addressII: user.addressII,
                 });
             } else {
-                res.redirect('login');
+                res.render('login', { title: 'Login' })
             }
-        });
+        })
     },
     onGetLogout: async function (req, res) {
         let token = req.cookies.auth;
@@ -342,14 +355,18 @@ module.exports = {
                             lastname: user.lastname,
                             fullname: user.firstname + ' ' + user.lastname,
                             initials: Initials,
-                            id: user.id
+                            id: user.id,
+                            email: user.email,
+                            phone: user.phone,
+                            addressI: user.addressI,
+                            addressII: user.addressII,
                         });
                     })
                 })
             }
         })
     },
-    onChangeEmail: async function  (req,res) {
+    onUpdateEmail: async function  (req,res) {
         User.emailCheck(req.body.email, (err, user) => {
             if (user) {
                 // Tell client that the email does exists.
@@ -399,6 +416,22 @@ module.exports = {
 
             }
         })
+    },
+    onEmailUpdated: async function (req, res) {
+         User.findOne({ updateEmailToken: req.params.token, updateEmailExpires: { $gt: Date.now() } })
+            .then((user) => {
+                if (!user) return res.status(401).render('error-page', { title: 'Error!', pwderr: 'For security reasons, email update token is invalid or has expired.' });
+
+                //confirm user and login automatically
+                var usermail = req.params.email;
+                //set new email and save
+                user.email = usermail
+                user.save((err) => {
+                    if (err) return res.status(500);
+                    else { res.render('stat', { title: 'OHE', email: usermail }); }
+                })
+            })
+            .catch(err => res.status(500).render('error-page', { pwderr: err.message }));
     },
     onPostContact: async function (req, res) {
         fs.readFile('./utils/emails/auto-reply.html', { encoding: 'utf-8' }, function (err, html) {
@@ -476,6 +509,27 @@ module.exports = {
              //Redirect user to form with the email address
             res.cookie('type', 'support')
             res.render('login', { title: 'Login', user: user, type: user.type });
+        })
+    },
+    onProfileUpdate: async function (req, res) {
+        
+        var newEmail = req.body.newemail,
+            update = {
+                //email: newEmail,
+                phone: req.body.phone,
+                addressI: req.body.addressI,
+                addressII: req.body.addressII,
+        }
+        var condition = {
+            email: req.body.email
+        }
+        User.findOneAndUpdate(condition,update,(err, result) => {
+            if (err) {
+                //console.log(err)
+                return res.status(500).send('An error occured, please try again later.');
+            } else {
+                return res.status(200).send('saved!');
+            }
         })
     }
 }

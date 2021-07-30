@@ -166,6 +166,7 @@ img {
     border: 1px solid #fd6b7a;
     border-radius: 4px;
     text-align: center;
+    border: 1px solid #721c2457 !important;
 }
 
 .error {
@@ -861,6 +862,10 @@ img {
 
 .fade-in {
     display: block;
+}
+
+.force-fade-out {
+    display: none !important;
 }
 
 .welcome-image {
