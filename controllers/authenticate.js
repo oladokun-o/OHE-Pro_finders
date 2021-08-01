@@ -366,18 +366,81 @@ module.exports = {
             }
         })
     },
-    onUpdateEmail: async function  (req,res) {
-        User.emailCheck(req.body.email, (err, user) => {
+    onUpdateEmail: async function (req, res) {
+        var oldEmail = req.body.oldemail,
+            newEmail = {
+                email: req.body.newemail
+            },
+            condition = {
+                email: oldEmail
+            }
+        User.findOne({email: req.body.oldemail}, (err, user) => {
             if (user) {
+                user.generateEmailUpdate();
+                user.save();
+
+                var oldUserToken = user.updateEmailToken,
+                    oldUserFirstname = user.firstname;
+                User.emailCheck(newEmail.email, (err, user) => {                    
+                    if (user) {
+                        res.status(500).send('Sorry, that email already exists')
+                    } else {
+                        User.emailCheck(newEmail.email, (err, result) => {
+                            if (err) {
+                                res.status(500).send('An error occured, please try again later');
+                            } else {
+                                
+
+                                let link = "http://" + req.headers.host + "/update-email/" + newEmail.email + '/' + oldUserToken;
+                                fs.readFile('./utils/emails/update-email.html', { encoding: 'utf-8' }, function (err, html) {
+                                    if (err) {
+                                        console.log(err);
+                                    } else {
+                                        var template = handlebars.compile(html);
+                                        var replacements = {
+                                            username: oldUserFirstname,
+                                            usermail: newEmail.email,
+                                            link: link,
+                                            msg: 'You are receiving this email because you or someone asked to change your email address for your OHE account. If you did not request to change your email, please let us know immediately by replying to this email.'
+                                        };
+                                        var emailUpdate = template(replacements);
+                                        var updateEmailData = {
+                                            from: db.SMTP_USER,
+                                            to: oldEmail,
+                                            subject: 'Verify your new email',
+                                            html: emailUpdate
+                                        }
+                                    }
+
+                                    transporter.sendMail(updateEmailData, function (err, info) {
+                                        if (err) {
+                                            console.log(err);
+                                            res.status(500).send('Something went wrong, please try again later'); // <----- HERE
+                                        } else {
+                                            //console.log("Successfully sent update mail.");
+                                            res.status(200).send('Check your mail inbox for confirmation link');
+                                        }
+                                    })
+                                });                                
+                            }
+                        })
+                  }
+                })
+            } else {
+                res.status(404).send('Please enter your correct current email address')
+            }
+        })
+        /*User.emailCheck(req.body.email, (err, user) => {
+             if (user) {
                 // Tell client that the email does exists.
-                console.log('that email is associated with an account in database');
+                //console.log('that email is associated with an account in database');
                 res.status(500).send('Email address already exists in our database');
             } else if (!user) {
                 User.findById({ _id: req.body.userid }, (err, user) => {
                     if (user) {
                         user.generateEmailUpdate();
                         user.save();
-                        //using reset password token for updat email token ass well hehe
+                        
                         let link = "http://" + req.headers.host + "/update-email/" + req.body.email + '/' + user.updateEmailToken;
                         fs.readFile('./utils/emails/update-email.html', { encoding: 'utf-8' }, function (err, html) {
                             if (err) {
@@ -415,12 +478,12 @@ module.exports = {
                 })
 
             }
-        })
+        })*/
     },
     onEmailUpdated: async function (req, res) {
          User.findOne({ updateEmailToken: req.params.token, updateEmailExpires: { $gt: Date.now() } })
             .then((user) => {
-                if (!user) return res.status(401).render('error-page', { title: 'Error!', pwderr: 'For security reasons, email update token is invalid or has expired.' });
+                if (!user) return res.status(401).render('error-page', { title: 'Error!', pwderr: 'For security reasons, email update token is now invalid or has expired.' });
 
                 //confirm user and login automatically
                 var usermail = req.params.email;
@@ -531,5 +594,8 @@ module.exports = {
                 return res.status(200).send('saved!');
             }
         })
+    },
+    onEmailUpdate: async function  (req,res) {
+        res.render('email-form',{title: 'Change Your Email Address',type:'change-email'});
     }
 }

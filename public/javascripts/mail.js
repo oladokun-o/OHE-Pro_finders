@@ -182,65 +182,6 @@ $('.reset-form').on('submit', function(e) {
 
 })
 
-//email update 
-$('.email-form').on('submit', function(e) {
-    if ($('#forgotEmail').html = ('')) {
-        $('.update-email').focus()
-    } else {
-        $('.update-email').html('<span>sending <i class="fa fa-spinner fa-spin"></i></span>')
-        $('.update-email').attr("disabled", true);
-        $('.update-email').addClass('nullified');
-        e.preventDefault();
-        $.ajax({
-            method: 'POST',
-            url: '/update-email',
-            data: {
-                email: $("#email").val(),
-                subject: 'Update your Email Address',
-                fullname: $('#user-name').val(),
-                userid: $('#user-id').val()
-            },
-            success: function() {
-                $('.error').addClass('greenlight');
-                $('.error').fadeIn('fast', function() { $('.error').html('Check your mail inbox for confirmation link') });
-                /*setTimeout(
-                    function() {
-                        $('.error').fadeOut('fast');
-                        $('.error').fadeOut('slow', function() {
-                            $('.error').removeClass('greenlight');
-                            $('.error').html('')
-                        })
-                    }, 5000)*/
-                $('.update-email').html('<span>confirmation link sent <i class="lni lni-checkmark"></i></span>')
-                $('.update-email').attr("disabled", true);
-                $('.email-form').each(function() {
-                    this.reset();
-                });
-            },
-            error: function(response) {
-                const secondrequest = JSON.stringify(response.responseText);
-                $('.error').fadeIn('fast', function() { $('.error').html(secondrequest) });
-                setTimeout(
-                    function() {
-                        $('.error').fadeOut('fast');
-                        $('.error').html('')
-                    }, 5000)
-                $('.update-email').html('<span> failed <i class="lni lni-close red"></i></span>')
-                $('.update-email').attr("disabled", true);
-                $('.email-form').each(function() {
-                    this.reset();
-                    setTimeout(
-                        function() {
-                            $('.update-email').html('<span>update email</span>')
-                            $('.update-email').attr("disabled", false);
-                            $('.update-email').removeClass('nullified');
-
-                        }, 3000)
-                });
-            }
-        })
-    }
-})
 var mailer = '/utils/emails/reset-password.html';
 $('.-pwd').on('click', function(e) {
     e.preventDefault()
@@ -310,7 +251,7 @@ $('.contactForm').on('submit', function(e) {
 if ($('#emailstat').hasClass('hide')) {
     setTimeout(function() {
         // after 5 seconds
-        var url = "/facebook/callback/dashboard?email=" + $('#emailstat').val()
+        var url = '/dashboard'//"/facebook/callback/dashboard?email=" + $('#emailstat').val()
         window.location = url;
     }, 5000)
 }

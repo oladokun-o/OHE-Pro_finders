@@ -1,5 +1,9 @@
 /*avatar styling. i.e online, offline, profile.etc*/
 
+body {
+    overflow: hidden;
+}
+
 .user-avatar {
     display: inline-block;
     float: inherit;

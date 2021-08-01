@@ -6,4 +6,5 @@ document.onreadystatechange = function() {
             $(".preload").addClass('slide-out-top')
             $('body').removeClass('preloader-active')
         }, 1000);
-};
+
+    

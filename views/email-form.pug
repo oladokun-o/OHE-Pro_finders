@@ -15,16 +15,26 @@ block content
 					.row          
 						.col-12.d-flex.justify-content-center
 							.col-md-4.col-md-offset-4
-								input#user-name(type="text", value=fullname).hide
-								input#user-id(type="text", value=userid).hide
 								div
 									form.email-form
 										.text-center
-											h3.text-center.pt-3.thick Update Email Address
+											if (type) 
+												- var type = '!{type}'
+												h3.text-center.pt-3.thick Change Email Address
+											else 
+												h3.text-center.pt-3.thick Update Email Address
 											.panel-body
 												.form.pt-3
 													.form-group.text-center
-														label(for='pass').text-left Enter email address
-															input#email.mt-3.form-control(type='email', name='email', value='',required)
-													.form-group.text-center
-														button(type="submit").primary-btn.update-email update email
+														if (type) 
+															label(for='pass').text-left Current email address:
+																input#oldemail.mt-3.form-control(type='email', name='oldemail', value='',required)
+															label(for='pass').text-left New email address:
+																input#newemail.mt-3.form-control(type='email', name='newemail', value='',required)
+															.form-group.text-center.pt-3
+																button(type="submit").primary-btn.update-email submit
+														else
+															label(for='pass').text-left Enter email address
+																input#email.mt-3.form-control(type='email', name='email', value='',required)
+															.form-group.text-center.pt-3
+																button(type="submit").primary-btn.update-email update email

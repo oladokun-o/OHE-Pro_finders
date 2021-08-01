@@ -135,35 +135,29 @@ closeModal.on('click', () => {
     closeEmailModal()
 })
 
-function lockEmailForm() {
-    submitEmail.attr('disabled', true).addClass('nullified').html('<i class="lni lni-spinner fa-spin"></i>')
-    newEmail.attr('disabled', true)
-    closeModal.attr('disabled', true).addClass('nullified')
-}
-const processBtn = $('.processes');
-var loading ;
-emailUpdateForm.on('submit', (event) => {
-    event.preventDefault()
+var proceedEmailUpdate = $('.proceed-email-update'),
+    cancelEmailUpdate = $('.cancel-email-update');
+
+cancelEmailUpdate.on('click', () => {
+    closeEmailModal()
+})
+
+//const loading;
+var loading;
+proceedEmailUpdate.on('click', () => {
+    proceedEmailUpdate.addClass('nullified').attr('disabled', true)
     loading = true;
-    checkIfFormIsLoading(loading)
-    lockEmailForm()
-    localStorage.setItem('process', loading)
+    cancelEmailUpdate.addClass('nullified').attr('disabled', true)
+    closeModal.addClass('nullified').attr('disabled', true)
+    setTimeout(() => {
+       window.location.href = '/email-update'
+        closeEmailModal()
+    }, 2000);
 })
 
-function checkIfFormIsLoading(event) {
-        if (loading !== true) {
-            closeEmailModal()
+//close modal on outside event click
+function checkIfFormIsLoading() {
+    if (loading !== true) {
+        closeEmailModal()
     }
 }
-
-
-var processStat = localStorage.getItem('process');
-function checkStat() {
-    if (processStat == 'true') {
-        lockEmailForm()
-    }
-}
-$(document).ready( function() {
-    checkStat()
-    //console.log(processStat)
-})

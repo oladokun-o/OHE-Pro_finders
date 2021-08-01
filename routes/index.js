@@ -76,4 +76,5 @@ router
     .post('/update-email', loggeduser.onUpdateEmail)
     .get('/update-email/:email/:token', loggeduser.onEmailUpdated)
     .post('/profile-update', loggeduser.onProfileUpdate)
+    .get('/email-update', loggeduser.onEmailUpdate)
 module.exports = router;

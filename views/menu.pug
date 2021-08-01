@@ -21,7 +21,7 @@ block content
 						li.text-left.p-4.pl-5
 							span signup
 					.p-3.pl-5.pr-5
-						a(href='/login')
+						a(href='/login').login-anchor
 							li.text-center.p-3.login                
 								span login                       
 	.main-header.p-2.pl-4.pr-4.pb-0
@@ -30,20 +30,20 @@ block content
 				img.brand-logo-img(src="/images/OHE-Logo.png", alt="")
 		.col-md-10.col-lg-10.col-xl-10.d-none.d-md-block.d-lg-block.d-xl-block.p-0
 			ul.mt-2.large-menu
-						a(href='/jobs').d-md-none.d-lg-block
-							li.text-left.p-3  
-								i.lni.lni-network.pr-3
-								span find experts           
-						a(href='/how-it-works')
-							li.text-left.p-3  
-								i.lni.lni-construction.pr-3
-								span how it works            
-						a(href='/signup')
-							li.text-left.p-3  
-								span signup
-						a(href='/login')
-								li.text-center.p-3.mt-5.login.mt-lg-0.mt-md-0.mt-xl-0             
-									span login
+				a(href='/jobs').d-md-none.d-lg-block
+					li.text-left.p-3  
+						i.lni.lni-network.pr-3
+						span find experts           
+				a(href='/how-it-works')
+					li.text-left.p-3  
+						i.lni.lni-construction.pr-3
+						span how it works            
+				a(href='/signup')
+					li.text-left.p-3  
+						span signup
+				a(href='/login').login-anchor
+					li.text-center.p-3.mt-5.login.mt-lg-0.mt-md-0.mt-xl-0             
+						span login
 		.menu-btn.col-8.text-right#MenuIcon.p-0.d-lg-none.d-md-none.d-xl-none.d-lg-none
 			button(type="button" data-js='menu-toggle').pr-0.hamburger.hamburger--minus.menu-toggle
 				span.hamburger-box
