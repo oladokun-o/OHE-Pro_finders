@@ -11,7 +11,8 @@ var loginText = $('.login span'),
         loginAnchor.attr('href', '/login')
 }
 
-
+var userId = $('.data-saver').data('val');
+console.log(userId)
 //email update 
 $('.email-form').on('submit', function (e) {
     e.preventDefault();
@@ -19,6 +20,7 @@ $('.email-form').on('submit', function (e) {
         data;
     if (oldEmail) {
         data = {
+        id: userId,
         oldemail: $("#oldemail").val(),
         newemail: $("#newemail").val()
     }

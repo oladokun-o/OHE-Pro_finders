@@ -24,7 +24,7 @@ module.exports = {
                     lastname: user.lastname,
                     fullname: user.firstname + ' ' + user.lastname,
                     initials: Initials,
-                    id: user.id,
+                    id: user._id,
                     email: user.email,
                     phone: user.phone,
                     addressI: user.addressI,
@@ -65,7 +65,7 @@ module.exports = {
                                 lastname: user.lastname,
                                 fullname: user.firstname + ' ' + user.lastname,
                                 initials: Initials,
-                                id: user.id,
+                                id: user._id,
                                 email: user.email,
                                 phone: user.phone,
                                 addressI: user.addressI,
@@ -102,12 +102,13 @@ module.exports = {
                                 lastname: user.lastname,
                                 fullname: user.firstname + ' ' + user.lastname,
                                 initials: Initials,
-                                id: user.id,
+                                userId: user._id,
                                 email: user.email,
                                 phone: user.phone,
                                 addressI: user.addressI,
                                 addressII: user.addressII,
                             });
+                            console.log(user._id)
                         });
                     });
                 });
@@ -151,7 +152,7 @@ module.exports = {
                     lastname: user.lastname,
                     fullname: user.firstname + ' ' + user.lastname,
                     initials: Initials,
-                    id: user.id,
+                    id: user._id,
                     email: user.email,
                     phone: user.phone,
                     addressI: user.addressI,
@@ -355,7 +356,7 @@ module.exports = {
                             lastname: user.lastname,
                             fullname: user.firstname + ' ' + user.lastname,
                             initials: Initials,
-                            id: user.id,
+                            id: _,
                             email: user.email,
                             phone: user.phone,
                             addressI: user.addressI,
@@ -374,8 +375,9 @@ module.exports = {
             condition = {
                 email: oldEmail
             }
-        User.findOne({email: req.body.oldemail}, (err, user) => {
-            if (user) {
+        console.log(req.body.id)
+        User.findById(req.body.id, (err, user) => {
+            if (user.email == oldEmail) {
                 user.generateEmailUpdate();
                 user.save();
 
@@ -595,7 +597,14 @@ module.exports = {
             }
         })
     },
-    onEmailUpdate: async function  (req,res) {
-        res.render('email-form',{title: 'Change Your Email Address',type:'change-email'});
+    onEmailUpdate: async function (req, res) {
+        let token = req.cookies.auth
+        User.findByToken(token, function (err, user) {
+            if (!user) {
+                return res.render('login',{errmsg:'Oops! An error occured. Make sure you are logged in'});;;
+            } else {
+                return res.render('email-form', { title: 'Change Your Email Address', type: 'change-email', userId: user._id });
+            }
+        })
     }
 }
