@@ -1,5 +1,6 @@
 // controllers
 const loggeduser = require('../controllers/authenticate')
+const nav = require('../controllers/nav')
 //const user = require('../controllers/user.js')
 const router = require('express').Router();
 const jwt = require('../middlewares/jwt')
@@ -77,4 +78,6 @@ router
     .get('/update-email/:email/:token', loggeduser.onEmailUpdated)
     .post('/profile-update', loggeduser.onProfileUpdate)
     .get('/email-update', loggeduser.onEmailUpdate)
+    .get('/change-password', loggeduser.onGetPasswordChange)
+    //.get('/-chats', nav.getChat)
 module.exports = router;

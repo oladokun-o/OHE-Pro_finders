@@ -32,7 +32,7 @@ if(dashboard.hasClass('hide')){
     settings.addClass('hide')
     helpcenter.addClass('hide')
 }
-
+lockInputs()
 }
 function setting() {
         //settings button
@@ -64,6 +64,7 @@ function Chats(){
         settings.addClass('hide')
         helpcenter.addClass('hide')
     }
+    lockInputs()
 }
 function help(){
      //help button
@@ -79,9 +80,10 @@ function help(){
      chats.addClass('hide')
      settings.addClass('hide')
      helpcenter.removeClass('hide')
- }
+    }
+    lockInputs()
 }
-$('.menu-item a').click(function(e) {
+$('.menu-item a').on('click', function(e) {
     e.preventDefault();
     var targetUrl = $(this).attr('href'),
         targetTitle = $(this).attr('title'),
@@ -97,7 +99,30 @@ $('.menu-item a').click(function(e) {
        Closemypanel()
     }
 });
-$('.-edit-profile').click(function(e) {
+$('.-edit-profile').on('click', function(e) {
+    e.preventDefault();
+    var targetUrl = $(this).attr('href'),
+        targetTitle = $(this).attr('title')
+        //target = $(this).children('li')
+    window.history.pushState({ url: "" + targetUrl + "" }, targetTitle, targetUrl);
+    sessionStorage.setItem('currentpage', targetUrl);
+    setting()
+    unlockInputs()
+})
+
+$('.-edit-profile').on('click', function(e) {
+    e.preventDefault();
+    var targetUrl = $(this).attr('href'),
+        targetTitle = $(this).attr('title')
+        //target = $(this).children('li')
+    window.history.pushState({ url: "" + targetUrl + "" }, targetTitle, targetUrl);
+    sessionStorage.setItem('currentpage', targetUrl);
+    setting()
+    unlockInputs()
+})
+
+
+$('.-set').on('click', function(e) {
     e.preventDefault();
     var targetUrl = $(this).attr('href'),
         targetTitle = $(this).attr('title')
@@ -106,7 +131,8 @@ $('.-edit-profile').click(function(e) {
     sessionStorage.setItem('currentpage', targetUrl);
     setting()
 })
-function gotoChat(e){
+
+function goTo(e) {
     e.preventDefault();
     var targetUrl = $(this).attr('href'),
         targetTitle = $(this).attr('title')
@@ -115,9 +141,10 @@ function gotoChat(e){
     sessionStorage.setItem('currentpage', targetUrl);
     Chats()
 }
-$('.-chat').click(function (e) {
+
+$('.-chat').on('click', function (e) {
    // e.preventDefault();
-   gotoChat(e)
+   goTo(e)
 })
 
 $('.logout').on('click', function(){
@@ -137,6 +164,10 @@ function remvoveActiveclass(target){
            help()
         }
 }
+
+var url = $(location).attr('href');
+    let Currentpage = url.split('/')[3]
+
     $(document).ready(function(event) {
         const Currentpage = sessionStorage.getItem('currentpage');
         if (Currentpage == '/-dashboard') {

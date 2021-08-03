@@ -86,7 +86,7 @@ module.exports = {
 
                         user.generateToken((err, user) => {
                             if (err) {
-                                console.log('could not log in user, something happened:', err)
+                                //console.log('could not log in user, something happened:', err)
                                 return res.render('login', { title: 'Login', errmsg: 'An error occured, please try again later' });
                             }
                             var firstStr = user.firstname,
@@ -108,7 +108,7 @@ module.exports = {
                                 addressI: user.addressI,
                                 addressII: user.addressII,
                             });
-                            console.log(user._id)
+                            //console.log(user._id)
                         });
                     });
                 });
@@ -165,14 +165,9 @@ module.exports = {
     },
     onGetLogout: async function (req, res) {
         let token = req.cookies.auth;
-        res.status(200).clearCookie('auth',
-            {
-                path: '/',
-                secure: false,
-                httpOnly: false,
-                domain: 'localhost',
-                sameSite: true,
-            });
+        res.cookie('auth', 'none',{
+            httpOnly: true,
+        })
         req.user.deleteToken(token, (err, user) => {
             if (err) return res.status(400).send(err);
              res.redirect('login');
@@ -255,7 +250,7 @@ module.exports = {
             } else if (!user) {
                 // Tell client that the email does not exist.
                 var Relogger = req.body.email;
-                console.log(Relogger + 'does not exist in database');
+                //console.log(Relogger + 'does not exist in database');
                 res.status(500).send(Relogger + ' ' + 'does not exist in our database');
             }
         })
@@ -356,7 +351,7 @@ module.exports = {
                             lastname: user.lastname,
                             fullname: user.firstname + ' ' + user.lastname,
                             initials: Initials,
-                            id: _,
+                            id: user._id,
                             email: user.email,
                             phone: user.phone,
                             addressI: user.addressI,
@@ -375,7 +370,7 @@ module.exports = {
             condition = {
                 email: oldEmail
             }
-        console.log(req.body.id)
+        //console.log(req.body.id)
         User.findById(req.body.id, (err, user) => {
             if (user.email == oldEmail) {
                 user.generateEmailUpdate();
@@ -601,9 +596,19 @@ module.exports = {
         let token = req.cookies.auth
         User.findByToken(token, function (err, user) {
             if (!user) {
-                return res.render('login',{errmsg:'Oops! An error occured. Make sure you are logged in'});;;
+                return res.render('login', { errmsg: 'Oops! An error occured. Make sure you are logged in' });
             } else {
                 return res.render('email-form', { title: 'Change Your Email Address', type: 'change-email', userId: user._id });
+            }
+        })
+    },
+    onGetPasswordChange: async function (req, res) {
+        let token = req.cookies.auth;
+        User.findByToken(token, function (err, user) {
+            if (!user) {
+                return res.render('login', {errmsg: 'Oops! An error occured. Make sure you are logged in'})
+            } else {
+                return res.render('forgot-password', { title:'Change password',id: user._id});
             }
         })
     }

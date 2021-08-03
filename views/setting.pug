@@ -4,7 +4,8 @@
 			button.close-email-modal.primary-btn.pt-0.pb-0.pl-1.pr-1
 				i.lni.lni-close
 			.email-update-box.text-justify
-				p.p-3 Are you sure you want to change your current OHE account email address? 
+				p.p-3 Are you sure you want to change your current OHE account
+					span.change-type
 				.email-update-opt.text-center
 					button.primary-btn.pl-3.pr-3.pt-0.pb-0.mr-2.proceed-email-update
 						|yes
@@ -13,7 +14,7 @@
 	.setting-header.pl-3.pt-3.pr-3.container-fluid.pb-0
 		.row
 			.col-4.text-left.prev-btn
-				.d-md-none
+				//.d-md-none
 					button.-go-home
 						i.lni.lni-chevron-left
 						| Home
@@ -46,7 +47,7 @@
 						.col-12.col-md-6.mt-3
 							.profile-input-contn.p-0
 								label(for="email").m-0 Email Address
-									button(title="change your email address" type="button").change-email.text-right
+									//button(title="change your email address" type="button").change-email.text-right
 										|Change email
 										i.lni.lni-pencil-alt.pl-2
 								.profile-input
@@ -67,6 +68,30 @@
 								.profile-input
 									input#addressII(type="text" value=addressII disabled)
 				button(type="submit" disabled).nullified.save-btn Save
+	.setting-header.pl-3.pt-0.pr-3.container-fluid.pb-0
+		.row
+			.col-12.text-left.sub-page-title.pb-0.pl-4
+				p.mb-3.mt-3 Security
+	.setting-body.p-0
+		ul.m-0.p-0
+			a
+				li.container-fluid.change-password
+					.row
+						.col-1
+							i.lni.lni-unlock
+						.col-9
+							|Change password
+						.col-2.text-right
+							i.lni.lni-chevron-right
+			a
+				li.container-fluid.change-email
+					.row
+						.col-1
+							i.lni.lni-envelope
+						.col-9
+							|Change email
+						.col-2.text-right
+							i.lni.lni-chevron-right
 	//.setting-header.pl-3.pt-0.pr-3.container-fluid.pb-0
 		.row
 			.col-12.text-left.sub-page-title.pb-0.pl-4

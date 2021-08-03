@@ -1,7 +1,9 @@
 .d-flex.justify-content-center.work-wrap
 	.container-fluid.pt-1
 		.row
-			.col-12.p-0.col-md-6.col-lg-5
+			.col-12.text-left.pl-0.pr-0.pb-2
+				h5 Search for experts and get answers
+			.col-12.p-0.col-md-6.pr-md-4
 				.search-jobs.form-group.mt-1
 					form.search-form
 						input#search.search(type="search"/*,onkeyup="searchDB(this)"*/,autocomplete='on', name="searchjobs", placeholder="Search for any keyword e.g law" required).form-control
@@ -14,3 +16,22 @@
 					.search-img
 						img(src="/images/search.png")
 				.container-fluid.reply-contn.p-0.m-0.fade-out                  
+			.col-12.col-md-6.pt-md-5.mt-md-4
+				.row
+					.col-6.pl-0
+						.dash-opt.p-4.text-center(title="edit account details")
+							i.fa.fa-user-edit.dash-opt-icon
+							p.pt-2 Edit account
+					.col-6.pr-0
+						.dash-opt.p-4.text-center(title="check your conversations")
+							i.fa.fa-comment-alt.dash-opt-icon
+							p.pt-2 Chats
+					.col-6.pl-0.mt-5
+						.dash-opt.p-4.text-center(title="get help from support")
+							i.lni.lni-question-circle.dash-opt-icon
+							p.pt-2 Get help
+					.col-6.pr-0.mt-5
+						a(href="/logout")
+							.dash-opt.p-4.text-center(title="Logout")
+								i.lni.lni-power-switch.dash-opt-icon
+								p.pt-2 Logout

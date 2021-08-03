@@ -1,0 +1,40 @@
+.setting-body a {
+    color: inherit !important;
+}
+
+a:hover {
+    text-decoration: none !important;
+}
+
+.page-subtitle-text {
+    font-size: medium;
+}
+
+.opt-contn {
+    background: #b1afae54;
+    border-radius: 10px;
+    width: 100%;
+    height: 65px;
+    padding-top: 35px;
+    padding-left: 10px;
+    position: relative;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0px 0px 10px #dddbda;
+}
+
+.opt-contn:hover {
+    transition: all .50s;
+    background: #b1afae80;
+}
+
+.opt-contn-icon {
+    color: #ef6d26;
+    font-size: 40px;
+}
+
+.help-img {
+    width: 60px;
+    position: absolute;
+    transform: translateX(-110px) translateY(-16px);
+}

@@ -1,18 +1,18 @@
 
-var loginText = $('.login span'),
+var loginText = $('.login-anchor span'),
     loginAnchor = $('.login-anchor'),
     Cookie = document.cookie
 
     if (Cookie) {
-        loginText.html('logout')
+        loginText.html('Logout')
         loginAnchor.attr('href', '/logout')
     } else {
-        loginText.html('login')
+        loginText.html('Login')
         loginAnchor.attr('href', '/login')
 }
 
 var userId = $('.data-saver').data('val');
-console.log(userId)
+//console.log(userId)
 //email update 
 $('.email-form').on('submit', function (e) {
     e.preventDefault();
@@ -86,3 +86,30 @@ $('.email-form').on('submit', function (e) {
     })
     }, 3000);
 })
+
+
+var cancelPwdChange = $('.cancel-change-password')
+
+cancelPwdChange.on('click', () => {
+    window.history.back()
+})
+
+/*
+var chatBtn = $('.-chatsbtn'),
+    chatContn = $('.-chats');
+
+chatBtn.on('click', (e) => {
+    e.preventDefault()
+    $.ajax({
+        method: 'GET',
+        url: '/',
+        success: (res) => {
+            console.log(res.file)
+            //var msg = JSON.stringify(res);
+            //chatContn.removeClass('hide').fadeIn('fast').html(res);
+        },
+        error: (res) => {
+            console.log(res)
+        }
+    })
+})*/

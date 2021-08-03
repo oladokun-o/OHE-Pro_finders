@@ -65,6 +65,9 @@
     .free-title-footer {
         font-size: medium !important;
     }
+    .work-list {
+        height: 350px !important;
+    }
 }
 
 @media only screen and (max-width: 400px) {

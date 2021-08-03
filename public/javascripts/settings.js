@@ -68,6 +68,15 @@ addressII.on('keyup', function () {
     } 
 })
 
+
+phoneNumber.on('blur',() => {lockInputs() })
+
+
+addressI.on('blur',() => {lockInputs() })
+
+
+addressII.on('blur',() => {lockInputs() })
+
 profileForm.on('submit', (event) => {
     //emailAddress.removeClass('edit-active').attr('disabled', true)
     phoneNumber.removeClass('edit-active').attr('disabled', true)
@@ -113,10 +122,11 @@ var editEmail = $('.change-email'),
     emailModal = $('.email-update-modal'),
     closeModal = $('.close-email-modal'),
     newEmail = $('.newemail'),
-    emailUpdateForm = $('.email-update-form')
+    emailUpdateForm = $('.email-update-form'),
+    editPwd = $('.change-password');
 
 function openEmailModal() {
-    emailModal.removeClass('force-fade-out').fadeIn('slow')
+    emailModal.removeClass('force-fade-out').fadeIn('fast')
     $('body').css('overflow', 'hidden')
     $('.main-dashboard, .main-dashboard div').css('overflow', 'hidden')
 }
@@ -129,10 +139,17 @@ function closeEmailModal() {
 editEmail.on('click', () => {
     openEmailModal()
     lockInputs()
+    emailModal.find('span').html(' email address?')
 })
 
 closeModal.on('click', () => {
     closeEmailModal()
+})
+
+editPwd.on('click', () => {
+    openEmailModal()
+    lockInputs()
+    emailModal.find('span').html(' password')
 })
 
 var proceedEmailUpdate = $('.proceed-email-update'),
@@ -143,14 +160,19 @@ cancelEmailUpdate.on('click', () => {
 })
 
 //const loading;
-var loading;
+var loading,
+    changeType = emailModal.find('span')
 proceedEmailUpdate.on('click', () => {
     proceedEmailUpdate.addClass('nullified').attr('disabled', true)
     loading = true;
     cancelEmailUpdate.addClass('nullified').attr('disabled', true)
     closeModal.addClass('nullified').attr('disabled', true)
     setTimeout(() => {
-       window.location.href = '/email-update'
+        if (changeType.text() == ' password') {
+            window.location.href = '/change-password'   
+        } else {
+            window.location.href = '/email-update'
+        }
         closeEmailModal()
     }, 2000);
 })

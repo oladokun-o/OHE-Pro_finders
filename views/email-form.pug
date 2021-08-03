@@ -29,10 +29,12 @@ block content
 														if (type) 
 															label(for='oldemail').text-left Current email address:
 																input#oldemail.mt-3.form-control(type='email', name='oldemail', value='',required)
+															br
 															label(for='newemail').text-left New email address:
 																input#newemail.mt-3.form-control(type='email', name='newemail', value='',required)
 															.form-group.text-center.pt-3
 																button(type="submit").primary-btn.update-email submit
+																button(type="button").primary-btn.cancel-change-password.mt-2.ml-2 cancel  
 														else
 															label(for='pass').text-left Enter email address
 																input#email.mt-3.form-control(type='email', name='email', value='',required)
