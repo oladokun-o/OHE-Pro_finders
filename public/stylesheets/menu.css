@@ -127,6 +127,10 @@
         background: #ef6d26b3;
     }
     
+    #MenuIcon {
+    color: white;
+}
+
     .menu-item a:hover {
         color: white !important;
     }

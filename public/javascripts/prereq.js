@@ -345,67 +345,6 @@ function Unnullifygetupdatesbtn() {
     $('.send-updates').removeAttr("disabled")
     $('.send-updates').removeClass('nullified')
 }
-// how it works
-function openStepOne() {
-    $('.how-it-works-step-one-contn').fadeIn('fast')
-    $('.how-it-works-step-one-contn').addClass('slide-in-left')
-    $('.how-it-works-step-one-contn').removeClass('slide-out-right')
-    closeStepTwo()
-    closeStepthree()
-    steps[1].addClass('active_step')
-}
-
-function closeStepOne() {
-    $('.how-it-works-step-one-contn').fadeOut('fast')
-    $('.how-it-works-step-one-contn').removeClass('slide-in-left')
-    $('.how-it-works-step-one-contn').addClass('slide-out-right')
-    steps[1].removeClass('active_step')
-}
-
-function openStepTwo() {
-    $('.how-it-works-step-two-contn').fadeIn('fast')
-    $('.how-it-works-step-two-contn').addClass('slide-in-left')
-    $('.how-it-works-step-two-contn').removeClass('slide-out-right')
-    $('.how-it-works-step-two-contn').removeClass('fade-out')
-    closeStepOne()
-    closeStepthree()
-    steps[2].addClass('active_step')
-}
-
-function closeStepTwo() {
-    $('.how-it-works-step-two-contn').fadeOut('fast')
-    $('.how-it-works-step-two-contn').removeClass('slide-in-left')
-    $('.how-it-works-step-two-contn').addClass('slide-out-right')
-    steps[2].removeClass('active_step')
-}
-
-function openStepThree() {
-    $('.how-it-works-step-three-contn').fadeIn('fast')
-    $('.how-it-works-step-three-contn').addClass('slide-in-left')
-    $('.how-it-works-step-three-contn').removeClass('slide-out-right')
-    closeStepOne()
-    closeStepTwo()
-    steps[3].addClass('active_step')
-
-}
-
-function closeStepthree() {
-    $('.how-it-works-step-three-contn').fadeOut('fast')
-    $('.how-it-works-step-three-contn').removeClass('slide-in-left')
-    $('.how-it-works-step-three-contn').addClass('slide-out-right')
-    steps[3].removeClass('active_step')
-
-}
-var steps = ['', $('.step_one'), $('.step_two'), $('.step_three')]
-steps[1].on('click', function() {
-    openStepOne()
-})
-steps[2].on('click', function() {
-    openStepTwo()
-})
-steps[3].on('click', function() {
-        openStepThree()
-    })
     // check passwords
 
 $('#pass2').on('keyup', function() {

@@ -1,15 +1,33 @@
-
 var loginText = $('.login-anchor span'),
     loginAnchor = $('.login-anchor'),
-    Cookie = document.cookie
-
-    if (Cookie) {
-        loginText.html('Logout')
-        loginAnchor.attr('href', '/logout')
+    signupAnchor = $('.signup-btn')
+$(document).ready((e) => {
+  let cName = 'auth';
+  const name = cName + "=";
+  const cDecoded = decodeURIComponent(document.cookie); //to be careful
+  const cArr = cDecoded.split('; ');
+  let res;
+  cArr.forEach(val => {
+      if (val.indexOf(name) === 0) res = val.substring(name.length);
+  })
+   
+    if (res !== undefined) {
+        dashboardBtn.removeClass('hide')
+        loginAnchor.fadeOut()
+        signupAnchor.fadeOut()
     } else {
+        dashboardBtn.hide()
         loginText.html('Login')
         loginAnchor.attr('href', '/login')
-}
+    }
+})
+
+var dashboardBtn = $('.back-to-dashboard');
+
+dashboardBtn.on('click', () => {
+    window.location.href = '/dashboard'
+})
+
 
 var userId = $('.data-saver').data('val');
 //console.log(userId)

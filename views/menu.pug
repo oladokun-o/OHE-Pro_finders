@@ -16,8 +16,9 @@ block content
 							span find experts           
 					a(href='/how-it-works') 
 						li.text-left.p-4.pl-5
+							i.lni.lni-construction.pr-3
 							span how it works                        
-					a(href='/signup')
+					a(href='/signup').signup-btn
 						li.text-left.p-4.pl-5
 							span signup
 					.p-3.pl-5.pr-5
@@ -38,13 +39,16 @@ block content
 					li.text-left.p-3  
 						i.lni.lni-construction.pr-3
 						span how it works            
-				a(href='/signup')
-					li.text-left.p-3  
+				a(href='/signup').signup-btn
+					li.text-left.p-3
 						span signup
 				a(href='/login').login-anchor
 					li.text-center.p-3.mt-5.login.mt-lg-0.mt-md-0.mt-xl-0             
 						span login
-		.menu-btn.col-8.text-right#MenuIcon.p-0.d-lg-none.d-md-none.d-xl-none.d-lg-none
-			button(type="button" data-js='menu-toggle').pr-0.hamburger.hamburger--minus.menu-toggle
-				span.hamburger-box
-					span.hamburger-inner
+		.col-7.d-lg-none.d-md-none.d-xl-none.d-lg-none.p-0
+			.back-to-dashboard(title="dashboard").d-md-none.p-0.mt-1.pr-2.hide
+				.user-avatar.-small.-initial.p-0.-online-bubble
+					i.lni.lni-user
+		.menu-btn.col-1.text-right#MenuIcon.p-0.d-lg-none.d-md-none.d-xl-none.d-lg-none
+			button(type="button" data-js='menu-toggle').p-0.mb-2
+				i.lni.lni-menu
