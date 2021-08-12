@@ -79,5 +79,6 @@ router
     .post('/profile-update', loggeduser.onProfileUpdate)
     .get('/email-update', loggeduser.onEmailUpdate)
     .get('/change-password', loggeduser.onGetPasswordChange)
+    .post('/change-password', loggeduser.onChangePassword)
     //.get('/-chats', nav.getChat)
 module.exports = router;

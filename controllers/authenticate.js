@@ -611,5 +611,67 @@ module.exports = {
                 return res.render('forgot-password', { title:'Change password',id: user._id});
             }
         })
+    },
+    onChangePassword: async function (req, res) {
+        var oldPwd = req.body.oldPwd,
+            newPwd = req.body.newPwd,
+            id = req.body.id,
+            condition = {
+                password: oldPwd,
+                password2: oldPwd
+            },
+            update = {
+                password: newPwd,
+                password2: newPwd
+            }
+        
+        if (oldPwd == newPwd) return res.status(500).send('Use a different password from your current one');
+        
+        User.findById(id, function (err, user) {
+            if (err) {
+                return res.status(500).send('An error occured, please try agin later')
+            } else if (user) {
+                user.comparepassword(oldPwd, (err, isMatch) => {
+                    if (!isMatch) {
+                        res.status(500).send('Enter your current password');
+                    } else if (isMatch) {
+                        //console.log('match',isMatch)
+                        user.password = newPwd
+                        //user.password2 = newPwd
+                        user.save((err) => {
+                            if (err) return res.status(500).send('An error occured, please try agin later');
+                            
+                            res.status(200).send('Password changed!');
+                            fs.readFile('./utils/emails/pass-changed.html', { encoding: 'utf-8' }, function (err, html) {
+                                if (err) {
+                                    console.log(err);
+                                } else {
+                                    var template = handlebars.compile(html);
+                                    var replacements = {
+                                        username: user.firstname + ' ' + user.lastname,
+                                        email: user.email,
+                                    };
+                                    var htmlToSend = template(replacements);
+                                    var passData = {
+                                        from: db.SMTP_USER,
+                                        to: user.email,
+                                        subject: 'Your Password was changed',
+                                        html: htmlToSend
+                                    }
+                                }
+
+                                transporter.sendMail(passData, function (err, info) {
+                                    if (err) {
+                                        console.log(err);                                       
+                                    }
+                                })
+                            })
+                        })
+                    } else if (err) {
+                        return res.status(500).send('An error occured, please try agin later')
+                    }
+                })
+            }
+        })
     }
 }

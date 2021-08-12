@@ -346,3 +346,44 @@ $('.chat-search-form').on('submit', function(e) {
     })
 
 })
+
+
+var changePwdForm = $('.change-password'),
+    currentPwd = $('#current_password'),
+    newPwd = $('#new_password'),
+    changePwdBtn = $('.proceed-change-password'),
+    alertBx = $('.alert')
+
+changePwdForm.on('submit', (e) => {
+    e.preventDefault()
+    changePwdBtn.html('changing...')
+    changePwdForm.find('input').attr('disabled', true).toggleClass('nullified')
+    changePwdForm.find('button').attr('disabled', true).toggleClass('nullified')
+    setTimeout(() => {
+        $.ajax({
+            method: 'POST',
+            url: '/change-password',
+            data: {
+                oldPwd: currentPwd.val(),
+                newPwd: newPwd.val(),
+                id: id,
+            },
+            success: (res) => {
+                changePwdBtn.html('done')
+                alertBx.removeClass('fade-out').addClass('greenlight').html(res)
+                setTimeout(() => {
+                    window.history.back()
+                }, 3000);
+            },
+            error: (res) => {                
+                changePwdBtn.html('change')
+                alertBx.removeClass('fade-out').html(res.responseText)
+                setTimeout(() => {
+                    alertBx.fadeOut('slow')
+                }, 3000);
+                changePwdForm.find('input').val('').removeAttr('disabled').removeClass('nullified')
+                changePwdForm.find('button').removeAttr('disabled').removeClass('nullified')
+            }
+        })
+    }, 2000);
+})

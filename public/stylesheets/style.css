@@ -1004,7 +1004,6 @@ img {
     padding-top: 2.5rem;
     padding-bottom: 2rem;
     font-size: larger;
-    height: 200px;
 }
 
 
@@ -1813,3 +1812,9 @@ img {
     height: 100%;
 }
 
+
+.back-to-dashboard-sm-avatar {
+    position: absolute !important;
+    right: 15px;
+    bottom: 15px;
+}

@@ -1,11 +1,11 @@
 //signup
 $('.form-signup').on('submit', function (e) {
-    var singupBtn = $('.primary-btn'),
-        singupBtnIcon = $('.primary-btn span'),
+    var signupBtn = $('.primary-btn'),
+        signupBtnIcon = $('.primary-btn span'),
         alertContn = $('.alert')
-    singupBtnIcon.html('<span><i class="lni lni-spinner-arrow fa-spin"></i></span>')
-    singupBtn.attr("disabled", true);
-    singupBtn.addClass('nullified');
+    signupBtnIcon.html('<span><i class="lni lni-spinner-arrow fa-spin"></i></span>')
+    signupBtn.attr("disabled", true);
+    signupBtn.addClass('nullified');
         e.preventDefault();
       setTimeout(() => {
             $.ajax({
@@ -21,7 +21,7 @@ $('.form-signup').on('submit', function (e) {
             },
             success: function(response) {
                 //console.log(response.responseText)
-                singupBtnIcon.html('<i class="lni lni-checkmark green"></i>')
+                signupBtnIcon.html('<i class="lni lni-checkmark green"></i>')
                   setTimeout(() => {
                       window.location.href = '/login';
                 }, 1000);
@@ -33,9 +33,9 @@ $('.form-signup').on('submit', function (e) {
                     alertContn.fadeOut('fast')                   
                 }, 3000);
                 alertContn.html(response.responseText)
-                singupBtnIcon.html('login')
-                singupBtn.removeAttr('disabled')
-                singupBtn.removeClass('nullified');
+                signupBtnIcon.html('login')
+                signupBtn.removeAttr('disabled')
+                signupBtn.removeClass('nullified');
             }
         })
       }, 1000);
