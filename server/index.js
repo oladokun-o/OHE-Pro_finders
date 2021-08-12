@@ -78,7 +78,7 @@ server.listen(port);
 /** Event listener for HTTP server "listening" event. */
 //Start Server
 server.on("listening", () => {
-    console.log(`Listening on port:: http://localhost:${port}/`)
+    console.log(`App listening on port::8800`)
 });
 
 module.exports = app;

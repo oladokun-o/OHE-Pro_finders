@@ -26,11 +26,10 @@ block content
 						li.text-left.p-4.pl-5.-help-centerbtn
 							i.lni.lni-help
 							span.pl-3 Help Center                                  
-					.p-3.pl-5.pr-5
-						a(href='/logout').logout
-							li.text-center.p-3.login
-								i.lni.lni-power-switch.pr-3          
-								span logout
+					a(href='/logout').logout
+						li.text-left.p-4.pl-5
+							i.lni.lni-exit.pr-3          
+							span logout
 	.container-fluid
 		.row 
 			.col-lg-3.col-md-4.lg-menu.d-none.d-md-block.p-0
@@ -57,12 +56,11 @@ block content
 								a(href='/-help') 
 									li.text-left.p-4.pl-5.-help-centerbtn
 										i.lni.lni-help
-										span.pl-3 Help Center                                  
-								.p-3.pl-5.pr-5.mb-5.pb-5
-									a(href='/logout').logout
-										li.text-center.p-3.login
-											i.lni.lni-power-switch.pr-3          
-											span logout
+										span.pl-3 Help Center                                  								
+								a(href='/logout').logout
+									li.text-left.p-4.pl-5
+										i.lni.lni-exit.pr-3          
+										span logout
 			.col-md-8.col-lg-9
 				.main-header.p-md-0.p-2.pl-3(onClick="checkIfFormIsLoading()")
 					.col-2.col-md-4.col-lg-3.p-0.avatar-contn-sm
@@ -95,7 +93,7 @@ block content
 									hr.m-0.hr
 									a(href='/logout').logout
 										.pl-3
-											i.lni.lni-power-switch
+											i.lni.lni-exit
 											span.pl-3 Logout
 					.col-md-8.col-lg-9.d-none.d-md-block.p-0
 						.container-fluid.pr-md-4.md-header
@@ -140,7 +138,7 @@ block content
 													hr.m-0.hr
 													a(href='/logout').logout
 														.pl-3
-															i.lni.lni-power-switch
+															i.lni.lni-exit
 															span.pl-3 Logout
 					.col-9.d-block.d-md-none.text-left.nav-buttons.pt-2.pl-0.position-relative
 						//button(type="button").bg-none.p-0.border-0.white.-notice.position-relative

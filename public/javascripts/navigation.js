@@ -118,7 +118,7 @@ $('.-edit-profile').on('click', function(e) {
     window.history.pushState({ url: "" + targetUrl + "" }, targetTitle, targetUrl);
     sessionStorage.setItem('currentpage', targetUrl);
     setting()
-    unlockInputs()
+    //unlockInputs()
 })
 
 
@@ -132,7 +132,7 @@ $('.-set').on('click', function(e) {
     setting()
 })
 
-function goTo(e) {
+function goToChat(e) {
     e.preventDefault();
     var targetUrl = $(this).attr('href'),
         targetTitle = $(this).attr('title')
@@ -142,9 +142,20 @@ function goTo(e) {
     Chats()
 }
 
+
+$('.-get-help').on('click', function(e) {
+    e.preventDefault();
+    var targetUrl = $(this).attr('href'),
+        targetTitle = $(this).attr('title')
+        //target = $(this).children('li')
+    window.history.pushState({ url: "" + targetUrl + "" }, targetTitle, targetUrl);
+    sessionStorage.setItem('currentpage', targetUrl);
+    help()
+})
+
 $('.-chat').on('click', function (e) {
    // e.preventDefault();
-   goTo(e)
+   goToChat(e)
 })
 
 $('.logout').on('click', function(){

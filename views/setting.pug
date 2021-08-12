@@ -19,7 +19,7 @@
 						i.lni.lni-chevron-left
 						| Home
 			.col-4.text-center.page-title
-				p Settings
+				p.p-3 Settings
 			.col-4.text-right
 
 			.col-12.text-left.sub-page-title.pb-0.pt-0.pl-4
@@ -27,8 +27,8 @@
 	.setting-body.pl-0.pr-0.pt-0.pb-4
 		.dp.d-flex.justify-content-center.p-4
 			.user-avatar.-large.-initial.p-0 #{initials}
-		.container-fluid
-			button.edit-profile-btn Edit Profile
+		.container-fluid.p-4
+			//button.edit-profile-btn Edit Profile
 				i.lni.lni-pencil-alt.pl-2
 		.form-group.pl-4.pr-4.pt-0
 			form.profile-form
@@ -56,17 +56,17 @@
 							.profile-input-contn.p-0
 								label(for="phone").m-0 Phone Number (optional)
 								.profile-input
-									input#phone(type="tel" value=phone pattern="[0-9]+" maxlength="11" disabled)
+									input#phone(type="tel" value=phone pattern="[0-9]+" maxlength="11")
 						.col-12.mt-3
 							.profile-input-contn.p-0
 								label(for="addressI").m-0 Address 1 (optional)
 								.profile-input
-									input#addressI(type="text" value=addressI disabled)
+									input#addressI(type="text" value=addressI)
 						.col-12.mt-3
 							.profile-input-contn.p-0
 								label(for="addressII").m-0 Address 2 (optional)
 								.profile-input
-									input#addressII(type="text" value=addressII disabled)
+									input#addressII(type="text" value=addressII)
 				button(type="submit" disabled).nullified.save-btn Save
 	.setting-header.pl-3.pt-0.pr-3.container-fluid.pb-0
 		.row
@@ -77,18 +77,18 @@
 			a
 				li.container-fluid.change-password
 					.row
-						.col-2
+						.col-2.col-md-1
 							i.lni.lni-unlock
-						.col-8
+						.col-8.col-md-9
 							|Change password
 						.col-2.text-right
 							i.lni.lni-chevron-right
 			a
 				li.container-fluid.change-email
 					.row
-						.col-2
+						.col-2.col-md-1
 							i.lni.lni-envelope
-						.col-8
+						.col-8.col-md-9
 							|Change email
 						.col-2.text-right
 							i.lni.lni-chevron-right

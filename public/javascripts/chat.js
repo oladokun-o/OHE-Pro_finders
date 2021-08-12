@@ -319,7 +319,7 @@ var dashAgentNeeded = $('.reply-contn'),
 dashAgentNeeded.on('click', function (e) {
     let dashAgentNeededOpt = e.target.textContent,
         searchFormVal = searchFormInput.val();
-    goTo(e)
+    goToChat(e)
     chatSearchInput.val(searchFormVal);
     chatType.fadeIn('slow').removeClass('fade-out')
     $('.agent-type-opt').val(dashAgentNeededOpt)

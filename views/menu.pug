@@ -20,11 +20,12 @@ block content
 							span how it works                        
 					a(href='/signup').signup-btn
 						li.text-left.p-4.pl-5
+							i.pr-3
 							span signup
-					.p-3.pl-5.pr-5
-						a(href='/login').login-anchor
-							li.text-center.p-3.login                
-								span login                       
+					a(href='/login').login-anchor
+						li.text-left.p-4.pl-5
+							i.pr-3
+							span login                    
 	.main-header.p-2.pl-4.pr-4.pb-0
 		.col-4.col-md-2.col-lg-2.col-xl-2.pt-lg-3.pt-md-3.pt-xl-3.p-2
 			a(href="/")
@@ -45,6 +46,9 @@ block content
 				a(href='/login').login-anchor
 					li.text-center.p-3.mt-5.login.mt-lg-0.mt-md-0.mt-xl-0             
 						span login
+				.back-to-dashboard(title="dashboard").p-0.pr-2.hide
+					.user-avatar.-small.-initial.p-0.-online-bubble
+						i.lni.lni-user
 		.col-7.d-lg-none.d-md-none.d-xl-none.d-lg-none.p-0
 			.back-to-dashboard(title="dashboard").d-md-none.p-0.mt-1.pr-2.hide
 				.user-avatar.-small.-initial.p-0.-online-bubble

@@ -767,10 +767,10 @@ img {
     border: none;
     border-radius: 2px;
     padding: 10px 25px 10px 25px;
-    background: white !important;
     color: var(--font-color) !important;
     font-weight: 600;
     transition: all 0.50s;
+
 }
 
 
@@ -997,17 +997,23 @@ img {
     background: #1d154ec7;
     padding: 15px;
     margin-top: 15px;
-    padding-left: 20px;
+    padding-left: 25px !important;
     color: white !important;
     border-radius: 10px;
     background: #1d154e;
+    padding-top: 2.5rem;
+    padding-bottom: 2rem;
+    font-size: larger;
+    height: 200px;
 }
+
 
 .how-it-works-step-image {
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 2rem;
+    margin: 0 !important;
 }
 
 .fake-image {
@@ -1232,7 +1238,7 @@ img {
     font-weight: 600;
     transition: all 0.50s;
     opacity: 0.9;
-    font-size: 17px;
+    font-size: 15px;
     line-height: 20px;
     width: 100%;
 }
@@ -1722,6 +1728,11 @@ img {
     display: flex;
     justify-content: right;
     cursor: pointer;
+    margin: 0 !important;
+}
+
+.back-to-dashboard div {
+    margin: 0 !important;
 }
 
 .user-avatar {
@@ -1751,7 +1762,7 @@ img {
     width: 64px;
     height: 64px;
     line-height: 64px;
-    font-size: 32px;
+    font-size: px;
 }
 
 .user-avatar.-medium {
@@ -1796,3 +1807,8 @@ img {
     left: 72%;
     border-radius: 50%;
 }
+
+.height-100 {
+    height: 100%;
+}
+

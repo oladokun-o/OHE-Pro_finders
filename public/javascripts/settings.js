@@ -6,7 +6,7 @@ var editProfileBtn = $('.edit-profile-btn'),
     addressII = $('#addressII'),
     profileForm = $('.profile-form');
 
-function lockInputs() {
+/*function lockInputs() {
 //emailAddress.removeAttr('disabled').addClass('edit-active')
     phoneNumber.attr('disabled', true).removeClass('edit-active')
     addressI.attr('disabled', true).removeClass('edit-active')
@@ -21,7 +21,7 @@ function unlockInputs() {
 }
 editProfileBtn.on('click', (event) => {
     unlockInputs()
-})
+})*/
 function unlockForm() {
     saveProfileBtn.removeClass('nullified').removeAttr('disabled')
 }
@@ -68,7 +68,7 @@ addressII.on('keyup', function () {
     } 
 })
 
-
+/*
 phoneNumber.on('blur',() => {lockInputs() })
 
 
@@ -76,7 +76,7 @@ addressI.on('blur',() => {lockInputs() })
 
 
 addressII.on('blur',() => {lockInputs() })
-
+*/
 profileForm.on('submit', (event) => {
     //emailAddress.removeClass('edit-active').attr('disabled', true)
     phoneNumber.removeClass('edit-active').attr('disabled', true)
@@ -138,7 +138,7 @@ function closeEmailModal() {
 
 editEmail.on('click', () => {
     openEmailModal()
-    lockInputs()
+    //lockInputs()
     emailModal.find('span').html(' email address?')
 })
 
@@ -148,7 +148,7 @@ closeModal.on('click', () => {
 
 editPwd.on('click', () => {
     openEmailModal()
-    lockInputs()
+    //lockInputs()
     emailModal.find('span').html(' password')
 })
 

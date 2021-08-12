@@ -2,34 +2,42 @@
     .page-width {
         width: 1400px;
     }
+
     .page-contn {
         display: flex;
         width: 100%;
         justify-content: center;
         margin-top: 80px;
     }
+
     .page-contn-image {
         display: flex;
         width: 100%;
         justify-content: center;
     }
+
     .sub-headline {
         font-size: 3.5rem;
         font-weight: bold;
     }
+
     .subber-headline {
         font-size: 2.5rem;
     }
+
     .wrapper-fl-img {
         height: 200px;
         object-fit: contain;
     }
+
     .updates-form-child {
         top: -110px;
     }
+
     .error-contn {
         top: 100px;
     }
+
     .how-it-works-step-image {
         display: flex;
         justify-content: center;
@@ -38,42 +46,60 @@
         height: 470px;
         object-fit: contain;
     }
+
     .how-it-works-step-image img {
         object-fit: contain;
         height: 100%;
         transform: scale(1.1);
     }
+
+    .how-it-works-step h3 {
+        font-size: xx-large;
+    }
+
+    .how-it-works-step p {
+        font-size: larger;
+    }
+
     .wave {
         transform: rotate(180deg) scale(1) translateY(-5px);
         top: 50%;
     }
+
     .steps_images {
         height: 200px;
         display: flex;
         align-items: center;
     }
+
     .steps_images img {
         object-fit: contain;
         height: 200px;
     }
+
     .how_it_works_steps_contn {
         display: flex;
         align-items: flex-start;
     }
+
     .splash {
         position: absolute;
         left: 10%;
     }
+
     #connect_bodytext h3 {
         font-size: xx-large;
     }
+
     #connect_bodytext p {
         font-size: x-large;
     }
+
     .help-contn {
         background-position-y: 80%;
         position: relative;
     }
+
     #help-base-lg {
         position: absolute;
         bottom: -10%;
@@ -81,24 +107,30 @@
         padding: 0 !important;
         left: 0;
     }
+
     .contact-img-contn {
         height: 100%;
     }
+
     .head-tag {
         line-height: 1.7;
         font-size: 50px;
     }
+
     .help-contn {
         height: 315px;
     }
+
     .reply-contn {
         position: absolute;
         top: 70px;
     }
+
     .coming-image {
         display: flex;
         place-content: center;
     }
+
     .coming-image img {
         width: 60%;
     }
@@ -109,6 +141,7 @@
         padding-left: 8rem !important;
         padding-right: 8rem !important;
     }
+
     .search-img {
         position: absolute;
         transform: translateY(-147px);
