@@ -32,7 +32,7 @@ if(dashboard.hasClass('hide')){
     settings.addClass('hide')
     helpcenter.addClass('hide')
 }
-lockInputs()
+//lockInputs()
 }
 function setting() {
         //settings button
@@ -64,7 +64,7 @@ function Chats(){
         settings.addClass('hide')
         helpcenter.addClass('hide')
     }
-    lockInputs()
+    //lockInputs()
 }
 function help(){
      //help button
@@ -81,7 +81,7 @@ function help(){
      settings.addClass('hide')
      helpcenter.removeClass('hide')
     }
-    lockInputs()
+    //lockInputs()
 }
 $('.menu-item a').on('click', function(e) {
     e.preventDefault();
@@ -107,7 +107,7 @@ $('.-edit-profile').on('click', function(e) {
     window.history.pushState({ url: "" + targetUrl + "" }, targetTitle, targetUrl);
     sessionStorage.setItem('currentpage', targetUrl);
     setting()
-    unlockInputs()
+    //unlockInputs()
 })
 
 $('.-edit-profile').on('click', function(e) {
@@ -118,7 +118,7 @@ $('.-edit-profile').on('click', function(e) {
     window.history.pushState({ url: "" + targetUrl + "" }, targetTitle, targetUrl);
     sessionStorage.setItem('currentpage', targetUrl);
     setting()
-    //unlockInputs()
+    ////unlockInputs()
 })
 
 
