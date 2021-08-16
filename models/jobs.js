@@ -1,5 +1,10 @@
 var mongoose = require('mongoose');
-const jobSchema = mongoose.Schema({
-    job: { type: String }
-})
+var Schema = mongoose.Schema;
+
+var jobSchema = new Schema({
+    job: String,
+}, {
+    collection: 'jobs'
+});
+jobSchema.index({ job: 'text' });
 module.exports = mongoose.model('Jobs', jobSchema);

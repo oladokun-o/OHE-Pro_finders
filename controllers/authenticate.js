@@ -1,5 +1,6 @@
 const User = require('../models/user')
 const Jobs = require('../models/jobs')
+const JobsList = require('../models/job-list')
 const Chat = require('../models/ChatRoom')
 const db = require('../config/index').get(process.env.NODE_ENV);
 var fs = require('fs');
@@ -8,6 +9,9 @@ const transporter = require('../utils/mailer')
 var router = require('../routes/index')
 var passport = require('passport');
 const Support = require('../models/support');
+const jobs = require('../models/jobs');
+const jobList = require('../models/job-list');
+const { response } = require('express');
 
 module.exports = {
     onGetLogin: async (req, res) => {
@@ -314,20 +318,30 @@ module.exports = {
         })
     },
     onPostJobs: async function (req, res) {
-        var jobtype = req.body.subject;
-        Jobs.find({ $or: [{ job: jobtype }, { tag: jobtype }] }, function (err, users) {
-            if (err || Object.keys(users).length == 0) {
-                //console.log('wronggg')
-                res.status(404).send('Sorry' + ' ' + jobtype + ' ' + 'was not found');
-            } else {
-                res.status(200).send(users.map((userMap) => {
-                    //userMap[item._id] = item
-                    //console.log('success' + ' ' + userMap.job)
-                    return userMap.job
-                }))
-
-            }
-        })
+        var jobtype = req.body.subject,
+            type = req.body.type;
+        if (type == 'default') {
+            Jobs.find({job: { '$regex': '^'+jobtype}}, {}, (err, result) => {                
+                if (result) {
+                    res.status(200).send(result)
+                    console.log('sent')
+                } else {
+                    res.status(404).send('No pros found')
+                    console.log('not sent')
+                }
+            })
+        } else {
+            Jobs.find({job: { '$regex': '^'+jobtype}}, {}, (err, result) => {                
+                if (result) {
+                    res.status(200).send(result)
+                    console.log('sent')
+                } else {
+                    res.status(404).send('No pros found')
+                    console.log('not sent')
+                }
+            })
+        }
+}, function(err, result) {
     },
     onGetGoogleCB: async function (req, res) {
         let token = req.cookies.auth
@@ -673,5 +687,8 @@ module.exports = {
                 })
             }
         })
+    },
+    getJobList: async function (req, res) {
+        res.render('work', { title: 'Browse Jobs', id: undefined });
     }
 }

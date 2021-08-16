@@ -10,14 +10,22 @@ block content
 						a(href="/")
 							img.brand-logo-img(src="/images/OHE-Logo.png", alt="")
 				ul.mt-4.index-menu.text-left.menu-item
-					a(href='/jobs')
-						li.text-left.p-4.pl-5
-							i.lni.lni-network.pr-3
-							span find experts           
 					a(href='/how-it-works') 
 						li.text-left.p-4.pl-5
 							i.lni.lni-construction.pr-3
-							span how it works                        
+							span how it works
+					a(href='/how-it-works') 
+						li.text-left.p-4.pl-5
+							i.lni.lni-list.pr-3
+							span categories
+					a(href='/jobs')
+						li.text-left.p-4.pl-5
+							i.lni.lni-network.pr-3
+							span find experts                                   
+					a(href='/contact') 
+						li.text-left.p-4.pl-5
+							i.lni.lni-phone.pr-3
+							span contact
 					a(href='/signup').signup-btn
 						li.text-left.p-4.pl-5
 							i.pr-3
@@ -30,18 +38,26 @@ block content
 		.col-4.col-md-2.col-lg-2.col-xl-2.pt-lg-3.pt-md-3.pt-xl-3.pl-0.pb-2
 			a(href="/")
 				img.brand-logo-img(src="/images/OHE-Logo.png", alt="")
-		.col-md-10.col-lg-10.col-xl-10.d-none.d-md-block.d-lg-block.d-xl-block.p-0
+		.col-md-10.col-lg-10.col-xl-10.d-none.d-md-block.d-lg-block.d-xl-block.p-0.text-center
 			ul.mt-2.large-menu
-				a(href='/jobs').d-md-none.d-lg-block
-					li.text-left.p-3  
-						i.lni.lni-network.pr-3
-						span find experts           
 				a(href='/how-it-works')
-					li.text-left.p-3  
+					li.text-center.p-2.d-md-none.d-lg-block
 						i.lni.lni-construction.pr-3
 						span how it works            
+				a(href='/jobs')
+					li.text-center.p-2  
+						i.lni.lni-list.pr-3
+						span categories
+				a(href='/jobs')
+					li.text-center.p-2  
+						i.lni.lni-network.pr-3
+						span find experts 
+				a(href='/contact')
+					li.text-center.p-2  
+						i.lni.lni-network.pr-3
+						span contact       				
 				a(href='/signup').signup-btn
-					li.text-left.p-3
+					li.text-center.p-2
 						span signup
 				a(href='/login').login-anchor
 					li.text-center.p-3.mt-5.login.mt-lg-0.mt-md-0.mt-xl-0             

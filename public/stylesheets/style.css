@@ -610,7 +610,7 @@ img {
 }
 
 .large-menu li {
-    margin-right: 5px;
+    margin-right: 3px;
     padding-bottom: 5px !important;
     padding-top: 5px !important;
 }
@@ -679,11 +679,16 @@ img {
     z-index: 100;
 }
 
-.search-jobs input {
-    padding-inline-start: 35px;
+.search-jobs select {
     box-shadow: 0 2px 4px 0 #00000021;
     border: none;
-    padding-right: 30px;
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.search-jobs select:focus {
+    outline: 1px solid #ef6c26;
 }
 
 #selector {
@@ -1817,4 +1822,52 @@ img {
     position: absolute !important;
     right: 15px;
     bottom: 15px;
+}
+
+input:focus {
+    outline: 1px solid #ef6c26 !important;
+    box-shadow: none !important;
+}
+
+select:focus {
+    outline: none !important;
+    border: 1px solid #ef6c26 !important;
+    box-shadow: none !important;
+}
+
+.job-li li {
+    border: 1px solid #ef6c26;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    padding-left: 10px;
+    border-radius: 5px;
+    margin-bottom: 0px !important;
+}
+
+.job-li li>i {
+    padding-top: 4px;
+    padding-right: 10px;
+    float: right;
+}
+
+.job-li li>a {
+    color: white;
+}
+
+.job-li li:hover {
+    transition: all .50s;
+    box-shadow: 0 0 5px #ef6c2646;
+    background: #ef6c26;
+    color: white;
+}
+
+.active-job-li {
+    transition: all .50s;
+    box-shadow: 0 0 5px #ef6c2646;
+    background: #ef6c26;
+    color: white !important;
+}
+
+.job-li:last-child {
+    margin-bottom: 15px !important;
 }

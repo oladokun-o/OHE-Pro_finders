@@ -31,9 +31,7 @@ router
     .get('/privacy', function (req, res, next) {
         res.render('privacy-policies', { title: 'Terms and conditions' });
     })
-    .get('/jobs', function (req, res, next) {
-        res.render('work', { title: 'Browse Jobs' });
-    })
+    .get('/jobs', loggeduser.getJobList)
     .get('/how-it-works', function (req, res, next) {
         res.render('how-it-works', { title: 'How it works' });
     })

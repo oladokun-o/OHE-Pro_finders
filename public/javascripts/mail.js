@@ -256,7 +256,7 @@ if ($('#emailstat').hasClass('hide')) {
     }, 5000)
 }
 //search jobs array
-$('.search-form').on('submit', function(e) {
+$(document).on('ready', function(e) {
     e.preventDefault()
     $('#selector').fadeOut('fast')
     $('.search').attr("disabled", true);
@@ -387,3 +387,5 @@ changePwdForm.on('submit', (e) => {
         })
     }, 2000);
 })
+var jobss = '!{jobs}'
+//$(".categories-list").html(jobss)
