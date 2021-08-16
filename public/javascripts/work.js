@@ -64,7 +64,7 @@ jobLists.on('click', (e) => {
                         const jobCollection = [].concat(...joblist)
                         //console.log(jobCollection)
                         var jobshtml = $.map(jobCollection, function (value) {
-                            return ('<br><a href="' + value + '">' + value + '</a><br>');
+                            return ('<a href="' + value + '">' + value + '</a><br>');
                         })
                     var list = jobshtml.join('');
                     var listSpan = $('<span class="job-span-list show">' + list + '</span>');
