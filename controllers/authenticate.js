@@ -321,7 +321,7 @@ module.exports = {
         var jobtype = req.body.subject,
             type = req.body.type;
         if (type == 'default') {
-            Jobs.find({job: { '$regex': '^'+jobtype}}, {}, (err, result) => {                
+            Jobs.find({}, (err, result) => {                
                 if (result) {
                     res.status(200).send(result)
                     console.log('sent')
