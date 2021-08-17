@@ -45,9 +45,9 @@ block content
 											i.fa.fa-caret-down.pl-1.caret
 										//span.search-icon
 											button.m-3
-												i.lni.lni-keyword-research
+												i.lni.lni-keyword-research								
 								.container-fluid.border-top.work-categories.sm-work.fade-out.d-md-none
-									span.close-icon
+									//span.close-icon
 										i.lni.lni-close
 									mixin category
 										ul#accordion.p-0.text-left.pb-3.acc-card
@@ -61,7 +61,7 @@ block content
 														mixin categories(name)
 															li.categories= name
 																i.lni.lni-chevron-right.float-right
-														ul.p-0.m-0.job-li
+														ul.p-0.m-0.job-li#jobAnchors
 															+categories('A')
 															+categories('B')
 															+categories('C')
@@ -144,6 +144,7 @@ block content
 									.search-img
 										img(src="/images/search.png")
 								.container-fluid.border.reply-contn.p-0.m-0.fade-out                  
+								//#stop.p-5.col-md-5.col-12.border
 							.col-md-5.col-12.pt-0.mt-0.p-0.pl-md-3.pr-md-3.pt-md-0#workList
 								.container.work-categories.pl-4.pt-2.pr-4
 									+category

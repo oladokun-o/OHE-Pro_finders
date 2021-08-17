@@ -64,7 +64,7 @@ jobLists.on('click', (e) => {
                         const jobCollection = [].concat(...joblist)
                         //console.log(jobCollection)
                         var jobshtml = $.map(jobCollection, function (value) {
-                            return ('<a href="' + value + '">' + value + '</a><br>');
+                            return ('<button onClick="jobAnchor(this)">' + value + '</button><br>');
                         })
                     var list = jobshtml.join('');
                     var listSpan = $('<span class="job-span-list show">' + list + '</span>');
@@ -79,3 +79,61 @@ jobLists.on('click', (e) => {
         }
     }
 })
+
+
+function jobAnchor(event) {
+    var e = event,
+        eDescriptionContn = $('<p class="p-2"></p>'),
+        req = e.innerText,
+        eDescriptionBtn = $('<br><button class="primary-btn desc-btn mt-2 text-center">Chat</button>');
+        //localStorage.setItem('descriptionId', req)
+    if (e.classList.contains('show')) {
+        //console.log('event still showing, now removing class "show"')
+        e.classList.remove('show')
+        e.nextSibling.remove()
+    } else {
+        //closeDesc(e)
+        //console.log('now showing event')
+        e.classList.add('show')
+        $.ajax({
+                method: 'POST',
+                url: '/jobs',
+                data: {
+                    subject: req,
+                    type: 'description'
+                },
+            success: function (response) {
+                    //console.log(response)
+                    var jobDescriptionResponse = response.map((o) => (
+                            o.description
+                        ))
+                        const jobDescription = [].concat(...jobDescriptionResponse)
+                        //console.log(jobCollection)
+                        var jobDescHtml = $.map(jobDescription, function (value) {
+                            return (value);
+                        })
+                    var description = jobDescHtml.join('');
+                eDescriptionContn.append(description)
+                eDescriptionContn.append(eDescriptionBtn)
+                    eDescriptionContn.insertAfter(e).slideDown('slow')          
+                },
+                error: function(response) {
+                    eDescriptionContn.append('No result')
+                    eDescriptionContn.insertAfter(e).slideDown('slow')  
+                }
+            })
+        //console.log(eDescriptionContn)
+    }
+}
+
+/*
+function closeDesc(e) {
+    var eve = localStorage.getItem('descriptionId')
+    $(document).on('click', (event) => {
+        if (eve !== event.target.innerText) {
+            e.nextSibling.remove()
+        } else {
+            console.log('hell yeah')
+        }
+    })
+}*/

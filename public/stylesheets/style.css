@@ -1,4 +1,12 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
+@font-face {
+    font-family: 'Montserrat';
+    src: url('/fonts/Montserrat-Regular.otf');
+}
+
+@font-face {
+    font-family: 'Montserrat-light';
+    src: url('/fonts/Montserrat-Light.otf');
+}
 
 body {
     position: relative;
@@ -1841,7 +1849,7 @@ select:focus {
     padding-bottom: 2px;
     padding-left: 10px;
     border-radius: 5px;
-    margin-bottom: 0px !important;
+    margin-bottom: 5px !important;
 }
 
 .job-li li>i {
@@ -1850,8 +1858,18 @@ select:focus {
     float: right;
 }
 
-.job-li li>a {
-    color: white;
+.job-li button {
+    font-weight: lighter;
+    font-family: 'Montserrat-light';
+    padding-inline-start: 10px;
+    background: none;
+    color: blue;
+    border: none;
+    outline: none;
+}
+
+.desc-btn {
+    padding: 5px 15px 5px 15px !important;
 }
 
 .job-li li:hover {

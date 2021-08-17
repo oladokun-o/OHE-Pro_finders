@@ -324,24 +324,33 @@ module.exports = {
             Jobs.find({}, (err, result) => {                
                 if (result) {
                     res.status(200).send(result)
-                    console.log('sent')
+                    //console.log('sent')
                 } else {
                     res.status(404).send('No pros found')
-                    console.log('not sent')
+                    //console.log('not sent')
+                }
+            })
+        } else if (type == 'description') {
+            Jobs.find({job: jobtype},'-_id description', (err, result) => {                
+                if (result) {
+                    res.status(200).send(result)
+                    //console.log(result)
+                } else {
+                    res.status(404).send('No pros found')
+                    //console.log('not sent')
                 }
             })
         } else {
             Jobs.find({job: { '$regex': '^'+jobtype}}, {}, (err, result) => {                
                 if (result) {
                     res.status(200).send(result)
-                    console.log('sent')
+                    //console.log('sent')
                 } else {
                     res.status(404).send('No pros found')
-                    console.log('not sent')
+                    //console.log('not sent')
                 }
             })
         }
-}, function(err, result) {
     },
     onGetGoogleCB: async function (req, res) {
         let token = req.cookies.auth
