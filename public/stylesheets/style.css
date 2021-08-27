@@ -19,6 +19,10 @@ body::-webkit-scrollbar {
     /* Safari and Chrome */
 }
 
+button {
+    cursor: pointer;
+}
+
 main {
     min-height: 100%;
     margin: 0 !important;
