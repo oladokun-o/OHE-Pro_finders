@@ -19,9 +19,7 @@ require('../middlewares/fb-passport')(passport);
 
 router
     /* GET home page. */
-    .get('/', function (req, res, next) {
-        res.render('', { title: 'OHE' });
-    })
+    .get('/', loggeduser.onGetHome)
     .get('/contact', function (req, res, next) {
         res.render('contact', { title: 'Contact Us' });
     })

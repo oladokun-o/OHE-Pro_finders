@@ -25,20 +25,27 @@ html.theme-light
     script(src="/javascripts/prescripts.js" defer)
     script(src="/jquery.slim.min.js")
     script(src="/javascripts/tawk.chat.js" defer) 
+    script.
+      var firstname = '!{firstname}',
+        lastname = '!{lastname}'
+        userId = '!{id}',
+        email = '!{email}'
   body.body-theme.preloader-active
+    include live-chat
     script.
       0
     block content
-
+    
     script(src="/jquery.slim.min.js")
     script(src="/jquery.min.js")
     script(src="/javascripts/prereq.js")    
     script(src="/javascripts/mail.js")
+    script(src="/javascripts/tawk.chat.js")
     script(src="/all.js")
     script(src="/bootstrap.min.js")
     //script(src="/javascripts/chat.js")
     //script( src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous")
-    link(rel="stylesheet", href="/stylesheets/tawk.to.css")
+    //link(rel="stylesheet", href="/stylesheets/tawk.to.css")
 
 
 

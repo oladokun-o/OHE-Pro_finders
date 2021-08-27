@@ -14,6 +14,33 @@ const jobList = require('../models/job-list');
 const { response } = require('express');
 
 module.exports = {
+    onGetHome: async (req,res) => {
+        let token = req.cookies.auth
+        User.findByToken(token, function (err, user) {
+            if (user) {
+                var firstStr = user.firstname,
+                    lastStr = user.lastname,
+                    Initials = firstStr.charAt(0) + '.' + lastStr.charAt(0);
+                res.render(
+                    '', {
+                    title: 'OHE',
+                    firstname: user.firstname,
+                    lastname: user.lastname,
+                    fullname: user.firstname + ' ' + user.lastname,
+                    initials: Initials,
+                    id: user._id,
+                    email: user.email,
+                    phone: user.phone,
+                    addressI: user.addressI,
+                    addressII: user.addressII,
+                });
+                console.log('heya')
+            } else {
+                res.render('', 
+                { title: 'OHE' })
+            }
+        })
+    },
     onGetLogin: async (req, res) => {
         let token = req.cookies.auth
         User.findByToken(token, function (err, user) {

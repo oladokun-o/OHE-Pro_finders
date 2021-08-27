@@ -3,6 +3,7 @@ extends layout
 block content
   include scrollTop  
   include menu
+  script(src="/javascripts/work.js")
   .page-contn-image.p-0
     .page-width.p-0
       .image-contn.container-fluid.pl-lg-4.mt-3.pb-5
@@ -10,8 +11,9 @@ block content
           .image-float.col-md-5.col-lg-5.col-sm-12.col-12.p-4.pt-5.pb-5
             .sub-headline Speak to a pro today!
             .search-jobs.form-group.mt-2
-              input#search(type="search",onkeyup="searchDB(this)",autocomplete="off", name="searchjobs").form-control
-              span.search-icon
+              include work-list
+              //input#search(type="search",onkeyup="searchDB(this)",autocomplete="off", name="searchjobs").form-control
+              //span.search-icon
                 i.lni.lni-keyword-research            
                 span(class="typewrite" data-period="2000" data-type='[ "Speak to a Doctor", "Speak to an Engineer", "Speak to a Therapist" ]')
             .subber-headline.pb-5 Chat with all kinds of Experts for personalized help, 24/7.
