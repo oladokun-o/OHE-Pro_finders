@@ -68,6 +68,12 @@
     .work-list {
         height: 350px !important;
     }
+    .opt-contn-text-content p {
+        font-size: smaller;
+    }
+    /*.work-wrap {
+        padding-bottom: 5.5rem !important;
+    }*/
 }
 
 @media only screen and (max-width: 400px) {

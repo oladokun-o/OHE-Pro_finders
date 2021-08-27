@@ -1,0 +1,17 @@
+.tawk-max-container {
+    border: none !important;
+}
+
+.tawk-div {
+    display: flex !important;
+    justify-content: center !important;
+    position: absolute;
+    width: 100%;
+    top: 5px;
+    z-index: 10;
+    overflow-y: hidden !important;
+}
+
+.live-chat-header {
+    z-index: 15;
+}

@@ -35,17 +35,7 @@ block content
 						.row
 							.col-md-7.col-12.p-0
 								.search-jobs.form-group.mt-1
-									form.search-form
-										//input#search.search.pl-2(type="search"/*,onkeyup="searchDB(this)"*/,autocomplete='on', name="searchjobs", placeholder="Search for any keyword e.g law" required).form-control
-										.text-left
-											label Select expert:
-										select#search.search(name='cars' pl).select-list
-											option(value='').hide Choose option
-										//span.d-md-none.filter-icon
-											i.fa.fa-caret-down.pl-1.caret
-										//span.search-icon
-											button.m-3
-												i.lni.lni-keyword-research								
+									include work-list
 								.container-fluid.border-top.work-categories.sm-work.fade-out.d-md-none
 									//span.close-icon
 										i.lni.lni-close

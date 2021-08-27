@@ -65,5 +65,8 @@
     "remove": "^0.1.5",
     "socket.io": "^4.1.2",
     "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "rewire": "^5.0.0"
   }
 }

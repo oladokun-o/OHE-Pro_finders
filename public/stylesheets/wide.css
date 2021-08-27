@@ -9,7 +9,10 @@
         justify-content: center;
         margin-top: 80px;
     }
-
+    
+.work-wrap {
+    padding: 17px !important;
+}
     .page-contn-image {
         display: flex;
         width: 100%;
@@ -151,5 +154,9 @@
         transform: translateY(-125px);
         z-index: -1;
         width: 500px;
+    }
+
+    .tawk-div {
+        top: 9px;
     }
 }

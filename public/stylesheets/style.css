@@ -26,7 +26,6 @@ main {
     position: relative;
 }
 
-
 /*preloader styling*/
 
 
@@ -1825,6 +1824,9 @@ img {
     height: 100%;
 }
 
+.user-avatar {
+    text-transform: capitalize;
+}
 
 .back-to-dashboard-sm-avatar {
     position: absolute !important;
@@ -1833,8 +1835,10 @@ img {
 }
 
 input:focus {
-    outline: 1px solid #ef6c26 !important;
+    border: 1px solid #ef6c26 !important;
     box-shadow: none !important;
+    border-radius: 5px !important;
+    outline: none !important;
 }
 
 select:focus {
@@ -1888,4 +1892,8 @@ select:focus {
 
 .job-li:last-child {
     margin-bottom: 15px !important;
+}
+
+#fae6bh62j2m1fe41jcpo {
+    box-shadow: 0 0 10px black !important;
 }
