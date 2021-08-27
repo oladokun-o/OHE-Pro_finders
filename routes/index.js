@@ -51,7 +51,7 @@ router
     .get('/login', loggeduser.onGetLogin)
     .post('/dashboard', loggeduser.onPostDashboard)
     .post('/register', loggeduser.onRegister)
-    .get(['/-dashboard', '/-chats', '/-jobs', '/-account', '/-help'], loggeduser.onGetLoggedInPages)
+    .get(['/-dashboard', '/-jobs', '/-account', '/-help'], loggeduser.onGetLoggedInPages)
     .get('/dashboard', loggeduser.onGetLogin)
     .get('/logout', auth, loggeduser.onGetLogout)
     .post('/login/:userId', jwt.encode, (req, res, next) => {
