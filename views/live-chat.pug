@@ -4,23 +4,10 @@ style.
     border: none !important;
     border-radius: 10px !important;
   }
-
 // Start of Tawk.to Script
 script(type='text/javascript').
   var Tawk_API=Tawk_API||{};
-  Tawk_API.visitor = {
-  
-  };
-  var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-  Tawk_API.visitor = {
-    name : firstname+' '+lastname,
-    email : email,
-    hash  : 'd32bbdb958cf04fd8603b006fb9c36af86d1de13'
-  };
-  Tawk_API.onPrechatSubmit = function(data){
-    //place your code here
-    console.log('hello')
-  };
+  var Tawk_LoadStart=new Date();
   (function(){
   var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
   s1.async=true;
@@ -29,3 +16,12 @@ script(type='text/javascript').
   s1.setAttribute('crossorigin','*');
   s0.parentNode.insertBefore(s1,s0);
   })();
+  Tawk_API.onLoad = function(){
+    Tawk_API.setAttributes({
+    'name' : firstname + ' ' + lastname,
+    'email': email,
+    'hash' : 'd32bbdb958cf04fd8603b006fb9c36af86d1de13'
+    }, function (error) {});
+  };
+
+// End of Tawk.to Script

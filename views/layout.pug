@@ -31,7 +31,9 @@ html.theme-light
         userId = '!{id}',
         email = '!{email}'
   body.body-theme.preloader-active
-    include live-chat
+    - var authenticated = email;
+    if (authenticated)
+      include live-chat
     script.
       0
     block content

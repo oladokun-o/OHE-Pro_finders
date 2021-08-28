@@ -1766,7 +1766,7 @@ img {
     color: white;
 }
 
-.user-avatar p {
+.user-avatar {
     text-transform: uppercase !important;
 }
 
