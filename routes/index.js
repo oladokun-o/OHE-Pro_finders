@@ -68,6 +68,10 @@ router
     .post('/contact-us', loggeduser.onPostContact)
     .get('/google', passport.authenticate('google', { scope: ['profile', 'email'] }))
     .get('/google/callback', passport.authenticate('google', { failureRedirect: '/login' }), loggeduser.onGetGoogleCB)
+    .get('/facebook', passport.authenticate('facebook', { scope: 'email' }),()=>{
+        console.log('running')
+    })
+    .get('/facebook/callback/dashboard', passport.authenticate('facebook', { failureRedirect: '/login' }), loggeduser.onFacebookCb)
     .post('/client-message', loggeduser.onPostClientMsg)
     .get('/reply-client/:token', loggeduser.onGetRoomFromEmail)
     .post('/update-email', loggeduser.onUpdateEmail)

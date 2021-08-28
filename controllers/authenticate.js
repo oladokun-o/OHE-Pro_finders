@@ -412,6 +412,34 @@ module.exports = {
             }
         })
     },
+    onFacebookCb: async function (req, res) {
+        var useremailvar = { email: req.user.email || req.body.email };
+    if (useremailvar.email == undefined) {
+        console.log('no email for this user, rendering email form')
+        var user_email_msg = req.user.firstname + ' ' + 'there is no email for this account, enter and confirm your email address';
+        var fullname = req.user.firstname + ' ' + req.user.lastname;
+        var userId = req.user.id;
+        res.render('email-form', { title: 'Update Email', mail_msg: user_email_msg, fullname: fullname, userid: userId });
+    } else {
+        User.findOne({ email: req.user.email }, function(err, user) {
+            if (user) {
+                user.generateToken((err, user) => { 
+                    if (err) return res.redirect('login');
+                    res.cookie('auth', user.token).render(
+                        'dashboard', {
+                            title: 'Dashboard',
+                            firstname: user.firstname,
+                            lastname: user.lastname,
+                        })
+                })
+            } else {
+                console.log(err);
+                return res.render('login', { title: 'Login', errmsg: 'An error occured, please try again later' });
+            }
+        })
+    }
+
+    },
     onUpdateEmail: async function (req, res) {
         var oldEmail = req.body.oldemail,
             newEmail = {
