@@ -12,7 +12,7 @@ const Support = require('../models/support');
 const jobs = require('../models/jobs');
 const jobList = require('../models/job-list');
 const { response } = require('express');
-
+const Price = require('../models/price')
 module.exports = {
     onGetHome: async (req,res) => {
         let token = req.cookies.auth
@@ -247,6 +247,17 @@ module.exports = {
             }
         })
         //res.render('pay', {title: 'Payment'});
+    },
+    onGetPaymentDetails: async (req, res) => {
+        Price.find({}, (err, result) => {                
+            if (result) {
+                res.status(200).send(result)
+                console.log('sent')
+            } else {
+                res.status(404).send('No details')
+                console.log('not sent')
+            }
+        })
     },
     onGetLogout: async function (req, res) {
         let token = req.cookies.auth;

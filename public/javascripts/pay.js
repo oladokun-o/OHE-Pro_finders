@@ -41,3 +41,35 @@ $('.button').click(function (e) {
          }
     });
 });
+$(document).ready(function(e) {
+    //e.preventDefault()
+    //var select = $('.select-list')
+    $.ajax({
+        method: 'POST',
+        url: '/payment-details',
+        success: function(response) {                              
+                var amount = response.map((o) => (
+                    o.amount
+                )),
+                    currency = response.map((o) => (
+                        o.currency
+                    ))
+                const expAmount = [].concat(...amount)
+                //console.log(jobCollection)
+                var expHtml = $.map(expAmount, function (value) {
+                    return (value);
+                })
+                const expCurrency = [].concat(...currency)
+                //console.log(jobCollection)
+                var expCurrHtml = $.map(expCurrency, function (value) {
+                    return (value);
+                })
+            $('.amount').append(expHtml.join(''))
+            $('.dollar').append(expCurrHtml.join(''))
+            //console.log(response)
+        },
+        error: function(response) {
+            $('.amount').append(response.responseText)
+        }
+    })
+})

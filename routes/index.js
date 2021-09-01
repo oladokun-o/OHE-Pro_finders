@@ -52,6 +52,7 @@ router
     .get('/help', loggeduser.onGetHelp)
     .get(['/settings', '/account'], loggeduser.onGetAcct)
     .get('/pay', loggeduser.onPay)
+    .post('/payment-details', loggeduser.onGetPaymentDetails)
     .get('/dashboard', loggeduser.onGetLogin)
     .get('/logout', auth, loggeduser.onGetLogout)
     .post('/login/:userId', jwt.encode, (req, res, next) => {
