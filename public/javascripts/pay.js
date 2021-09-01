@@ -4,19 +4,18 @@ $('.expert').append(expert)
 $('.back').on('click',()=>{
     window.close()
 })
-console.log($('.amount').text())
+//console.log($('.amount').text())
 $('.button').click(function (e) { 
     e.preventDefault();
     $.ajax({
         method: "POST",
+        contentType: "application/json; charset=utf-8",
         url: "https://api.flutterwave.com/v3/payments",
-        beforeSend: function(request) {
-            request.setRequestHeader("Authorization", "Bearer FLWSECK_TEST-8c3bd46a6862a54dd7cceb3aa16c236e-X")
-        },
+        beforeSend: function(request) {request.setRequestHeader("Authorization", "Bearer FLWSECK_TEST-8c3bd46a6862a54dd7cceb3aa16c236e-X")},
         data: {
             //"tx_ref":"hooli-tx-1920bbtytty",
             "currency":$('.dollar').text(),
-            "amount":$('.amount').val(),
+            "amount":$('.amount').text(),
             "redirect_url":"https://webhook.site/9d0b00ba-9a69-44fa-a43d-a82c33c36fdc",
             "payment_options":"card",
             "meta":{
@@ -38,7 +37,7 @@ $('.button').click(function (e) {
              console.log('success:'+response)
          },
          error:(response)=>{
-             console.log('error: '+response)
+             console.log('error: '+ response.responseJSON.message)
          }
     });
 });
