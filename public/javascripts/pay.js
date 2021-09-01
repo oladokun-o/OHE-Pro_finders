@@ -15,7 +15,7 @@ $('.button').click(function (e) {
             url: 'https://api.flutterwave.com/v3/payments',
             //headers: {Authorization: "Bearer FLWSECK_TEST-8c3bd46a6862a54dd7cceb3aa16c236e-X",},
              success:(response)=>{
-                $('.button').html('Pay')
+                $('.button').html('Pay amount')
                 $('.alert').removeClass('fade-out').fadeIn('fast').html('Sucess')
                 setTimeout(() => {
                     $('.alert').fadeOut('fast')
@@ -23,7 +23,7 @@ $('.button').click(function (e) {
                 console.log('success:'+response)
              },
              error:(response)=>{
-                $('.button').removeClass('nullified').html('Pay')
+                $('.button').removeClass('nullified').html('Pay amount')
                 $('.alert').removeClass('fade-out').fadeIn('fast').html(response.responseJSON.message)
                 setTimeout(() => {
                     $('.alert').fadeOut('fast')
