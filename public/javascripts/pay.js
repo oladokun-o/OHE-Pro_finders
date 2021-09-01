@@ -10,7 +10,9 @@ $('.button').click(function (e) {
     $.ajax({
         method: "POST",
         url: "https://api.flutterwave.com/v3/payments",
-        headers: {"Authorization": "Bearer FLWSECK_TEST-8c3bd46a6862a54dd7cceb3aa16c236e-X"},
+        beforeSend: function(request) {
+            request.setRequestHeader("Authorization", "Bearer FLWSECK_TEST-8c3bd46a6862a54dd7cceb3aa16c236e-X")
+        },
         data: {
             //"tx_ref":"hooli-tx-1920bbtytty",
             "currency":$('.dollar').text(),
