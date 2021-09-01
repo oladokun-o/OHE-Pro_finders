@@ -1,0 +1,59 @@
+doctype html
+html.theme-light
+  head
+    meta(charset="UTF-8")
+    meta(http-equiv="X-UA-Compatible" content="ie=edge")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0")    
+    title= title
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel='icon', type="image/png",  href='/images/OHE-Logo.png')
+    link(rel='icon', type="image/x-icon", href='/images/OHE-Logo.png')
+    link(rel="shortcut icon", href="/images/OHE-Logo.png", type="image/x-icon")
+    link(rel='stylesheet', href='/stylesheets/LineIcons.css')
+    link(rel='stylesheet', href='/bootstrap.min.css')
+    link(rel='stylesheet', href='/bootstrap-grid.min.css')
+    link(rel='stylesheet', href='/all.css')
+    link(rel='stylesheet', href='/stylesheets/small.css')
+    link(rel='stylesheet', href='/stylesheets/wide.css')
+    link(rel='stylesheet', href='/stylesheets/animations.css')
+    link(rel="preconnect",href="https://fonts.gstatic.com")
+    link(rel='preconnect', href='https://cdn.lineicons.com/2.0/LineIcons.css')
+    link(rel="stylesheet", href="/hamburgers.min.css")
+    link(rel="stylesheet", href="/stylesheets/menu.css")
+    link(rel="preconnect" href="https://fonts.gstatic.com")
+    link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous")
+    link(rel='stylesheet', href='/stylesheets/pay.css')
+    script(src="/jquery.slim.min.js")
+    body
+        .container.d-flex.justify-content-center.mt-5.text-letf
+            .card
+                div
+                    .pt-4.px-3.text-left
+                        .name
+                            //|Expert:
+                            span.expert.px-2
+                    .py-3.px-4
+                        .first.pl-2.d-flex.py-2
+                            .form-check
+                                input.form-check-input.mt-3.dot(type="radio", name="optradio", checked)
+                            .border-left.pl-2.text-left
+                                span.head Total amount
+                                div
+                                    span.dollar &#8358;
+                                    span.amount 3000
+                    //.py-2.px-4
+                        .second.pl-2.d-flex.py-2.text-left
+                            .form-check
+                                input.form-check-input.mt-3.dot(type="radio", name="optradio")
+                            .border-left.pl-2.text-left
+                                span.head Other amount
+                                .d-flex.text-left.justify-content-left.pl-0
+                                    span.dollar $
+                                    input.form-control.ml-1(type="text", name="text", placeholder="0")
+                    .d-flex.justify-content-between.px-4.pt-2.pb-3
+                        div
+                            span.back Go back
+                        button.btn.btn-primary.button(type="button") Pay amount
+        script(src="/javascripts/pay.js")
+        script(src="/jquery.slim.min.js")
+        script(src="/jquery.min.js")

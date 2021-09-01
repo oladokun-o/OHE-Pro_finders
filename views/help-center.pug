@@ -1,43 +1,47 @@
-.help-center-contn
-	.setting-header.pl-3.pt-3.pr-3.container-fluid.pb-0
-		.row
-			.col-2.text-left.prev-btn
-				//.d-md-none
-					button.-go-home
-						i.lni.lni-chevron-left
-						| Home
-			.col-8.text-center.page-title.d-flex.justify-content-center
-				img(src="/images/help.png").help-img
-				p 24/7 Help Center
-			.col-2.text-right
+extends layout
 
-			//.col-12.text-left.sub-page-title.pb-0.pt-0.pl-4
-				p.mb-3.mt-0
-			.col-12.text-center.page-subtitle-text.text-muted
-				- var and = '&';
-				p Our customer care team are standing by for service #{and} support
-	.setting-body.pl-0.pr-0.pt-0.pb-4
-		.container-fluid.p-4
-			.row
-				.col-12.col-md-6.mt-3
-					a(href="/faq")
-						.opt-contn.col-12.pt-0.pb-0
-							.row
-								.col-2.opt-contn-icon.text-center.pr-0.pt-1
-									i.fa.fa-question-circle
-								.col-10.opt-contn-text.text-left.pl-0
-									.opt-contn-text-content.pt-3
-										.col-12
-											h6.m-0 FAQs
-											p.text-muted Find answers instantly
-				.col-12.col-md-6.mt-3
-					a(href="/contact#form")
-						.opt-contn.col-12.pt-0.pb-0
-							.row
-								.col-2.opt-contn-icon.text-center.pr-0.pt-1
-									i.fa.fa-envelope
-								.col-10.opt-contn-text.text-left.pl-0
-									.opt-contn-text-content.pt-3
-										.col-12
-											h6.m-0 Email
-											p.text-muted Get solutions sent to your inbox
+block content
+	include dashboard-subhead
+		.help-center-contn
+			.setting-header.pl-3.pt-3.pr-3.container-fluid.pb-0
+				.row
+					.col-2.text-left.prev-btn
+						//.d-md-none
+							button.-go-home
+								i.lni.lni-chevron-left
+								| Home
+					.col-8.text-center.page-title.d-flex.justify-content-center
+						img(src="/images/help.png").help-img
+						p 24/7 Help Center
+					.col-2.text-right
+
+					//.col-12.text-left.sub-page-title.pb-0.pt-0.pl-4
+						p.mb-3.mt-0
+					.col-12.text-center.page-subtitle-text.text-muted
+						- var and = '&';
+						p Our customer care team are standing by for service #{and} support
+			.setting-body.pl-0.pr-0.pt-0.pb-4
+				.container-fluid.p-4
+					.row
+						.col-12.col-md-6.mt-3
+							a(href="/faq")
+								.opt-contn.col-12.pt-0.pb-0
+									.row
+										.col-2.opt-contn-icon.text-center.pr-0.pt-1
+											i.fa.fa-question-circle
+										.col-10.opt-contn-text.text-left.pl-0
+											.opt-contn-text-content.pt-3
+												.col-12
+													h6.m-0 FAQs
+													p.text-muted Find answers instantly
+						.col-12.col-md-6.mt-3
+							a(href="/contact#form")
+								.opt-contn.col-12.pt-0.pb-0
+									.row
+										.col-2.opt-contn-icon.text-center.pr-0.pt-1
+											i.fa.fa-envelope
+										.col-10.opt-contn-text.text-left.pl-0
+											.opt-contn-text-content.pt-3
+												.col-12
+													h6.m-0 Email
+													p.text-muted Get solutions sent to your inbox

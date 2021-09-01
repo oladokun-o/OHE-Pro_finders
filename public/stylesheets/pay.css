@@ -1,0 +1,96 @@
+.container {
+    width: 600px;
+    background-color: #fff;
+    padding-top: 100px;
+    padding-bottom: 100px
+}
+
+.card {
+    background-color: #fff;
+    width: 300px;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)
+}
+input[type="radio"] {
+    color: #ef6c26;
+    background: #ef6c26;
+    stroke: #ef6c26;
+}
+.name {
+    font-size: 15px;
+    color: #403f3f;
+    font-weight: bold
+}
+
+.cross {
+    font-size: 11px;
+    color: #b0aeb7
+}
+
+.pin {
+    font-size: 14px;
+    color: #ef6c26
+}
+
+.first {
+    border-radius: 8px;
+    border: 1.5px solid #ef6c26;
+    color: #000;
+    background-color: #ef6c2613
+}
+
+.second {
+    border-radius: 8px;
+    border: 1px solid #acacb0;
+    color: #000;
+    background-color: #fff
+}
+
+.dot {}
+
+.head {
+    color: #ef6c26;
+    font-size: 12px
+}
+
+.dollar {
+    font-size: 18px;
+    color: #ef6c26
+}
+
+.amount {
+    color: #ef6c26;
+    font-weight: bold;
+    font-size: 18px
+}
+
+.form-control {
+    font-size: 18px;
+    font-weight: bold;
+    width: 60px;
+    height: 28px
+}
+
+.back {
+    color: #aba4a4;
+    font-size: 15px;
+    line-height: 73px;
+    font-weight: 400;
+    cursor: pointer;
+}
+
+.button {
+    width: 150px;
+    height: 60px;
+    border-radius: 8px;
+    font-size: 17px;
+    background: #ef6c26;
+    border: none !important;
+}
+
+.button:hover {
+    outline: none !important;
+    background: #f16214 !important;
+    box-shadow: none;
+    transition: all .50s;
+}

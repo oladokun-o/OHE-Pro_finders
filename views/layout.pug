@@ -24,7 +24,10 @@ html.theme-light
     link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous")
     script(src="/javascripts/prescripts.js" defer)
     script(src="/jquery.slim.min.js")
-    script(src="/javascripts/tawk.chat.js" defer) 
+    if (title == "Error!")
+      //script(src="/javascripts/tawk.chat.js")
+    else
+      script(src="/javascripts/tawk.chat.js" defer)
     script.
       var firstname = '!{firstname}',
         lastname = '!{lastname}'
@@ -42,7 +45,10 @@ html.theme-light
     script(src="/jquery.min.js")
     script(src="/javascripts/prereq.js")    
     script(src="/javascripts/mail.js")
-    script(src="/javascripts/tawk.chat.js")
+    if (title == "Error!")
+      //script(src="/javascripts/tawk.chat.js")
+    else
+      script(src="/javascripts/tawk.chat.js")
     script(src="/all.js")
     script(src="/bootstrap.min.js")
     //script(src="/javascripts/chat.js")

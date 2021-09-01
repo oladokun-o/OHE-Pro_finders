@@ -169,7 +169,7 @@ module.exports = {
             });
         });
     },
-    onGetLoggedInPages: async (req, res) => {
+    onGetAcct: async (req, res) => {
         let token = req.cookies.auth
         User.findByToken(token, function (err, user) {
             if (user) {
@@ -177,8 +177,9 @@ module.exports = {
                     lastStr = user.lastname,
                     Initials = firstStr.charAt(0) + '.' + lastStr.charAt(0);
                 res.render(
-                    'dashboard', {
-                    title: 'Dashboard',
+                    'setting', {
+                    title: 'Account',
+                    acct: true,
                     firstname: user.firstname,
                     lastname: user.lastname,
                     fullname: user.firstname + ' ' + user.lastname,
@@ -193,6 +194,35 @@ module.exports = {
                 res.render('login', { title: 'Login' })
             }
         })
+    },
+    onGetHelp: async (req, res) => {
+        let token = req.cookies.auth
+        User.findByToken(token, function (err, user) {
+            if (user) {
+                var firstStr = user.firstname,
+                    lastStr = user.lastname,
+                    Initials = firstStr.charAt(0) + '.' + lastStr.charAt(0);
+                res.render(
+                    'help-center', {
+                    title: 'Help & Support',
+                    help: true,
+                    firstname: user.firstname,
+                    lastname: user.lastname,
+                    fullname: user.firstname + ' ' + user.lastname,
+                    initials: Initials,
+                    id: user._id,
+                    email: user.email,
+                    phone: user.phone,
+                    addressI: user.addressI,
+                    addressII: user.addressII,
+                });
+            } else {
+                res.render('login', { title: 'Login' })
+            }
+        })
+    },
+    onPay: async (req, res) => {
+        res.render('pay', {title: 'Payment'});
     },
     onGetLogout: async function (req, res) {
         let token = req.cookies.auth;

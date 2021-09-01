@@ -10,22 +10,37 @@ block content
 						a(href="/")
 							img.brand-logo-img(src="/images/OHE-Logo.png", alt="")
 				ul.mt-4.index-menu.text-left.menu-item
-					a(href='/-dashboard')
-						li.text-left.p-4.pl-5.active.-dashboardbtn
-							i.lni.lni-home.pr-3
-							span dashboard 
-					//a(href='/-chats') 
+					a(href='/dashboard')
+						if (title == 'Dashboard')
+							li.text-left.p-4.pl-5.active.-dashboardbtn
+								i.lni.lni-home.pr-3
+								span dashboard 
+						else
+							li.text-left.p-4.pl-5.-dashboardbtn
+								i.lni.lni-home.pr-3
+								span dashboard 
+					//a(href='/chats') 
 						li.text-left.p-4.pl-5.-chatsbtn
 							i.far.fa-comment-alt
 							span.pl-3 Chats
-					a(href='/-account') 
-						li.text-left.p-4.pl-5.-settingsbtn
-							i.lni.lni-cog
-							span.pl-3 Settings
-					a(href='/-help') 
-						li.text-left.p-4.pl-5.-help-centerbtn
-							i.lni.lni-help
-							span.pl-3 Help Center                                  
+					a(href='/settings')
+						if (acct)
+							li.text-left.p-4.pl-5.-settingsbtn.active
+								i.lni.lni-cog
+								span.pl-3 Settings
+						else
+							li.text-left.p-4.pl-5.-settingsbtn
+								i.lni.lni-cog
+								span.pl-3 Settings
+					a(href='/help')
+						if (help)
+							li.text-left.p-4.pl-5.-help-centerbtn.active
+								i.lni.lni-help
+								span.pl-3 Help Center                                  
+						else
+							li.text-left.p-4.pl-5.-help-centerbtn
+								i.lni.lni-help
+								span.pl-3 Help Center
 					a(href='/logout').logout
 						li.text-left.p-4.pl-5
 							i.lni.lni-exit.pr-3          
@@ -41,22 +56,37 @@ block content
 									a(href="/")
 										img.brand-logo-img(src="/images/OHE-Logo.png", alt="")
 							ul.index-menu.text-left.pb-5.pr-4.menu-item
-								a(href='/-dashboard')
-									li.text-left.p-4.pl-5.-dashboardbtn
-										i.lni.lni-home.pr-3
-										span dashboard
-								//a(href='/-chats')
+								a(href='/dashboard')
+									if (title == 'Dashboard')
+										li.text-left.p-4.pl-5.-dashboardbtn.active
+											i.lni.lni-home.pr-3
+											span dashboard
+									else
+										li.text-left.p-4.pl-5.-dashboardbtn
+											i.lni.lni-home.pr-3
+											span dashboard
+								//a(href='/chats')
 									li.text-left.p-4.pl-5.-chatsbtn
 										i.far.fa-comment-alt
 										span.pl-3 Chats
-								a(href='/-account') 
-									li.text-left.p-4.pl-5.-settingsbtn
-										i.lni.lni-cog
-										span.pl-3 Settings
-								a(href='/-help') 
-									li.text-left.p-4.pl-5.-help-centerbtn
-										i.lni.lni-help
-										span.pl-3 Help Center                                  								
+								a(href='/account')
+									if (acct)
+										li.text-left.p-4.pl-5.active.-settingsbtn
+											i.lni.lni-cog
+											span.pl-3 Settings
+									else
+										li.text-left.p-4.pl-5.-settingsbtn
+											i.lni.lni-cog
+											span.pl-3 Settings
+								a(href='/help') 
+									if (help)
+										li.text-left.p-4.pl-5.-help-centerbtn.active
+											i.lni.lni-help
+											span.pl-3 Help Center
+									else 
+										li.text-left.p-4.pl-5.-help-centerbtn
+											i.lni.lni-help
+											span.pl-3 Help Center
 								a(href='/logout').logout
 									li.text-left.p-4.pl-5
 										i.lni.lni-exit.pr-3          
@@ -76,17 +106,17 @@ block content
 										span.p-0.m-0.names #{fullname}
 									hr.m-0.hr
 
-									a(href='/-account').-edit-profile
+									a(href='/account').-edit-profile
 										.pl-3
 											i.lni.lni-user
 											span.pl-3 Edit profile
 									|
-									//a(href='/-chats').-chat
+									//a(href='/chats').-chat
 										.pl-3
 											i.far.fa-comment-alt
 											span.pl-3 Chats
 									|     
-									a(href='/-account').-set
+									a(href='/account').-set
 										.pl-3
 											i.lni.lni-cog
 											span.pl-3 Settings
@@ -121,17 +151,17 @@ block content
 														span.p-0.m-0.names #{fullname}
 													hr.m-0.hr
 
-													a(href='/-account').-edit-profile
+													a(href='/account').-edit-profile
 														.pl-3
 															i.lni.lni-user
 															span.pl-3 Edit profile
 													|
-													//a(href='/-chats').-chat
+													//a(href='/chats').-chat
 														.pl-3
 															i.far.fa-comment-alt
 															span.pl-3 Chats
 													|     
-													a(href='/-account').-set
+													a(href='/account').-set
 														.pl-3
 															i.lni.lni-cog
 															span.pl-3 Settings

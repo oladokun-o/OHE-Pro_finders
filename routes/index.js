@@ -49,7 +49,9 @@ router
     .get('/login', loggeduser.onGetLogin)
     .post('/dashboard', loggeduser.onPostDashboard)
     .post('/register', loggeduser.onRegister)
-    .get(['/-dashboard', '/-jobs', '/-account', '/-help'], loggeduser.onGetLoggedInPages)
+    .get('/help', loggeduser.onGetHelp)
+    .get(['/settings', '/account'], loggeduser.onGetAcct)
+    .get('/pay', loggeduser.onPay)
     .get('/dashboard', loggeduser.onGetLogin)
     .get('/logout', auth, loggeduser.onGetLogout)
     .post('/login/:userId', jwt.encode, (req, res, next) => {
@@ -68,9 +70,7 @@ router
     .post('/contact-us', loggeduser.onPostContact)
     .get('/google', passport.authenticate('google', { scope: ['profile', 'email'] }))
     .get('/google/callback', passport.authenticate('google', { failureRedirect: '/login' }), loggeduser.onGetGoogleCB)
-    .get('/facebook', passport.authenticate('facebook', { scope: 'email' }),()=>{
-        console.log('running')
-    })
+    .get('/facebook', passport.authenticate('facebook', { scope: 'email' }))
     .get('/facebook/callback/dashboard', passport.authenticate('facebook', { failureRedirect: '/login' }), loggeduser.onFacebookCb)
     .post('/client-message', loggeduser.onPostClientMsg)
     .get('/reply-client/:token', loggeduser.onGetRoomFromEmail)

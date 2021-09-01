@@ -10,7 +10,30 @@ block content
         .col-lg-4.col-md-4.alert.fade-out
       .container-fluid          
         .welcome-text.container-fluid.text-center
-          h2.head-tag.text-center.pt-4 Login   
+          h2.head-tag.text-center.pt-4 Login
+        .container-fluid.p-0.m-0
+          .row.p-0
+            .col-12.p-0.m-0.mt-3.col-md-12
+              //.d-flex.justify-content-center.align-items-center.p-0.pb-3
+              .col-12.text-center
+                a(href="/google").secondary-btn
+                  span.google                   
+                    i.lni.lni-google.pr-2
+                    | Sign in with Google
+            //.col-12.p-0.m-0.mt-3.col-md-6
+              .d-flex.justify-content-center.align-items-center.p-0.pb-3
+              .col-12.text-center.pt-4.pt-md-0
+                a(href="/facebook").secondary-btn
+                  span.fb                 
+                    i.lni.lni-facebook.pr-2
+                    | Login with Facebook
+            .d-flex.justify-content-center.col-12
+              .col-12.col-md-5
+                .pt-2.text-center.col-12
+                  .row
+                    .col-3.border-top.mt-3
+                    .col-6.p-0.text-muted.mt-1 or sign in with email
+                    .col-3.border-top.mt-3
       .container-fluid.form-parent.p-2
         .form-container.off-canvas.col-md-5.col-12.p-2
           form#formsignin.form-signin(action="/dashboard" method="POST")
@@ -39,24 +62,6 @@ block content
             .text-center.pt-3.pb-3
               button.primary-btn(type="submit").text-center
                 span Login
-              h4.pl-4.pr-4.m-2 OR
-              .container-fluid.p-0.m-0
-                .row.p-0
-                  .col-12.p-0.m-0.mt-3.col-md-6
-                    //.d-flex.justify-content-center.align-items-center.p-0.pb-3
-                    .col-12.text-center
-                      a(href="/google").secondary-btn
-                        span.google                   
-                          i.lni.lni-google.pr-2
-                          | Login with Google
-                  .col-12.p-0.m-0.mt-3.col-md-6
-                    //.d-flex.justify-content-center.align-items-center.p-0.pb-3
-                    .col-12.text-center.pt-4.pt-md-0
-                      a(href="/facebook").secondary-btn
-                        span.fb                 
-                          i.lni.lni-facebook.pr-2
-                          | Login with Facebook
-            .pt-2.pb-4
             span.pr-2.pb-5 New to OHE?
               a(href="/signup").ml-2 Sign up
   script(src="/javascripts/requests.js")    
