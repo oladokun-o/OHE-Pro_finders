@@ -9,8 +9,6 @@ $('.button').click(function (e) {
     e.preventDefault();
     $.ajax({
         method: "POST",
-        //contentType: "application/json; charset=utf-8",
-        //dataType: "dataType",
         url: "https://api.flutterwave.com/v3/payments",
         headers: {"Authorization": "Bearer FLWSECK_TEST-8c3bd46a6862a54dd7cceb3aa16c236e-X"},
         data: {
