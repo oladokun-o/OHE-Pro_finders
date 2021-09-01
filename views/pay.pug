@@ -26,6 +26,12 @@ html.theme-light
     script(src="/jquery.slim.min.js")
     script(src="/javascripts/prescripts.js" defer)
     body
+        script.
+            var firstname = '!{firstname}',
+                lastname = '!{lastname}'
+                userId = '!{id}',
+                email = '!{email}',
+                phone = '!{phone}'
         .container.d-flex.justify-content-center.mt-5.text-letf
             .card
                 div
