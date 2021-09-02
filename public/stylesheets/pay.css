@@ -58,10 +58,11 @@ input[type="radio"] {
     color: #ef6c26
 }
 
-.amount {
+.amount,.vat-amount,.fw-vat-amount,.total {
     color: #ef6c26;
     font-weight: bold;
-    font-size: 18px
+    font-size: 18px;
+    padding-inline-start: 2px !important;
 }
 
 .form-control {

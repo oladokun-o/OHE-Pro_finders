@@ -32,7 +32,9 @@ html.theme-light
                 userId = '!{id}',
                 email = '!{email}',
                 phone = '!{phone}'
-        .container.d-flex.justify-content-center.mt-5.text-letf
+        .alert-contn.justify-content-center.text-center.col-12.col-md-8.col-lg-9
+            .col-12.col-md-6.alert.fade-out
+        .container.d-flex.justify-content-center.mt-5.text-left
             .card
                 div
                     .pt-4.px-3.text-left
@@ -42,21 +44,34 @@ html.theme-light
                     .py-3.px-4
                         .first.pl-2.d-flex.py-2
                             .form-check
-                                input.form-check-input.mt-3.dot(type="radio", name="optradio", checked)
+                                input.form-check-input.mt-3.dot(type="radio", checked)
                             .border-left.pl-2.text-left
-                                span.head Total amount
+                                span.head Chat session charge
                                 div
                                     span.dollar
                                     span.amount
-                    //.py-2.px-4
-                        .second.pl-2.d-flex.py-2.text-left
+                    .py-2.px-4
+                        .first.pl-2.d-flex.py-2.text-left
                             .form-check
-                                input.form-check-input.mt-3.dot(type="radio", name="optradio")
+                                input.form-check-input.mt-3.dot(type="radio" checked)
                             .border-left.pl-2.text-left
+                                span.head VAT
+                                .d-flex.text-left.justify-content-left.pl-0
+                                    span.dollar
+                                    span.vat-amount
                                 span.head Other amount
                                 .d-flex.text-left.justify-content-left.pl-0
-                                    span.dollar $
-                                    input.form-control.ml-1(type="text", name="text", placeholder="0")
+                                    span.dollar
+                                    span.fw-vat-amount
+                    .py-3.px-4
+                        .first.pl-2.d-flex.py-2
+                            .form-check
+                                input.form-check-input.mt-3.dot(type="radio", checked)
+                            .border-left.pl-2.text-left
+                                span.head Total
+                                div
+                                    span.dollar
+                                    span.total
                     .d-flex.justify-content-between.px-4.pt-2.pb-3
                         div
                             span.back Go back

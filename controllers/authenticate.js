@@ -13,6 +13,7 @@ const jobs = require('../models/jobs');
 const jobList = require('../models/job-list');
 const { response } = require('express');
 const Price = require('../models/price')
+const SubPrice = require('../models/sub-price')
 const crypto = require('crypto')
 module.exports = {
     onGetHome: async (req,res) => {
@@ -250,14 +251,25 @@ module.exports = {
         //res.render('pay', {title: 'Payment'});
     },
     onGetPaymentDetails: async (req, res) => {
-        //var tx_ref = crypto.randomBytes(16).toString('hex')
-        Price.find({}, (err, result) => {                
+        
+        Price.find({}, (err, result) => {                       
             if (result) {
                 res.status(200).send(result)
-                console.log('sent')
+                //console.log('sent')
             } else {
                 res.status(404).send('No details')
-                console.log('not sent')
+                //console.log('not sent')
+            }
+        })
+    },
+    onGetSubPayment: async (req, res) => {
+        SubPrice.find({},'-_id', (err, docs)=>{
+            if (docs) {
+                res.status(200).send(docs)
+                //console.log('sent')
+            } else {
+                res.status(404).send('No details')
+                //console.log('not sent')
             }
         })
     },

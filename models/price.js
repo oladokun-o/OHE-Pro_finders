@@ -1,9 +1,9 @@
 var mongoose = require('mongoose');
 const priceSchema = mongoose.Schema({
-    job: {
+    amount: {
         type: String
     },
-    description: {
+    currency: {
         type: String
     }
 },
