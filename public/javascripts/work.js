@@ -64,7 +64,7 @@ jobLists.on('click', (e) => {
                         const jobCollection = [].concat(...joblist)
                         //console.log(jobCollection)
                         var jobshtml = $.map(jobCollection, function (value) {
-                            return ('<button onClick="jobAnchor(this)">' + value + '</button><br>');
+                            return ('<button class="list-btn" onClick="jobAnchor(this)">' + value + '</button><br>');
                         })
                     var list = jobshtml.join('');
                     var listSpan = $('<span class="job-span-list show">' + list + '</span>');
@@ -85,8 +85,9 @@ function jobAnchor(event) {
     var e = event,
         eDescriptionContn = $('<p class="p-2"></p>'),
         req = e.innerText,
-        eDescriptionBtn = $('<br><button class="primary-btn desc-btn mt-2 text-center">Chat</button>');
-        //localStorage.setItem('descriptionId', req)
+        eDescriptionBtn = $('<br><button title="'+req+'" onclick="getExpert(this)" class="primary-btn desc-btn mt-2 text-center">Chat</button>');
+        localStorage.setItem('expert_title', req)
+        //console.log(e)
     if (e.classList.contains('show')) {
         //console.log('event still showing, now removing class "show"')
         e.classList.remove('show')
@@ -102,7 +103,7 @@ function jobAnchor(event) {
                     subject: req,
                     type: 'description'
                 },
-            success: function (response) {
+                success: function (response) {
                     //console.log(response)
                     var jobDescriptionResponse = response.map((o) => (
                             o.description
@@ -137,3 +138,12 @@ function closeDesc(e) {
         }
     })
 }*/
+
+function getExpert(event) {
+    //console.log(event.title)
+    var exp = localStorage.getItem('expert_title') || event.title;
+    
+    setTimeout(() => {
+        window.location.href = '/dashboard?'+exp
+    }, 2000);
+}

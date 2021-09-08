@@ -79,9 +79,9 @@ addressII.on('blur',() => {lockInputs() })
 */
 profileForm.on('submit', (event) => {
     //emailAddress.removeClass('edit-active').attr('disabled', true)
-    phoneNumber.removeClass('edit-active').attr('disabled', true)
-    addressI.removeClass('edit-active').attr('disabled', true)
-    addressII.removeClass('edit-active').attr('disabled', true)
+    //phoneNumber.removeClass('edit-active').attr('disabled', true)
+    //addressI.removeClass('edit-active').attr('disabled', true)
+    //addressII.removeClass('edit-active').attr('disabled', true)
     event.preventDefault()
     saveProfileBtn.addClass('nullified').attr('disabled', true).html('Saving..')
     setTimeout(() => {
@@ -115,7 +115,7 @@ profileForm.on('submit', (event) => {
             }, 3000);
             }
         })
-    }, 3000);
+    }, 1500);
 })
 var editEmail = $('.change-email'),
     submitEmail = $('.submit-email'),
@@ -134,6 +134,9 @@ function openEmailModal() {
 function closeEmailModal() {
     emailModal.fadeOut('fast').addClass('force-fade-out')
     newEmail.val('')
+    proceedEmailUpdate.removeClass('nullified').attr('disabled', false)
+    cancelEmailUpdate.removeClass('nullified').attr('disabled', false)
+    closeModal.removeClass('nullified').attr('disabled', false)
 }
 
 editEmail.on('click', () => {
@@ -167,14 +170,12 @@ proceedEmailUpdate.on('click', () => {
     loading = true;
     cancelEmailUpdate.addClass('nullified').attr('disabled', true)
     closeModal.addClass('nullified').attr('disabled', true)
-    setTimeout(() => {
-        if (changeType.text() == ' password') {
-            window.location.href = '/change-password'   
-        } else {
-            window.location.href = '/email-update'
-        }
-        closeEmailModal()
-    }, 2000);
+    closeEmailModal()
+    if (changeType.text() == ' password') {
+        window.location.href = '/change-password'   
+    } else {
+        window.location.href = '/email-update'
+    }
 })
 
 //close modal on outside event click

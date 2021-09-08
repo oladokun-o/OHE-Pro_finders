@@ -1,3 +1,4 @@
+/*
 var notice = ['hello there oladokun','welcome to ohe','you have a new message'],
     notification = $('.notifications'),
     noticeDate = '1 day ago',
@@ -42,3 +43,4 @@ function bellState(){
         noticeState()
        // bellState()
     }
+*/

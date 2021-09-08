@@ -151,7 +151,6 @@
 
     .search-img {
         position: absolute;
-        transform: translateY(-125px);
         z-index: -1;
         width: 500px;
     }

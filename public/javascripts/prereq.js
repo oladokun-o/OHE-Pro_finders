@@ -56,6 +56,7 @@ menuToggle.addEventListener('click', function() {
     HiddenPanel.classList.add('slide-in-right');
     HiddenPanel.classList.remove('slide-out-right');
     burger.toggleClass("is-active");
+    closeEmailModal()
 });
 
 var closePanel = document.querySelector('[data-js="hidden-panel-close"]');

@@ -31,10 +31,10 @@ block content
 		.page-width.p-0.mt-5.mt-md-1
 			.container-fluid.mt-5.pt-5.pt-md-0.pb-5
 				.d-flex.justify-content-center.px-md-5.work-wrap
-					.container-fluid.pt-5.pb-5.pt-lg-0.pb-lg-0
+					.container-fluid.pb-5.pt-lg-0.pb-lg-0
 						.row
-							.col-md-7.col-12.p-0
-								.search-jobs.form-group.mt-1
+							.col-md-7.col-12.p-0.d-none
+								//.search-jobs.form-group.mt-1
 									include work-list
 								.container-fluid.border-top.work-categories.sm-work.fade-out.d-md-none
 									//span.close-icon
@@ -129,14 +129,17 @@ block content
 												#collapseFive.collapse(aria-labelledby='headingFive' data-parent='#accordion')
 													.card-body.p-0.pb-3
 														| Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.														
-									//+category
-								.container-fluid.work-list.bg-none 
-									.search-img
-										img(src="/images/search.png")
-								.container-fluid.border.reply-contn.p-0.m-0.fade-out                  
+									//+category								
+								//.container-fluid.border.reply-contn.p-0.m-0.fade-out                  
 								//#stop.p-5.col-md-5.col-12.border
+							.col-md-7.work-list.bg-none.d-none.d-md-block
+								.search-img
+									img(src="/images/search.png")
 							.col-md-5.col-12.pt-0.mt-0.p-0.pl-md-3.pr-md-3.pt-md-0#workList
 								.container.work-categories.pl-4.pt-2.pr-4
 									+category
+							.col-md-7.work-list.bg-none.d-block.d-md-none
+								.search-img
+									img(src="/images/search.png")
 			script(src="javascripts/work.js")
 			include footer

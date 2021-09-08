@@ -100,10 +100,12 @@ block content
 									p #{initials}										
 							.dropdown.large-menu
 								.dropdown-content
-									a.p-2.-edit-profile.text-center
+									a(href="/dashboard").-edit-profile
 										//.user-avatar.-small.-initial
 											p.p-0.m-0 #{initials}
-										span.p-0.m-0.names #{fullname}
+										.pl-3
+											i.lni.lni-home
+											span.pl-3.p-0.m-0.names #{fullname}
 									hr.m-0.hr
 
 									a(href='/account').-edit-profile
@@ -145,10 +147,12 @@ block content
 													p #{initials}										
 											.dropdown
 												.dropdown-content
-													a.p-2.-edit-profile.text-center
+													a(href="/dashboard").-edit-profile
 														//.user-avatar.-small.-initial
 															p.p-0.m-0 #{initials}
-														span.p-0.m-0.names #{fullname}
+														.pl-3
+															i.lni.lni-home
+															span.pl-3.p-0.m-0.names #{fullname}
 													hr.m-0.hr
 
 													a(href='/account').-edit-profile

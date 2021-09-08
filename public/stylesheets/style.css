@@ -773,7 +773,9 @@ img {
     font-weight: 600;
     transition: all 0.50s;
 }
-
+.list-btn {
+    color: blue !important;
+}
 .primary-btn:hover {
     background: #dd6524 !important;
 }

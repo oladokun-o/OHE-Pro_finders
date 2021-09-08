@@ -24,7 +24,7 @@ $(document).ready(function () {
   s0.parentNode.insertBefore(s1,s0);
   })();
 
-
+/*
 var selectList = $('.select-list');
 
 selectList.on('change',function () { 
@@ -36,3 +36,4 @@ selectList.on('change',function () {
         window.location.href = '/dashboard?'+exp
     }, 1000);
 });
+*/

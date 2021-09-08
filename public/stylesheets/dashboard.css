@@ -194,6 +194,9 @@ body {
     color: #0e0a27ea;
 }
 
+.primary-btn {
+    color: white !important;
+}
 
 /* Links inside the dropdown */
 
@@ -462,6 +465,15 @@ body {
     font-size: 20px;
 }
 
+.job-li {
+    list-style: none;
+    text-align: left;
+    padding: 25px !important;
+}
+
+.job-li li {
+    cursor: pointer;
+}
 
 .search::-webkit-search-cancel-button {
     -webkit-appearance: none;

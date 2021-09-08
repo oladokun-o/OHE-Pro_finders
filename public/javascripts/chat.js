@@ -1,3 +1,4 @@
+/*
 //chat ui
 var muterBtn = $('.muter'),
     muterIcon = $('.muter-icon'),
@@ -336,4 +337,4 @@ resumeChatBtn.on('click', function () {
     } else {
         console.log(25000)
     }
-})
+})*/
