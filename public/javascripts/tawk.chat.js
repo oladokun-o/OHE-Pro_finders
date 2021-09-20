@@ -23,17 +23,3 @@ $(document).ready(function () {
   s1.setAttribute('crossorigin','*');
   s0.parentNode.insertBefore(s1,s0);
   })();
-
-/*
-var selectList = $('.select-list');
-
-selectList.on('change',function () { 
-    //e.preventDefault();
-    console.log(selectList.val())
-    localStorage.setItem('expert_job', selectList.val())
-    var exp = localStorage.getItem('expert_job')
-    setTimeout(() => {
-        window.location.href = '/dashboard?'+exp
-    }, 1000);
-});
-*/

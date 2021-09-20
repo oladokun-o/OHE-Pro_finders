@@ -230,6 +230,7 @@ module.exports = {
                 var firstStr = user.firstname,
                     lastStr = user.lastname,
                     Initials = firstStr.charAt(0) + '.' + lastStr.charAt(0);
+                res.header('Authorization', 'Bearer ' + db.FLUTTERDEV_KEY)
                 res.render(
                     'pay', {
                     title: 'Payment',
