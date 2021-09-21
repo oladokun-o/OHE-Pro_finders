@@ -98,7 +98,7 @@ function makePayment(sec_key) {
 
     FlutterwaveCheckout({
         public_key: sec_key,
-        tx_ref: userId,
+        tx_ref: phone,
         amount: total.innerHTML,
         currency: currency.innerHTML,
         country: "NG",
