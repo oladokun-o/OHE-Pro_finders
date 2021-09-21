@@ -7,11 +7,18 @@ $(document).ready(function () {
             'email': email,
             'expert': exp
             }, function(error){});
-        setTimeout(() => {
-            let input = $('body').find('input.tawk-input');
-        console.log(input)
-        }, 5000);
     };
+    var exp = localStorage.getItem('expert_job'),
+        voidBox = $('.void-box');
+    if (exp) {
+        voidBox.fadeIn('fast');
+        Tawk_API.onLoad = function(){
+            $('.loader').fadeOut('fast')
+            setTimeout(() => {
+                Tawk_API.maximize()
+            }, 1500);
+        }
+    }   
 });
   var Tawk_LoadStart=new Date();
   var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
@@ -23,3 +30,19 @@ $(document).ready(function () {
   s1.setAttribute('crossorigin','*');
   s0.parentNode.insertBefore(s1,s0);
   })();
+var exp = localStorage.getItem('expert_job'),
+voidBox = $('.void-box');
+
+Tawk_API.onChatMinimized  = function(){
+    voidBox.fadeOut('fast');
+    console.log('hi')
+}; 
+
+Tawk_API.onChatMaximized = function(){
+    voidBox.fadeIn('fast');
+};
+
+function openChat() {
+    Tawk_API.minimize()
+    voidBox.fadeOut('fast');
+}

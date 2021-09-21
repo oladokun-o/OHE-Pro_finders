@@ -86,7 +86,7 @@ function jobAnchor(event) {
         eDescriptionContn = $('<p class="p-2"></p>'),
         req = e.innerText,
         eDescriptionBtn = $('<br><button title="'+req+'" onclick="getExpert(this)" class="primary-btn desc-btn mt-2 text-center">Chat</button>');
-        localStorage.setItem('expert_title', req)
+        localStorage.setItem('expert_job', req)
         //console.log(e)
     if (e.classList.contains('show')) {
         //console.log('event still showing, now removing class "show"')
@@ -141,7 +141,7 @@ function closeDesc(e) {
 
 function getExpert(event) {
     //console.log(event.title)
-    var exp = localStorage.getItem('expert_title') || event.title;
+    var exp = localStorage.getItem('expert_job') || event.title;
     
     setTimeout(() => {
         window.location.href = '/dashboard?'+exp

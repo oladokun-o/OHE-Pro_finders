@@ -30,57 +30,6 @@ main {
     position: relative;
 }
 
-/*preloader styling*/
-
-
-/*
-body.preloader-active {
-    overflow-y: hidden;
-}
-*/
-
-.no-js #loader {
-    display: none;
-}
-
-.js #loader {
-    display: block;
-    position: absolute;
-    left: 100px;
-    top: 0;
-}
-
-.preload {
-    position: fixed;
-    left: 0px;
-    top: 0px;
-    width: 100%;
-    height: 100%;
-    z-index: 9999;
-    background: center no-repeat #ef6d26;
-    overflow-y: hidden;
-}
-
-.loader {
-    border: 5px solid #f3f3f3a6;
-    border-radius: 50%;
-    border-top: 5px solid white;
-    width: 120px;
-    height: 120px;
-    -webkit-animation: spin 2s linear infinite;
-    /* Safari */
-    animation: spin 2s linear infinite;
-}
-
-.loader-contn {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    top: 50%;
-    transform: translateY(-90px);
-    position: absolute;
-}
-
 .img-contn {
     position: absolute;
     top: 50%;
@@ -1902,4 +1851,13 @@ select:focus {
 
 #fae6bh62j2m1fe41jcpo {
     box-shadow: 0 0 10px black !important;
+}
+
+.void-box {
+    height: 100vh;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    background: #ef6c2644;
+    z-index: 1000;
 }
