@@ -9,7 +9,8 @@ const config = {
         CLIENT_SECRET: process.env.GOOGLE_CLIENT_SECRET,
         FB_CLIENT_ID: process.env.FB_CLIENT_ID,
         FB_CLIENT_SECRET: process.env.FB_CLIENT_SECRET,
-        PORT: process.env.PORT
+        PORT: process.env.PORT,
+        FLUTTER_KEY: process.env.FLUTTER_KEY
     },
     default: {
         SECRET: process.env.SECRET,
