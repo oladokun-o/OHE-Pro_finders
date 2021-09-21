@@ -15,6 +15,7 @@ const { response } = require('express');
 const Price = require('../models/price')
 const SubPrice = require('../models/sub-price')
 const crypto = require('crypto')
+
 module.exports = {
     onGetHome: async (req,res) => {
         let token = req.cookies.auth
@@ -229,7 +230,7 @@ module.exports = {
             if (user) {
                 var firstStr = user.firstname,
                     lastStr = user.lastname,
-                    Initials = firstStr.charAt(0) + '.' + lastStr.charAt(0);
+                    Initials = firstStr.charAt(0) + '.' + lastStr.charAt(0);                    
                 res.header('Authorization', 'Bearer ' + db.FLUTTERDEV_KEY)
                 res.render(
                     'pay', {
@@ -244,6 +245,7 @@ module.exports = {
                     phone: user.phone,
                     addressI: user.addressI,
                     addressII: user.addressII,
+                    //sec_key: sec_key
                 });
             } else {
                 res.render('login', { title: 'Login' })
@@ -273,6 +275,10 @@ module.exports = {
                 //console.log('not sent')
             }
         })
+    },
+    onMakePayment: async (req, res) => {
+        var sec_key = db.FLUTTERDEV_KEY;
+        res.send(sec_key);
     },
     onGetLogout: async function (req, res) {
         let token = req.cookies.auth;

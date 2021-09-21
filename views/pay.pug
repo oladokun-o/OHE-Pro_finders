@@ -67,15 +67,16 @@ html.theme-light
                         .first.pl-2.d-flex.py-2
                             .form-check
                                 input.form-check-input.mt-3.dot(type="radio", checked)
-                            .border-left.pl-2.text-left
+                            .border-left.pl-2.text-left.total-price
                                 span.head Total
                                 div
-                                    span.dollar
-                                    span.total
+                                    span.dollar#currency
+                                    span.total#total
                     .d-flex.justify-content-between.px-4.pt-2.pb-3
                         div
                             span.back Go back
                         button.btn.btn-primary.button(type="button") Pay amount
+        script(src="https://checkout.flutterwave.com/v3.js")
         script(src="/javascripts/pay.js")
         script(src="/jquery.slim.min.js")
         script(src="/jquery.min.js")

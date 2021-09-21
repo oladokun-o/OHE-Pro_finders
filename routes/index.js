@@ -16,6 +16,11 @@ router.use(passport.initialize());
 router.use(passport.session());
 require('../middlewares/google-passport')(passport);
 require('../middlewares/fb-passport')(passport);
+const cors = require('cors');
+const express = require('express');
+const app = express();
+app.use(cors());
+
 
 router
     /* GET home page. */
@@ -52,6 +57,7 @@ router
     .get('/help', loggeduser.onGetHelp)
     .get(['/settings', '/account'], loggeduser.onGetAcct)
     .get('/pay', loggeduser.onPay)
+    .post('/make-payment', loggeduser.onMakePayment)
     .post('/payment-details', loggeduser.onGetPaymentDetails)
     .post('/subpayment-details', loggeduser.onGetSubPayment)
     .get('/dashboard', loggeduser.onGetLogin)
