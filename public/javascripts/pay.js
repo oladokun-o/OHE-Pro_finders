@@ -12,8 +12,8 @@ $('.button').click(function (e) {
         method: 'POST',
         url: '/make-payment'
     })
-    .done((sec_key) => {
-        makePayment(sec_key)
+    .done((result) => {
+        makePayment(result)
     })
 });
 $(document).ready(function(e) {
@@ -92,19 +92,21 @@ $(document).ready(function(e) {
     })
 })
 
-function makePayment(sec_key) {
+function makePayment(result) {
     let total = document.getElementById("total"),
-        currency = document.getElementById('currency');
-
+        currency = document.getElementById('currency'),
+        tx_ref =   firstname.charAt(0)+lastname.charAt(0)+result.tx_ref;
+        //console.log(tx_ref)
+        //console.log(result.tx_ref)
     FlutterwaveCheckout({
-        public_key: sec_key,
-        tx_ref: phone,
+        public_key: result.sec_key,
+        tx_ref: tx_ref,
         amount: total.innerHTML,
         currency: currency.innerHTML,
         country: "NG",
         payment_options: "card, banktransfer",
         redirect_url: // specified redirect URL
-          "https://oprofinder.com/dashboard",
+          "https://oprofinder.com/pay",
         meta: {
           consumer_id: userId,
           //consumer_mac: "",

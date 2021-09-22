@@ -48,8 +48,10 @@ $(document).ready(function() {
 var burger = $('.hamburger');
 var menuToggle = document.querySelector('[data-js="menu-toggle"]');
 var HiddenPanel = document.getElementById("HiddenPanel");
-
+var alertContn = $('.alert-contn'),
+    exp = localStorage.getItem('expert_job')
 menuToggle.addEventListener('click', function() {
+    alertContn.removeClass('overflowed')
     document.body.classList.toggle('panel-open');
     menuToggle.classList.toggle('open');
     CloseMenu.classList.remove('hide');
@@ -63,6 +65,9 @@ var closePanel = document.querySelector('[data-js="hidden-panel-close"]');
 var CloseMenu = document.getElementById("CloseMenu");
 
 closePanel.addEventListener('click', function() {
+    if (!exp) {
+        alertContn.addClass('overflowed')
+    }
     document.body.classList.remove('panel-open');
     menuToggle.classList.remove('open');
     CloseMenu.classList.add('hide');
@@ -73,6 +78,9 @@ closePanel.addEventListener('click', function() {
 });
 
 function Closemypanel() {
+    if (!exp) {
+        alertContn.addClass('overflowed')
+    }
     menuToggle.classList.remove('open');
     CloseMenu.classList.add('hide');
     HiddenPanel.classList.remove('slide-in-right');

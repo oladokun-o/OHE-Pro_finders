@@ -18,11 +18,12 @@ const config = {
         DATABASE_NAME: process.env.MONGODB_NAME,
         SMTP_USER: process.env.SERVER_USER,
         SMTP_PASS: process.env.SERVER_PASS,
-        CLIENT_ID: process.env.GOOGLE_CLIENT_ID,
-        CLIENT_SECRET: process.env.GOOGLE_CLIENT_SECRET,
+        CLIENT_ID: process.env.GOOGLE_CLIENTDEV_ID,
+        CLIENT_SECRET: process.env.GOOGLE_CLIENTDEV_SECRET,
         FB_CLIENT_ID: process.env.FB_CLIENT_ID,
         FB_CLIENT_SECRET: process.env.FB_CLIENT_SECRET,
-        PORT: process.env.PORT
+        PORT: process.env.PORT,
+        FLUTTERDEV_KEY: process.env.FLUTTERDEV_KEY
     }
 }
 

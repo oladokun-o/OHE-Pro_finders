@@ -116,7 +116,7 @@ module.exports = {
                     if (!user) return res.render('login', { title: 'Login', errmsg: 'Email not found in database' });
 
                     user.comparepassword(req.body.password, (err, isMatch) => {
-                        if (!isMatch) return res.render('login', { title: 'Login', errmsg: "Wrong password!" });
+                        if (!isMatch) return res.render('login', { title: 'Login', errmsg: "Wrong password!",error: true });
 
                         user.generateToken((err, user) => {
                             if (err) {
@@ -277,8 +277,9 @@ module.exports = {
         })
     },
     onMakePayment: async (req, res) => {
-        var sec_key = db.FLUTTERDEV_KEY;
-        res.send(sec_key);
+        var sec_key = db.FLUTTERDEV_KEY,
+            tx_ref = crypto.randomBytes(16).toString('hex');
+        res.send({sec_key: sec_key, tx_ref: tx_ref});
     },
     onGetLogout: async function (req, res) {
         let token = req.cookies.auth;

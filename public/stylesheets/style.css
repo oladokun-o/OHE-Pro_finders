@@ -1861,3 +1861,34 @@ select:focus {
     background: #ef6c2644;
     z-index: 1000;
 }
+
+.overflowed {
+    z-index: 10000000000 !important;
+}
+
+.fa-times {
+    cursor: pointer;
+}
+
+.select-exp {
+    background: #ef6c2644 !important;
+    z-index: 10000000000;
+    position: fixed;
+    height: 100vh;
+    width: 100%;
+    padding-top: 10em;
+    top: 0px;
+    left: 0;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.alert-contn a {
+    color: #2626f7 !important;
+    text-decoration: underline !important;
+    cursor: pointer;
+}
+
+.alert-contn a:hover {
+    color: blue;
+}

@@ -1,5 +1,9 @@
 var Tawk_API=Tawk_API||{},
-    exp = localStorage.getItem('expert_job')
+    exp = localStorage.getItem('expert_job'),
+    alertBox = $('.alert'),
+    alertContn = $('.alert-contn'),
+    closeSelectBtn = $('.close-select'),
+    alertSession = sessionStorage.getItem('alert');
 $(document).ready(function () {
     Tawk_API.onLoad = function(){
         Tawk_API.setAttributes({
@@ -7,18 +11,24 @@ $(document).ready(function () {
             'email': email,
             'expert': exp
             }, function(error){});
+            var voidBox = $('.void-box');
+            if (exp) {
+                voidBox.fadeIn('fast');
+                $('.loader').fadeIn('fast')
+                setTimeout(() => {
+                    $('.loader').fadeOut('slow')
+                }, 1300);
+                setTimeout(() => {
+                    Tawk_API.maximize()
+                    localStorage.setItem('chatWidget', 'maximized')
+                }, 1500);
+                localStorage.removeItem('expert_job')
+            } else if (!exp || Tawk_API.isChatMaximized()) {
+                alertBox.fadeIn('slow').html('<i class="fa fa-bell"></i> Please <a onclick="openSelect(this)">select</a> your desired expert to speak with <i onclick="closeAlert()" class="fa fa-times"></i>')
+                alertContn.addClass('overflowed')
+                sessionStorage.setItem('alert', true)
+            }
     };
-    var exp = localStorage.getItem('expert_job'),
-        voidBox = $('.void-box');
-    if (exp) {
-        voidBox.fadeIn('fast');
-        Tawk_API.onLoad = function(){
-            $('.loader').fadeOut('fast')
-            setTimeout(() => {
-                Tawk_API.maximize()
-            }, 1500);
-        }
-    }   
 });
   var Tawk_LoadStart=new Date();
   var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
@@ -35,14 +45,52 @@ voidBox = $('.void-box');
 
 Tawk_API.onChatMinimized  = function(){
     voidBox.fadeOut('fast');
-    console.log('hi')
+    localStorage.setItem('chatWidget', 'minimized')
 }; 
 
 Tawk_API.onChatMaximized = function(){
     voidBox.fadeIn('fast');
+    localStorage.setItem('chatWidget', 'maximized')
+    localStorage.removeItem('expert_job')
+    Closemypanel()
 };
 
-function openChat() {
-    Tawk_API.minimize()
-    voidBox.fadeOut('fast');
+function minimizeChat() {
+    var chatWidget = localStorage.getItem('chatWidget');
+    if (chatWidget == 'maximized') {
+        Tawk_API.minimize()
+        voidBox.fadeOut('fast');
+        localStorage.setItem('chatWidget', 'minimized')
+    }
+}
+
+
+function maximizeChat() {
+    voidBox.fadeIn('fast');
+    $('.loader').fadeIn('fast')
+    setTimeout(() => {
+        $('.loader').fadeOut('slow')
+    }, 1300);
+    setTimeout(() => {
+        Tawk_API.maximize()
+        localStorage.setItem('chatWidget', 'maximized')
+    }, 1500);
+    localStorage.removeItem('expert_job')
+}
+
+function openSelect() {
+    $('.search-form').fadeIn('fast').addClass('select-exp').find('label').hide()
+    alertBox.fadeOut('fast')
+    alertContn.removeClass('overflowed')
+    closeSelectBtn.removeClass('fade-out')
+}
+
+
+function closeSelect() {
+    $('.search-form').removeClass('select-exp').find('label').show()
+    closeSelectBtn.addClass('fade-out')
+}
+
+function closeAlert (parameters) {
+    alertBox.fadeOut('fast')
 }
