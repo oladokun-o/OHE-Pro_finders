@@ -167,6 +167,7 @@ module.exports = {
                 if (err) {
                     res.status(500).send('An error occured, please try again later');
                     console.log('could not create user:' + doc);
+                    console.log(err);
                 }
                 res.status(200).send('Sign Up successful!')//.redirect('login')
             });
