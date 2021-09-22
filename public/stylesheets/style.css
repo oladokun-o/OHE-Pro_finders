@@ -148,6 +148,9 @@ img {
     display: flex !important;
     justify-content: center;
     z-index: 5 !important;
+    padding: 10px !important;
+margin: 0 !important;
+left: 0;
 }
 
 
