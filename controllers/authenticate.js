@@ -277,7 +277,7 @@ module.exports = {
         })
     },
     onMakePayment: async (req, res) => {
-        var sec_key = db.FLUTTERDEV_KEY,
+        var sec_key = db.FLUTTER_KEY,
             tx_ref = crypto.randomBytes(16).toString('hex');
         res.send({sec_key: sec_key, tx_ref: tx_ref});
     },
