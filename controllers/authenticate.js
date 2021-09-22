@@ -160,8 +160,6 @@ module.exports = {
 
         if (newuser.password != newuser.password2) {
             return res.status(500).send('Passwords do not match')
-        } else if (newuser.password.length || newuser.password2.length < 8) {
-            return res.status(500).send('Passwords lenth is too short <i class="fa fa-lock-open"></i>')
         } else {
             User.findOne({ email: newuser.email }, function (err, user) {
                 if (user) return res.status(500).send('Email already taken');
