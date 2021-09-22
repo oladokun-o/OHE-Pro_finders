@@ -8,7 +8,8 @@
     }
 });*/
 
-var selectList = $('.select-list');
+var selectList = $('.select-list'),
+closeSelectBtn = $('.close-select');
 
 selectList.on('change',function () { 
     //e.preventDefault();
@@ -33,4 +34,9 @@ function copyToClipboard(element) {
     $temp.val(element).select();
     document.execCommand("copy");
     $temp.remove();
+}
+
+function closeSelect() {
+    $('.search-form').removeClass('select-exp').find('label').show()
+    closeSelectBtn.addClass('fade-out')
 }
