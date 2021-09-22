@@ -158,20 +158,27 @@ module.exports = {
         // taking a user
         const newuser = new User(req.body);
 
-        if (newuser.password != newuser.password2) return res.status(500).send('Passwords do not match');
-
-        User.findOne({ email: newuser.email }, function (err, user) {
-            if (user) return res.status(500).send('Email already taken');
-
-            newuser.save((err, doc) => {
-                if (err) {
-                    res.status(500).send('An error occured, please try again later');
-                    console.log('could not create user:' + doc);
-                    console.log(err);
-                }
-                res.status(200).send('Sign Up successful!')//.redirect('login')
+        if (newuser.password != newuser.password2) {
+            return res.status(500).send('Passwords do not match')
+        } else if (newuser.password.length || newuser.password2.length < 8) {
+            return res.status(500).send('Passwords lenth is too short <i class="fa fa-lock-open"></i>')
+        } else {
+            User.findOne({ email: newuser.email }, function (err, user) {
+                if (user) return res.status(500).send('Email already taken');
+    
+                newuser.save((err, doc) => {
+                    if (err) {
+                        res.status(500).send('An error occured, please try again later');
+                        console.log('could not create user:' + doc);
+                        console.log(err);
+                    }
+                    res.status(200).send('Sign Up successful!')//.redirect('login')
+                });
             });
-        });
+        }
+
+
+        
     },
     onGetAcct: async (req, res) => {
         let token = req.cookies.auth
