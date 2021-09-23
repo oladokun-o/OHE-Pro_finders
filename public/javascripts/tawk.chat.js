@@ -92,5 +92,5 @@ function closeSelect() {
 }
 
 function closeAlert (parameters) {
-    alertBox.fadeOut('fast')
+    closeExpAlert()
 }

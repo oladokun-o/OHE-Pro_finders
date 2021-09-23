@@ -92,9 +92,6 @@
         text-transform: uppercase;
     }
     
-    .hidden-panel img {
-        border-radius: 5px;
-    }
     
     .hidden-panel-lg {
         position: relative !important;

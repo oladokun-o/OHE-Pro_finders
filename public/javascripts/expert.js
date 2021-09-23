@@ -9,11 +9,20 @@
 });*/
 
 var selectList = $('.select-list'),
-closeSelectBtn = $('.close-select');
+closeSelectBtn = $('.close-select'),
+alertBox = $('.alert')
+
+function closeExpAlert() {
+    alertBox.fadeOut('slow')
+}
+
+selectList.on('click', function() {
+    closeExpAlert()
+})
 
 selectList.on('change',function () { 
     //e.preventDefault();
-    console.log(selectList.val())
+    //console.log(selectList.val())
     localStorage.setItem('expert_job', selectList.val())
     var exp = selectList.val()
     copyToClipboard(selectList.val())
