@@ -125,7 +125,7 @@ function makePayment(result) {
         customizations: {
           title: "Oprofinder",
           description: "Payment for chat session",
-          logo: "http://main-ohe-pro-finders.herokuapp.com/images/OHE-Logo.png",
+          logo: "http://main-ohe-pro-finders.herokuapp.com/images/favicon.ico",
         },
       });
 }
