@@ -1,6 +1,6 @@
 $(document).ready(function(e) {
     //e.preventDefault()
-    var select = $('.select-list')
+    let select = $('.select-list')
     $.ajax({
         method: 'POST',
         url: '/jobs',
@@ -9,12 +9,12 @@ $(document).ready(function(e) {
             type: 'default'
         },
         success: function(response) {                              
-                var joblist = response.map((o) => (
+                let joblist = response.map((o) => (
                     o.job
                 ))
                 const jobCollection = [].concat(...joblist)
                 //console.log(jobCollection)
-                var jobshtml = $.map(jobCollection, function (value) {
+                let jobshtml = $.map(jobCollection, function (value) {
                     return ('<option value="' + value + '">' + value + '</option>');
                 })
             select.append(jobshtml.join(''))
@@ -26,12 +26,12 @@ $(document).ready(function(e) {
     })
 })
 
-var jobLists = $('.job-li li')
+let jobLists = $('.job-li li')
 jobLists.on('click', (e) => {
     if (e.target.classList.contains('show')) {
         //console.log('yeass')
         //console.log(e.target)
-        var chev = e.target.lastChild,
+        let chev = e.target.lastChild,
             i = document.createElement('i')
         i.classList.add('lni')
         i.classList.add('lni-chevron-right')
@@ -44,7 +44,7 @@ jobLists.on('click', (e) => {
         //console.log(req)
         if (req !== '') {
             e.target.classList.add('active-job-li')
-            var chev = e.target.lastChild,
+            let chev = e.target.lastChild,
                 i = document.createElement('i')
             i.classList.add('lni')
             i.classList.add('lni-chevron-down')
@@ -58,16 +58,16 @@ jobLists.on('click', (e) => {
                     type: 'undefault'
                 },
                 success: function(response) {                              
-                        var joblist = response.map((o) => (
+                        let joblist = response.map((o) => (
                             o.job
                         ))
                         const jobCollection = [].concat(...joblist)
                         //console.log(jobCollection)
-                        var jobshtml = $.map(jobCollection, function (value) {
+                        let jobshtml = $.map(jobCollection, function (value) {
                             return ('<button class="list-btn" onClick="jobAnchor(this)">' + value + '</button><br>');
                         })
-                    var list = jobshtml.join('');
-                    var listSpan = $('<span class="job-span-list show">' + list + '</span>');
+                    let list = jobshtml.join('');
+                    let listSpan = $('<span class="job-span-list show">' + list + '</span>');
                     e.target.classList.add('show')
                     listSpan.insertAfter(e.target).fadeIn('slow')
                     //console.log(response)
@@ -82,11 +82,10 @@ jobLists.on('click', (e) => {
 
 
 function jobAnchor(event) {
-    var e = event,
+    let e = event,
         eDescriptionContn = $('<p class="p-2"></p>'),
         req = e.innerText,
         eDescriptionBtn = $('<br><button title="'+req+'" onclick="getExpert(this)" class="primary-btn desc-btn mt-2 text-center">Chat</button>');
-        localStorage.setItem('expert_job', req)
         //console.log(e)
     if (e.classList.contains('show')) {
         //console.log('event still showing, now removing class "show"')
@@ -105,18 +104,20 @@ function jobAnchor(event) {
                 },
                 success: function (response) {
                     //console.log(response)
-                    var jobDescriptionResponse = response.map((o) => (
+                    let jobDescriptionResponse = response.map((o) => (
                             o.description
                         ))
                         const jobDescription = [].concat(...jobDescriptionResponse)
                         //console.log(jobCollection)
-                        var jobDescHtml = $.map(jobDescription, function (value) {
+                        let jobDescHtml = $.map(jobDescription, function (value) {
                             return (value);
                         })
-                    var description = jobDescHtml.join('');
-                eDescriptionContn.append(description)
-                eDescriptionContn.append(eDescriptionBtn)
+                    let description = jobDescHtml.join('');
+                    eDescriptionContn.append(description)
+                    eDescriptionContn.append(eDescriptionBtn)
                     eDescriptionContn.insertAfter(e).slideDown('slow')          
+                    localStorage.setItem('expert_job', req)
+                    copyToClipboard(req)                    
                 },
                 error: function(response) {
                     eDescriptionContn.append('No result')
@@ -129,7 +130,7 @@ function jobAnchor(event) {
 
 /*
 function closeDesc(e) {
-    var eve = localStorage.getItem('descriptionId')
+    let eve = localStorage.getItem('descriptionId')
     $(document).on('click', (event) => {
         if (eve !== event.target.innerText) {
             e.nextSibling.remove()
@@ -141,9 +142,13 @@ function closeDesc(e) {
 
 function getExpert(event) {
     //console.log(event.title)
-    var exp = localStorage.getItem('expert_job') || event.title;
-    
+    let exp = localStorage.getItem('expert_job') || event.title;
+    alert('Preferred expert: '+exp+', has been copied to clipboard. Please paste into required field')
     setTimeout(() => {
-        window.location.href = '/dashboard?'+exp
-    }, 2000);
+        if (email || title == 'Dashboard') {
+            maximizeChat()
+        } else{
+            window.location.href = '/dashboard?'+exp
+        }
+    }, 800);
 }
