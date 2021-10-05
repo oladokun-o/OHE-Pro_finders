@@ -87,55 +87,24 @@ block content
                         .use_ohe_image_bg
                       p.body-text-head.text-center.pt-4 save time and energy
                       p.body-text.text-center Connect from any device, anytime. No waiting in que. Save valuable time at home.
-                    .col-12.text-center.d-flex.justify-content-center.align-items-center
+                    .col-12.col-md-6.text-center.d-flex.justify-content-center.align-items-center
                       .see-how-it-works-bg  
                         a(href="/how-it-works")
                           button.primary-btn see how it works
+                            i.lni.lni-arrow-right.pl-2
+                    .col-12.col-md-6.text-center.d-flex.justify-content-center.align-items-center.pt-3
+                      .see-all-categories-bg
+                        a(href="/jobs")
+                          button.see-all-categories-btn.primary-btn all categories
+                            i.lni.lni-arrow-right.pl-2
           .container-fluid.categories.p-4.p-md-5
             .row.p-2.p-lg-4
-              .col-12.pr-5.pb-2.pl-0.pt-0.pb-5.text-center
-                h2.head-tag.text-left.pt-3 categories
-              .col-12.col-md-4
-                .category.pl-3.pb-5.pt-4.mt-5.m-md-0.pl-lg-5.pl-md-3
-                  p.body-text-head Engineering
-                  ul
-                    a(href="/jobs")
-                      li Architect
-                    a(href="/jobs")
-                      li Broadcast Engineer
-                    a(href="/jobs")
-                      li Chemical Engineer
-                    //a(href="/jobs")
-                      li Chemical Engineering Technician
-              .col-12.col-md-4
-                .category.pl-3.pb-5.pt-4.mt-5.m-md-0.pl-lg-5.pl-md-3
-                  p.body-text-head Agriculture
-                  ul
-                    a(href="/jobs")
-                      li Animal Scientist
-                    a(href="/jobs")
-                      li Agricultural Consultant
-                    a(href="/jobs")
-                      li Ecologist
-                    //a(href="/jobs")
-                      li Farm Worker
-              .col-12.col-md-4
-                .category.pl-3.pb-5.pt-4.mt-5.m-md-0.pl-lg-5.pl-md-3
-                  p.body-text-head Travels
-                  ul
-                    a(href="/jobs")
-                      li Travel Agent
-                    a(href="/jobs")
-                      li Travel Education Agent
-                    a(href="/jobs")
-                      li Travel Consultant (local and Global)
-                    //a(href="/jobs")
-                      li Study in China
-              .col-12.text-center.d-flex.justify-content-center.align-items-center.pt-5
-                .see-all-categories-bg
-                  a(href="/jobs")
-                    button.see-all-categories-btn.primary-btn all categories
-                      i.lni.lni-arrow-right.pl-2
+              .col-12.text-center
+                .font-bold.font-large You don't know the exact expert or professional that can answer your questions? 
+                .font-light.font-medium.py-3 It's nothing to worry about, It happens to most of us
+                .font-bold.font-large Just go ahead to ask any question you have by clicking the button below
+                .text-center.col-12
+                  button.primary-btn.my-4(onclick="initiateChat()") ask a question              
         include footer
 
 

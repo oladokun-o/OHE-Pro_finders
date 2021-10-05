@@ -49,3 +49,12 @@ function closeSelect() {
     $('.search-form').removeClass('select-exp').find('label').show()
     closeSelectBtn.addClass('fade-out')
 }
+
+function initiateChat() {
+    if (email) {
+        maximizeChat()
+    } else {
+        localStorage.setItem('expert_job', 'null');
+        window.location = '/dashboard?initiatechat'
+    }
+}
