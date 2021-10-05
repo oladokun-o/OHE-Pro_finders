@@ -94,15 +94,15 @@ $(document).ready(function(e) {
 
 function makePayment(result) {
     let total = document.getElementById("total"),
-        currency = document.getElementById('currency'),
+        currency = $('#currency').text().replace(/ /g,''),
         tx_ref =   firstname.charAt(0)+lastname.charAt(0)+result.tx_ref;
-        //console.log(tx_ref)
+        console.log(currency)
         //console.log(result.tx_ref)
     FlutterwaveCheckout({
         public_key: result.sec_key,
         tx_ref: tx_ref,
         amount: total.innerHTML,
-        currency: currency.innerHTML,
+        currency: currency,
         country: "NG",
         payment_options: "card, banktransfer",
         redirect_url: // specified redirect URL
