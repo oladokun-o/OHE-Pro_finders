@@ -2,7 +2,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Your Password has been Updated</title>
+    <title>Confirm your email</title>
 </head>
 
 <head>
@@ -11,6 +11,8 @@
     <link rel="icon" type="image/png" href="https://oprofinder.com/images/favicon.png">
     <link rel="icon" type="image/x-icon" href="https://oprofinder.com/images/favicon.ico">
     <link rel="shortcut icon" href="https://oprofinder.com/images/favicon.ico" type="image/x-icon">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
 
@@ -90,7 +92,7 @@
             style="border: 0 none; border-collapse: separate; -webkit-box-shadow: 0 3px 5px rgba(0,0,0,0.04); -moz-box-shadow: 0 3px 5px rgba(0,0,0,0.04); box-shadow: 0 3px 5px rgba(0,0,0,0.04);">
             <td style="border: 0 none; border-collapse: separate; vertical-align: middle;" valign="middle">
                 <table class="c-f1bud4" align="center" border="1" cellpadding="0" cellspacing="0"
-                    style="border: none; border-collapse: separate; width: 100%;" width="100%">
+                    style="border: 0 none; border-collapse: separate; width: 100%;" width="100%">
                     <tbody>
                         <tr class="c-pekv9n" style="border: 0 none; border-collapse: separate; text-align: center;"
                             align="center">
@@ -101,26 +103,40 @@
                                     <tbody>
                                         <tr style="border: 0 none; border-collapse: separate;">
                                             <td class="c-1m9emfx c-zjwfhk"
-                                                style="border: 0 none; border-collapse: separate; text-align:left;font-weight: 300; color: #1D2531; font-size: 20px;"
-                                                valign="middle">You have a new message from:<span
-                                                    style="font-size: 25px;text-transform: capitalize;"> {{name}}</span>
+                                                style="border: 0 none; border-collapse: separate; vertical-align: middle;font-weight: 300; color: #1D2531; font-size: 25.45455px;"
+                                                valign="middle">
+                                                Welcome to Oprofinder
                                             </td>
                                         </tr>
                                         <tr style="border: 0 none; border-collapse: separate;">
-                                            <td class="c-eitm3s c-16v5f34"
-                                                style="border: 0 none; border-collapse: separate; text-align:left; font-weight: 500; font-size: 15px; padding-top: 12px;"
+                                            <td class="c-eitm3s c-16v5f34" id="Message"
+                                                style="border: 0 none; border-collapse: separate; vertical-align: middle; font-weight: 500; font-size: 16.63636px; padding-top: 12px;"
                                                 valign="middle">
-                                                <strong>Email: </strong><span><a
-                                                        href="mailto:{{email}}">{{email}}</a></span><br><br>
-                                                <strong>Subject: </strong><span>{{subject}}</span><br><br>
-                                                <strong>Message: </strong><span>{{message}}</span>
+                                                We'll keep you posted on the latest tips, product update, news and special offers.
+                                            </td>
+                                        </tr>
+                                        <tr class="c-1p7a68j" align="center"
+                                            style="border: 0 none; border-collapse: separate; padding-top: 2em;">
+                                            <td style="border: 0 none; border-collapse: separate; vertical-align: middle;padding-top: 1em;"
+                                                valign="middle">
+                                                <a href="https://oprofinder.com">
+                                                    <img class="c-1shuxio" alt="Oprofinder"
+                                                        src="https://oprofinder.com/images/default.png"
+                                                        style="border: 0 none;border-radius: 0px; line-height: 100%; outline: none; text-decoration: none; width: 200px;">
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        <tr style="border: 0 none; border-collapse: separate;">
+                                            <td class="c-eitm3s c-16v5f34" id="Message"
+                                                style="border: 0 none; border-collapse: separate; vertical-align: middle; font-weight: 500; font-size: 16.63636px; padding-top: 12px;"
+                                                valign="middle">
+                                                Stay connected.
                                             </td>
                                         </tr>
                                     </tbody>
                                 </table>
                             </td>
                         </tr>
-
                     </tbody>
                 </table>
             </td>
@@ -140,7 +156,7 @@
                                         <tr style="border: 0 none; border-collapse: separate;">
                                             <td style="border: 0 none; border-collapse: separate; vertical-align: middle;"
                                                 valign="middle"><a class="c-1cmrz5j"
-                                                    href="https://oprofinder.com/" target="_blank"
+                                                    href="https://oprofinder.com" target="_blank"
                                                     style="text-decoration: underline; color: #7F8FA4;">Oprofinder website</a>
                                             </td>
                                             <td style="border: 0 none; border-collapse: separate; vertical-align: middle;"

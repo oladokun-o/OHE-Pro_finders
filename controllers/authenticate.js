@@ -298,22 +298,33 @@ module.exports = {
         });
     },
     onGetUpdates: async function (req, res) {
-        const getUpdatesMailData = {
-            from: db.SMTP_USER, // sender address
-            to: req.body.email, // list of receivers
-            subject: req.body.subject,
-            text: req.body.message
-        };
-        transporter.sendMail(getUpdatesMailData, function (err, info) {
+        fs.readFile('./utils/emails/email-newsletter.html', { encoding: 'utf-8' }, function (err, html) {
             if (err) {
                 console.log(err);
-                res.status(500).send(err); // <----- HERE
             } else {
-                console.log("Successfully sent email.");
-                res.send("OK"); // <------------- HERE
+                var template = handlebars.compile(html);
+                var replacements = {
+                    email: req.body.email,               
+                };
+                var emailUpdate = template(replacements);
+                var updateEmailData = {
+                    from: db.SMTP_USER,
+                    to: req.body.email,
+                    subject: 'Thank You!',
+                    html: emailUpdate
+                }
             }
-        });
 
+            transporter.sendMail(updateEmailData, function (err, info) {
+                if (err) {
+                    console.log(err);
+                    res.status(500).send(err); // <----- HERE
+                } else {
+                    console.log("Successfully sent email.");
+                    res.send("OK"); // <------------- HERE
+                }
+            });
+        });      
     },
     onPostResetPassword: async function (req, res) {
         User.emailCheck(req.body.email, (err, user) => {
