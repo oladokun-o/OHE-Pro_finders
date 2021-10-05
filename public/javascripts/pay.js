@@ -91,12 +91,12 @@ $(document).ready(function(e) {
         }
     })
 })
-
+//make payment
 function makePayment(result) {
     let total = document.getElementById("total"),
         currency = $('#currency').text().replace(/ /g,''),
         tx_ref =   firstname.charAt(0)+lastname.charAt(0)+result.tx_ref;
-        console.log(currency)
+        //console.log(currency)
         //console.log(result.tx_ref)
     FlutterwaveCheckout({
         public_key: result.sec_key,
@@ -106,7 +106,7 @@ function makePayment(result) {
         country: "NG",
         payment_options: "card, banktransfer",
         redirect_url: // specified redirect URL
-          "https://oprofinder.com/pay",
+          "https://oprofinder.com/dashboard",
         meta: {
           consumer_id: userId,
           //consumer_mac: "",
