@@ -52,6 +52,7 @@ function closeSelect() {
 
 function initiateChat() {
     if (email) {
+        closeExpAlert()
         maximizeChat()
     } else {
         localStorage.setItem('expert_job', 'null');
