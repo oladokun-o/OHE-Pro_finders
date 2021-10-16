@@ -49,7 +49,7 @@
         line-height: 1.5;
         font-size: 40px;
     }
-    .help-contn {
+    .help-contn,.general-contn {
         height: 295px;
     }
     .search-img {
@@ -74,6 +74,39 @@
     /*.work-wrap {
         padding-bottom: 5.5rem !important;
     }*/
+        
+    .active-exp {
+        background: #1d154e;
+        padding-left: 10px;
+        padding-right: 10px;
+        padding-top: 20px !important;
+        padding-bottom: 10px !important;
+        border-radius: 10px;
+        transition: all 150ms;
+        margin-top: 5px;
+    }
+
+    .active-exp a {
+        font-family: 'poppins bold' !important;
+    }
+
+    .active-exp a:hover {
+        color: white !important;
+    }
+
+    .active-exp div {
+        padding-top: 10px;
+        padding-bottom: 15px;
+    }
+
+    .content {
+        padding-bottom: 0 !important;
+    }
+
+    .large-exp {
+        font-size: x-large;
+        line-height: 35px;
+    }
 }
 
 @media only screen and (max-width: 400px) {

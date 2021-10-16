@@ -51,6 +51,12 @@ router
     .get('/faq', (req, res) => {
         res.render('help', { title: 'Help Center' });
     })
+    .get('/questions', (req, res) => {
+        res.render('general', { title: 'General Questions' });
+    })
+    .get('/expatriates', loggeduser.getExpatriates)
+    .post('/expatriates-list', loggeduser.getExpatriatesList)
+    .post('/expatriates-description', loggeduser.getExpatriatesDescription)
     .get('/login', loggeduser.onGetLogin)
     .post('/dashboard', loggeduser.onPostDashboard)
     .post('/register', loggeduser.onRegister)

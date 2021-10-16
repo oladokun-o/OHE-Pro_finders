@@ -23,13 +23,13 @@ app.use(compression());
 
 //routes 
 const indexRouter = require("../routes/index")
-const userRouter = require("../routes/user")
-const chatRoomRouter = require("../routes/chatRoom")
+//const userRouter = require("../routes/user")
+//const chatRoomRouter = require("../routes/chatRoom")
 //const deleteRouter = require("../routes/delete")
 
 app.use("/", indexRouter);
-app.use("/users", userRouter);
-app.use("/room", chatRoomRouter);
+//app.use("/users", userRouter);
+//app.use("/room", chatRoomRouter);
 //app.use("/delete", deleteRouter);
 
 //mongo connection

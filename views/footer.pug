@@ -11,23 +11,13 @@ block content
 	footer.footer.pt-5
 		.container-fluid
 			.row
-				.col-12.partners.hide
-					.row.text-center
-						.col-4
-							p partner	
-						.col-4
-							p partner
-						.col-4
-							p partner
-						.col-6
-							p partner
-						.col-6
-							p partner
-				.col-12.footer-nav.pl-md-5.pr-md-5.pl-5.pr-5
+				.col-12.footer-nav.pl-md-5.pr-md-5.pl-4.pr-4
 					.row.text-left
 						.col-md-6.col-lg-3.col-12.pb-4
 							h6.footer-title Members
 							ul
+								a(href="/expatriates")
+									li Expatriates corner
 								a(href="/jobs")
 									li Find experts
 								a(href="/how-it-works")
@@ -37,29 +27,7 @@ block content
 										span Login
 								a(href="/signup")
 									li.mb-0 Create an account
-								//a(href="/jobs")
-									ul#accordion.p-0.text-left.pb-3.m-0
-										.card.p-0.bg-none.border-0
-											#headinOne.card-header.p-0.bg-none.border-0
-												a.mb-0.p-0
-													li.p-0.btn.btn-link.m-0(data-toggle='collapse' data-target='#FootercollapseFooter' aria-expanded='true' aria-controls='collapseFooter')
-														| Categories
-														i.fa.fa-caret-down.ml-1
-											#FootercollapseFooter.collapse(aria-labelledby='headinOne' data-parent='#accordion')
-												.card-body.p-0
-													mixin categories(name)
-														li.categories= name
-													ul.p-0.m-0
-														+categories('Agriculture')
-														+categories('Artisans & Engineers')
-														+categories('Arts')
-														+categories('Business & Finance')
-														+categories('Cleaning & Maintenance')
-														+categories('Computer')
-														a(href="/jobs")
-															+categories('See more..')
-
-						.col-md-6.col-lg-3.col-12.pb-4
+						.col-md-6.col-lg-2.col-12.pb-4
 							h6.footer-title OHE
 							ul
 								a(href="/")
@@ -72,41 +40,14 @@ block content
 									li 
 								a(href="/contact")
 									li Contact Us
-						.col-md-6.col-lg-3.col-12.pb-4
+						.col-md-6.col-lg-4.col-12.pb-4
 							h6.footer-title Popular questions
-							ul#accordion.p-0
-								.card.p-0.bg-none.border-0
-									#headOne.card-header.p-0.bg-none.border-0
-										a.mb-0.p-0
-											li.p-0.btn.btn-link.m-0(data-toggle='collapse' data-target='#FootercollapseOne' aria-expanded='true' aria-controls='collapseOne')
-												| How much does it cost?
-									#FootercollapseOne.collapse(aria-labelledby='headOne' data-parent='#accordion')
-										.card-body.p-0
-											| Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-								.card.border-0.bg-none
-									#headTwo.card-header.p-0.bg-none.border-0
-										a.mb-0.p-0
-											li.btn.p-0.m-0.btn-link.collapsed(data-toggle='collapse' data-target='#FootercollapseTwo' aria-expanded='false' aria-controls='collapseTwo')
-												| How soon do i get my answer?
-									#FootercollapseTwo.collapse(aria-labelledby='headTwo' data-parent='#accordion')
-										.card-body.p-0
-											| Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-								.card.border-0.bg-none
-									#headThree.card-header.p-0.bg-none.border-0
-										a.mb-0.p-0
-											li.btn.p-0.m-0.btn-link.collapsed(data-toggle='collapse' data-target='#FootercollapseThree' aria-expanded='false' aria-controls='collapseThree')
-												| How do i change my password?
-									#FootercollapseThree.collapse(aria-labelledby='headThree' data-parent='#accordion')
-										.card-body.p-0
-											| Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-								.card.border-0.bg-none
-									#headFour.card-header.p-0.bg-none.border-0
-										a.mb-0.p-0
-											li.btn.p-0.m-0.btn-link.collapsed(data-toggle='collapse' data-target='#FootercollapseFour' aria-expanded='false' aria-controls='collapseFour')
-												| When will i get my answer?
-									#FootercollapseFour.collapse(aria-labelledby='headFour' data-parent='#accordion')
-										.card-body.p-0
-											| Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.														
+							ul
+								li How can I start an online business?
+								li How do I stop my addiction to drugs?
+								li I want to sue someone, how do I go about this?
+								li How can I treat a gunshot and a deep knife cut?
+								li I think I have been kidnapped, what can I do urgently?
 						.col-12.col-md-6.col-lg-3.pb-4
 							h6.footer-title follow us
 							.container-fluid.text-center.p-0
@@ -127,27 +68,37 @@ block content
 									form.get-update-form
 										label
 											h6.footer-title.mb-3 Get Updates
-										.updates-form
-											input.form-group#updateEmail(type="email", name="update", placeholder="Email" required).border
-											a.primary-btn.form-group.proceed-updates
-												i.lni.lni-chevron-right
 										.updates-form-child.border.fade-out
 											.close-updates-form-child
 												i.lni.lni-close#close-updates-form-child
-											label
+											label.text-left
 												input(type="checkbox", onclick="checkUpdatesBtnStat()" checked).mt-1.getUpdates
 												| I want to receive OHE news, special offers and updates.
 											label
 												span By clicking the Send button, you agree to our 													
 												a(href="/privacy") Privacy Policy
 												|.
-												button(type="submit").send-updates.primary-btn.p-1 send
-				.col-12.col-md.pl-3.last-footer-item
+												.pt-2
+													button(type="submit").send-updates.primary-btn.p-1 send
+										.updates-form
+											input.form-group#updateEmail(type="email", name="update", placeholder="Email" required).border
+											a.primary-btn.form-group.proceed-updates
+												i.lni.lni-chevron-right
+				.col-12.col-md-12.pl-3.last-footer-item
 					.row.pl-md-5.pr-md-5.pl-3.pr-3
-						.col-12.d-flex.align-items-center.text-left.pl-0
-							a(href="/")
-								img(src="/images/logo.png", alt="OHE").footer-logo
-							small.d-block.text-muted.pl-3.d-flex.align-items-center.text-left 
-								| &copy; 2019-2021 OHE. All rights reserved.
-								a(href="/privacy").pl-md-3 Privacy policy
-								a(href="/contact").pl-md-3 Contact Us.
+						.col-12.col-md-10.text-left.pl-0.py-md-3
+							.row 
+								.col-12.col-md-2.px-4.pt-3.px-0.text-center.text-md-left
+									a(href="/") 
+										img(src="/images/logo.png", alt="OHE").footer-logo
+								.col-12.col-md-4.text-center.text-md-left.py-2.px-4.px-0
+									small &copy; 2019-2021 OHE. All rights reserved.
+								.col-12.col-md-6.text-center.py-2.px-0.text-md-left
+									small
+										a(href="/privacy").mx-1 Privacy policy
+										||
+									small
+										a(href="/tac").mx-1 Terms &#38; Conditions
+										||
+									small
+										a(href="/contact").mx-1 Contact Us

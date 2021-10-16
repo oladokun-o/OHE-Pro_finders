@@ -1,17 +1,11 @@
 const User = require('../models/user')
 const Jobs = require('../models/jobs')
-const JobsList = require('../models/job-list')
-const Chat = require('../models/ChatRoom')
+const Expatriates = require('../models/expatriates')
 const db = require('../config/index').get(process.env.NODE_ENV);
-var fs = require('fs');
-var handlebars = require('handlebars');
+const fs = require('fs');
+const handlebars = require('handlebars');
 const transporter = require('../utils/mailer')
-var router = require('../routes/index')
-var passport = require('passport');
 const Support = require('../models/support');
-const jobs = require('../models/jobs');
-const jobList = require('../models/job-list');
-const { response } = require('express');
 const Price = require('../models/price')
 const SubPrice = require('../models/sub-price')
 const crypto = require('crypto')
@@ -493,7 +487,7 @@ module.exports = {
                 User.findOne({ email: req.user.email }, function (err, user) {
                     if (!user) return res.render('login', { title: 'Login', errmsg: "Email already exists" });
 
-                    var firstStr = user.firstname,
+                    let firstStr = user.firstname,
                         lastStr = user.lastname,
                         Initials = firstStr.charAt(0) + '.' + lastStr.charAt(0);
                     user.generateToken((err, user) => {
@@ -858,5 +852,30 @@ module.exports = {
     },
     getJobList: async function (req, res) {
         res.render('work', { title: 'Browse Jobs', id: undefined });
-    }
+    },
+    getExpatriates: async function (req, res) {
+        res.render('expatriates',{title:'Expatriates'});
+    },
+    getExpatriatesList: async function (req, res) {
+        Expatriates.find({}, '-_id -description', (err, result) => {                
+            if (result) {
+                res.status(200).send(result)
+                //console.log('sent')
+            } else {
+                res.status(404).send('No pros found')
+                //console.log('not sent')
+            }
+        })     
+    },
+    getExpatriatesDescription: async function (req, res) {
+        //console.log(req.body)
+        Expatriates.find({'job': req.body.job}, '-_id -job', (err, result) => {                
+            if (result) {
+                res.status(200).send(result)
+            } else {
+                res.status(404).send('No pros found')
+                console.log('not sent')
+            }
+        })     
+    }   
 }

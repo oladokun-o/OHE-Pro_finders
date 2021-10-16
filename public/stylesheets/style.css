@@ -1,16 +1,51 @@
 @font-face {
-    font-family: 'Montserrat';
-    src: url('/fonts/Montserrat-Regular.otf');
+    font-family: 'Poppins';
+    src: url(../webfonts/Poppins-Regular.ttf);
 }
+
 
 @font-face {
-    font-family: 'Montserrat-light';
-    src: url('/fonts/Montserrat-Light.otf');
+    font-family: 'Poppins light';
+    src: url(../webfonts/Poppins-Light.ttf);
 }
 
+
+@font-face {
+    font-family: 'Poppins bold';
+    src: url(../webfonts/Poppins-Bold.ttf);
+}
+
+.font {
+    font-family: 'Poppins';
+}
+
+.font-light {
+    font-family: 'Poppins light';
+}
+
+.font-bold {
+    font-family: 'Poppins bold';
+}
+
+.regular-size {
+    font-size: 16px;
+}
+
+.light-size {
+    font-size: 14px;
+}
+
+.bg-0 {
+    background: transparent !important;
+}
+
+
+.bs-0 {
+    box-shadow: none !important;
+}
 body {
     position: relative;
-    font-family: 'Montserrat', sans-serif !important;
+    font-family: 'Poppins', sans-serif !important;
     height: 100%;
 }
 
@@ -36,25 +71,6 @@ main {
     transform: translateY(-20px);
 }
 
-.font-light {
-    font-weight: lighter;
-}
-
-.font-bold {
-    font-weight: bold;
-}
-
-.font-regular {
-    font-size: 15px;
-}
-
-.font-medium {
-    font-size: 20px;
-}
-
-.font-large {
-    font-size: 25px;
-}
 /* Safari */
 
 @-webkit-keyframes spin {
@@ -127,7 +143,9 @@ img {
 .main-index-page {
     height: 100vh;
 }
-
+.main-header {
+    box-shadow: 0 0 5px #00000071;
+}
 .main-header>div {
     padding-top: 15px;
 }
@@ -580,7 +598,6 @@ left: 0;
 .large-menu a {
     color: var(--font-color-inv);
     text-transform: uppercase;
-    font-weight: 600;
     transition: all 0.50s;
 }
 
@@ -773,22 +790,28 @@ left: 0;
 .footer {
     background: #80808021;
     border-top: 1px solid #8080806c;
+    font-size: larger;
+}
+
+.footer li {
+    font-size: medium !important;
+    font-family: 'poppins light' !important;
 }
 
 .last-footer-item {
     border-top: 1px solid #8080806c;
+    font-family: 'poppins light' !important;
 }
 
 .footer-title {
     text-transform: uppercase;
-    font-weight: bold;
 }
 
 .footer ul {
     padding-inline-start: 0;
 }
 
-.footer ul a,
+.footer ul a, .footer li,
 .card li {
     font-size: small;
     color: #414040;
@@ -806,8 +829,8 @@ left: 0;
 
 .footer li {
     list-style-type: none;
-    margin-top: 25px !important;
-    margin-bottom: 25px !important;
+    margin-top: 15px !important;
+    margin-bottom: 15px !important;
     width: auto;
 }
 
@@ -889,6 +912,7 @@ left: 0;
     padding: 10px;
     padding-left: 5px;
     padding-right: 5px;
+    cursor: pointer;
 }
 
 .updates-form a:hover {
@@ -910,7 +934,7 @@ left: 0;
     padding: 15px;
     width: 100%;
     position: absolute;
-    top: -110px;
+    transform: translateY(-124px);
     z-index: 1;
 }
 
@@ -1842,12 +1866,14 @@ select:focus {
 
 .job-li button {
     font-weight: lighter;
-    font-family: 'Montserrat-light';
+    font-family: 'Poppins', sans-serif;
+    font-weight: lighter;
     padding-inline-start: 10px;
     background: none;
     color: blue;
     border: none;
     outline: none;
+    text-align: left;
 }
 
 .desc-btn {
@@ -1947,4 +1973,96 @@ select:focus {
     box-shadow: 0 -1px 0 rgba(0, 0, 0, 0.04), 0 1px 1px rgba(0, 0, 0, 0.25) !important;
     cursor: not-allowed !important;
   }
-  
+
+.general-contn {
+    background-image: url(/images/questions.png);
+    background-position: bottom;
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.general-questions {
+    font-family: 'Poppins', sans-serif !important;
+}
+
+.general-questions h5 {
+    font-size: x-large;
+}
+
+.general-questions li {
+    font-size: medium;
+    font-family: 'poppins light' !important;
+}
+
+.general-contn h2 {
+    color: white !important;
+}
+
+.expatriates {
+    font-family: 'Poppins', sans-serif !important;
+}
+
+.exp-list {
+    list-style: none;
+    background: #ef6c26;
+    border-radius: 10px;
+    color: white;
+    font-size: large;
+    width: 45%;
+    margin: 0 !important;
+}
+
+.exp-list a {
+    cursor: pointer;
+}
+
+.exp-list a:hover {
+    color: #a83c02 !important;
+}
+
+.exp-list li {
+    padding-top: 2.5px;
+    padding-bottom: 2.5px;
+    transition: all 150ms;
+}
+
+.exp-list-contn {
+    width: 100%;
+    border: 1px solid #ef6c264f;
+    border-radius: 10px;
+    background-image: url(/images/pattern.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 0;
+    height: 100%;
+}
+
+
+.exp-description {
+    border-radius: 10px;
+    background: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.exp-contn{
+    display: flex;
+    transition: all 1500ms !important;
+}
+
+.exp-content {
+    background: #1d154e;
+    border-radius: 10px;
+    text-align: left;
+    color: white;
+    font-family: 'poppins light';
+    padding: 15px;
+}
+
+.move {
+    margin-right: 25px !important;
+}
