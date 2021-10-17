@@ -758,6 +758,7 @@ left: 0;
     color: var(--font-color-inv) !important;
     font-weight: 600;
     transition: all 0.50s;
+    box-shadow: 0 0 5px #0000003a;
 }
 .list-btn {
     color: blue !important;
@@ -793,7 +794,7 @@ left: 0;
     font-size: larger;
 }
 
-.footer li {
+.footer li a {
     font-size: medium !important;
     font-family: 'poppins light' !important;
 }
@@ -1849,6 +1850,20 @@ select:focus {
     box-shadow: none !important;
 }
 
+.job-span-list {
+    -webkit-animation:slide-in-top 1s cubic-bezier(.25,.46,.45,.94) both;
+    animation:slide-in-top 1s cubic-bezier(.25,.46,.45,.94) both
+}
+
+.job-li p {
+    -webkit-animation:scale-up-center 150ms cubic-bezier(.39,.575,.565,1.000) both;
+    animation:scale-up-center 150ms cubic-bezier(.39,.575,.565,1.000) both
+}
+
+.job-li p>button {
+    text-align: right !important;
+}
+
 .job-li li {
     border: 1px solid #ef6c26;
     padding-top: 2px;
@@ -2005,6 +2020,12 @@ select:focus {
     font-family: 'Poppins', sans-serif !important;
 }
 
+.exp-head {
+    background: #1d154e;
+    color: white;
+    border-radius: 10px;
+}
+
 .exp-list {
     list-style: none;
     background: #ef6c26;
@@ -2033,7 +2054,7 @@ select:focus {
     width: 100%;
     border: 1px solid #ef6c264f;
     border-radius: 10px;
-    background-image: url(/images/pattern.png);
+    background-image: url(/images/flags.png);
     background-repeat: no-repeat;
     background-size: cover;
     padding: 0;
@@ -2061,8 +2082,32 @@ select:focus {
     color: white;
     font-family: 'poppins light';
     padding: 15px;
+    padding-top: 15px;
+}
+
+.exp-content button {
+    margin-top: 10px;
 }
 
 .move {
     margin-right: 25px !important;
+}
+
+.policy {
+    font-size: larger;
+}
+
+.close-exp-btn {
+    position: absolute;
+    top: -2px;
+    right: -10px;
+    background: transparent !important;
+    border: none;
+    outline: none;
+    color: white !important;
+}
+
+.exp-type {
+    font-weight: bold;
+    text-transform: uppercase;
 }

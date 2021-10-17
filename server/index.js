@@ -3,8 +3,7 @@ const bodyParser = require('body-parser');
 require("dotenv").config();
 const http = require('http')
 var createError = require('http-errors');
-const session = require('express-session');
-const MongoDBStore = require('connect-mongodb-session')(session);
+//const session = require('express-session');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
@@ -50,6 +49,7 @@ app.use(express.static('node_modules/bootstrap/dist/css/'));
 app.use(express.static('node_modules/bootstrap/dist/js/'));
 app.use(express.static('node_modules/@popperjs/core/dist/cjs/'));
 app.use(express.static('node_modules/jquery/dist'));
+app.use(express.static('../node_modules/jquery-ui/ui/effects/'));
 app.use(express.static('node_modules/hamburgers/dist'));
 app.use(express.static('node_modules/@fortawesome/fontawesome-free/css/'));
 app.use(express.static('node_modules/@fortawesome/fontawesome-free/webfonts/'));

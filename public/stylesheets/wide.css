@@ -148,6 +148,10 @@
         font-size: xx-large;
         line-height: 40px;
     }
+        
+    .active-li {
+        color: #a83c02 !important;
+    }
 }
 
 @media only screen and (min-width: 1200px) {

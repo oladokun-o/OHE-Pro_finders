@@ -85,7 +85,7 @@ function jobAnchor(event) {
     let e = event,
         eDescriptionContn = $('<p class="p-2"></p>'),
         req = e.innerText,
-        eDescriptionBtn = $('<br><button title="'+req+'" onclick="getExpert(this)" class="primary-btn desc-btn mt-2 text-center">Chat</button>');
+        eDescriptionBtn = $('<div class="px-0 py-2 text-right"><button title="'+req+'" onclick="getExpert(this)" class="primary-btn desc-btn move mt-2">Chat</button></div>');
         //console.log(e)
     if (e.classList.contains('show')) {
         //console.log('event still showing, now removing class "show"')

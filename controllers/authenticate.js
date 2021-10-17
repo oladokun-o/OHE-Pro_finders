@@ -854,7 +854,7 @@ module.exports = {
         res.render('work', { title: 'Browse Jobs', id: undefined });
     },
     getExpatriates: async function (req, res) {
-        res.render('expatriates',{title:'Expatriates'});
+        res.render('expatriates',{title:'Expatriates (Foreigners) Corner'});
     },
     getExpatriatesList: async function (req, res) {
         Expatriates.find({}, '-_id -description', (err, result) => {                

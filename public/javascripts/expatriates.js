@@ -35,7 +35,9 @@ const getDescription = function(elem) {
         })
         .done(function( response ) {
             let description = response;        
-            $('.exp-content').fadeIn('slow').html(description[0].description+'<div class="text-right"><button class="primary-btn" onclick="chatExp(this)">chat</button></div>')
+            $('.exp-content').fadeIn('slow').addClass('scale-up-center').removeClass('scale-out-center').fadeIn('slow').html('<div class="exp-type">'+jobReq+' :</div>'+description[0].description+'<div class="text-right"><button class="primary-btn" onclick="chatExp(this)">chat</button></div>')
+            $('.exp-content').append('<button class="close-exp-btn" onclick="closeExpLg()"><i class="fa fa-times"></i></button>')
+            $(elem).addClass('active-li')
             $(elem).find('.content').fadeIn('slow').append(description[0].description+'<div class="text-right"><button class="primary-btn" onclick="chatExp(this)">chat</button></div>')
             setTimeout(() => {
                 $(elem).find('button').fadeIn('slow').addClass('move')
@@ -48,21 +50,27 @@ const getDescription = function(elem) {
     }
 
     if ($('.exp-content').hasClass('true')) {        
-        $('.exp-content').removeClass('true')
-        console.log(1)
+        openExpLg()
+        //console.log(1)
         request() 
     } else if (!$('.exp-content').hasClass('true') && jobRes == jobReq) {
-        $('.exp-content').html('').addClass('true')
+        closeExpLg()
         $('.content').fadeOut('fast').html('')
-        $('body').find('li').removeClass('active-exp')
-        console.log(2)
+        //console.log(2)
     } else if (jobRes !== jobReq){
         $('.content').fadeOut('fast').html('')
-        $('body').find('li').removeClass('active-exp')
+        $('body').find('li').removeClass('active-exp active-li')
         request()
-        console.log(3)
+        //console.log(3)
     } 
 },
 chatExp = function(elem) {
     alert(localStorage.getItem('expatriate'))
+},
+closeExpLg= function() {
+    $('.exp-content').addClass('true scale-out-center')
+    $('body').find('li').removeClass('active-exp active-li')
+},
+openExpLg = function() {
+    $('.exp-content').removeClass('true scale-out-center')
 }

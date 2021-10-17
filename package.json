@@ -33,7 +33,6 @@
     "calculatepricevat": "^1.0.2",
     "compression": "^1.7.4",
     "connect-mongo": "^4.4.1",
-    "connect-mongodb-session": "^2.4.1",
     "cookie-parser": "^1.4.5",
     "cors": "^2.8.5",
     "crypto-js": "^4.0.0",
@@ -47,7 +46,7 @@
     "handlebars": "^4.7.7",
     "http-errors": "^1.8.0",
     "jquery": "^3.6.0",
-    "jquery-ui": "^1.12.1",
+    "jquery-ui": "^1.13.0",
     "jsonwebtoken": "^8.5.1",
     "mongo": "^0.1.0",
     "mongodb": "^3.6.9",
@@ -68,6 +67,6 @@
     "uuid": "^8.3.2"
   },
   "devDependencies": {
-    "rewire": "^5.0.0"
+    "rewire": "^3.0.2"
   }
 }
