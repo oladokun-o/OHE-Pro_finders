@@ -54,6 +54,10 @@ body::-webkit-scrollbar {
     /* Safari and Chrome */
 }
 
+body div::-webkit-scrollbar {
+    display: none !important;
+}
+
 button {
     cursor: pointer;
 }
@@ -120,6 +124,10 @@ img {
     --font-color-inv: #000000;
     --color-primary-gra: linear-gradient(0deg, #0367cc 0%, #17ed90 39%);
     --shadow: #ffffff34;
+}
+
+.loader-active {
+    overflow: hidden !important;
 }
 
 .body-theme {
@@ -2028,12 +2036,13 @@ select:focus {
 
 .exp-list {
     list-style: none;
-    background: #ef6c26;
+    background: white;
     border-radius: 10px;
-    color: white;
+    color: inherit;
     font-size: large;
     width: 45%;
     margin: 0 !important;
+    box-shadow: 0 0 5px #00000025;
 }
 
 .exp-list a {
@@ -2041,20 +2050,31 @@ select:focus {
 }
 
 .exp-list a:hover {
-    color: #a83c02 !important;
+    color: white !important;
 }
 
 .exp-list li {
-    padding-top: 2.5px;
-    padding-bottom: 2.5px;
+    border: 1px solid #ef6c26;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    padding-left: 10px;
+    border-radius: 5px;
+    margin-bottom: 5px !important;
     transition: all 150ms;
+    cursor: pointer;
+}
+
+.exp-list li:hover {
+    box-shadow: 0 0 5px #ef6c2646;
+    background: #ef6c26;
+    color: white;
 }
 
 .exp-list-contn {
     width: 100%;
-    border: 1px solid #ef6c264f;
+    /*border: 1px solid #ef6c264f;
     border-radius: 10px;
-    background-image: url(/images/flags.png);
+    background-image: url(/images/flags.png);*/
     background-repeat: no-repeat;
     background-size: cover;
     padding: 0;
@@ -2067,7 +2087,7 @@ select:focus {
     background: transparent;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
 }
 
 .exp-contn{
@@ -2082,7 +2102,8 @@ select:focus {
     color: white;
     font-family: 'poppins light';
     padding: 15px;
-    padding-top: 15px;
+    padding-top: 25px;
+    padding-left: 20px;
 }
 
 .exp-content button {
@@ -2099,8 +2120,8 @@ select:focus {
 
 .close-exp-btn {
     position: absolute;
-    top: -2px;
-    right: -10px;
+    top: -7px;
+    right: -20px;
     background: transparent !important;
     border: none;
     outline: none;
@@ -2110,4 +2131,32 @@ select:focus {
 .exp-type {
     font-weight: bold;
     text-transform: uppercase;
+}
+
+.load {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: #ef6c26;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 500 !important;
+}
+
+.load img {
+    width: 35px;
+    color: white;
+    font-size: 2.5rem;
+    margin-bottom: -125px;
+    margin-right: -23px;
+}
+
+.load-dot {
+    background: #ef6c26;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
 }

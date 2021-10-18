@@ -9,11 +9,11 @@ block content
 				.col-12.col-md-6
 					.container-fluid.text-center
 						.row
-							.col-4.categories-btn.m-0.p-0
+							.col-6.categories-btn.m-0.p-0
 								button.general-btn.active-category-btn general 
-							.col-4.categories-btn.m-0.p-0 
+							.col-6.categories-btn.m-0.p-0 
 								button.payments-btn payments
-							.col-4.categories-btn.m-0.p-0
+							//.col-4.categories-btn.m-0.p-0
 								button.account-btn account
 			.d-flex.justify-content-center.p-0
 				.col-md-7.col-12.p-0
@@ -26,10 +26,19 @@ block content
 											.panel-title
 												button.first-btn(role='button' data-toggle='collapse' data-parent='#accordion' href='#collapseOne' aria-expanded='false' aria-controls='collapseOne')
 													i.more-less.lni.lni-circle-minus.pr-3
-													| Why OHE?
+													| Why Oprofinder?
 										#collapseOne.panel-collapse.collapse.show(role='tabpanel' aria-labelledby='headingOne')
 											.panel-body.p-3
-												| Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+												| Oprofinder is a question and answer internet based tech company with focus on answering questions and providing solutions majorly online.
+									.panel.panel-default
+										#heading2.panel-heading(role='tab')
+											.panel-title
+												button.first-btn(role='button' data-toggle='collapse' data-parent='#accordion' href='#collapse2' aria-expanded='false' aria-controls='collapse2')
+													i.more-less.lni.lni-circle-minus.pr-3
+													| Does Oprofinder offers physical services?
+										#collapse2.panel-collapse.collapse(role='tabpanel' aria-labelledby='heading2')
+											.panel-body.p-3
+												| Yes we do, but only on request. 
 									.panel.panel-default
 										#headingTwo.panel-heading(role='tab')
 											.panel-title
@@ -38,7 +47,7 @@ block content
 													| When will i get my answer?
 										#collapseTwo.panel-collapse.collapse(role='tabpanel' aria-labelledby='headingTwo')
 											.panel-body.p-3
-												| Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+												| You will get your answer in less than 5 to 10 minutes, just make sure your question is clear and direct so that we can serve you better and faster
 									.panel.panel-default
 										#headingThree.panel-heading(role='tab')
 											.panel-title
@@ -47,7 +56,8 @@ block content
 													| How do i change my password?
 										#collapseThree.panel-collapse.collapse(role='tabpanel' aria-labelledby='headingThree')
 											.panel-body.p-3
-												| Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+												| You can change your password by using this 
+												a(href="/forgot-password") link
 									.panel.panel-default
 										#headingFour.panel-heading(role='tab')
 											.panel-title
@@ -56,7 +66,8 @@ block content
 													| This sounds great. Where do i sign up?
 										#collapseFour.panel-collapse.collapse(role='tabpanel' aria-labelledby='headingFour')
 											.panel-body.last-body.p-3
-												| Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+												| You can Signup by clicking this Signup 
+												a(href="/signup") link
 							.col-12.payments.hide
 								#accordion.panel-group.p-3(role='tablist' aria-multiselectable='true')
 									.panel.panel-default
@@ -64,10 +75,10 @@ block content
 											.panel-title
 												button.first-btn(role='button' data-toggle='collapse' data-parent='#accordion' href='#collapseFive' aria-expanded='false' aria-controls='collapseFive')
 													i.more-less.lni.lni-circle-minus.pr-3
-													| What type of payment process does OHE use?
+													| What type of payment process does Oprofinder use?
 										#collapseFive.panel-collapse.collapse.show(role='tabpanel' aria-labelledby='headingFive')
 											.panel-body.p-3
-												| Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+												| Oprofinder uses flutterwave gateway payment secure system to accept your payments by credit card or debit card such as Visa, Verve, MasterCard.
 									.panel.panel-default
 										#headingSix.panel-heading(role='tab')
 											.panel-title
@@ -76,7 +87,7 @@ block content
 													| Why was my payment declined?
 										#collapseSix.panel-collapse.collapse(role='tabpanel' aria-labelledby='headingSix')
 											.panel-body.p-3
-												| Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+												| It is possible you typed your details incorrectly in a rush or your bank has current maintenance issues or the network isn't favorable at the moment. Please take your time to study what could be the possible cause and try making your payments again.
 									.panel.panel-default
 										#headingSeven.panel-heading(role='tab')
 											.panel-title
@@ -85,7 +96,7 @@ block content
 													| Why do i have to pay a fee to post my question?
 										#collapseSeven.panel-collapse.collapse(role='tabpanel' aria-labelledby='headingSeven')
 											.panel-body.p-3
-												| Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+												| You have to pay a fee to get answers because Oprofinder has to keep operating by paying her staffs and investors everyday for posterity to be achieved.
 									.panel.panel-default
 										#headingEight.panel-heading(role='tab')
 											.panel-title
@@ -94,7 +105,11 @@ block content
 													| How much does it cost?
 										#collapseEight.panel-collapse.collapse(role='tabpanel' aria-labelledby='headingEight')
 											.panel-body.last-body.p-3
-												| Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+												| It costs just 6USD
+												button(type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="right" title="at CBN exchange rate for Naira cards| For expatriates (foreigners): at your current country exchange rate to USD according to your card issuer").pl-1
+													i.fa.fa-info-circle
+												br
+												|for your questions to be answered. Be rest assured that if you are not satisfied with the answers provided to you, you are free to report this issue by telling us via the chatbox and we will ensure to satisfy you till you are satisfied.
 							.col-12.account.border.hide
 								#accordion.panel-group.p-3(role='tablist' aria-multiselectable='true')
 									.panel.panel-default

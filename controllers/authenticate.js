@@ -20,7 +20,7 @@ module.exports = {
                     Initials = firstStr.charAt(0) + '.' + lastStr.charAt(0);
                 res.render(
                     '', {
-                    title: 'OHE',
+                    title: 'Oprofinder',
                     firstname: user.firstname,
                     lastname: user.lastname,
                     fullname: user.firstname + ' ' + user.lastname,
@@ -34,7 +34,7 @@ module.exports = {
                 console.log('heya')
             } else {
                 res.render('', 
-                { title: 'OHE' })
+                { title: 'Oprofinder' })
             }
         })
     },
@@ -341,8 +341,8 @@ module.exports = {
                 if (FbUserData.fbId !== undefined || GooUserData.gooId !== undefined) {
                     // Tell client the user logs in with face book login
                     var Relogger = req.body.email;
-                    //console.log(Relogger + ' ' + 'logs in OHE with ' + ' ' + logintype + ' ' + ' login!');
-                    res.status(500).send(Relogger + ' ' + 'logs in OHE with ' + ' ' + logintype + ' ' + ' login!');
+                    //console.log(Relogger + ' ' + 'logs in Oprofinder with ' + ' ' + logintype + ' ' + ' login!');
+                    res.status(500).send(Relogger + ' ' + 'logs in Oprofinder with ' + ' ' + logintype + ' ' + ' login!');
                 } else {
                     user.generatePasswordReset();
                     user.save();
@@ -574,7 +574,7 @@ module.exports = {
                                             username: oldUserFirstname,
                                             usermail: newEmail.email,
                                             link: link,
-                                            msg: 'You are receiving this email because you or someone asked to change your email address for your OHE account. If you did not request to change your email, please let us know immediately by replying to this email.'
+                                            msg: 'You are receiving this email because you or someone asked to change your email address for your Oprofinder account. If you did not request to change your email, please let us know immediately by replying to this email.'
                                         };
                                         var emailUpdate = template(replacements);
                                         var updateEmailData = {
@@ -664,7 +664,7 @@ module.exports = {
                 user.email = usermail
                 user.save((err) => {
                     if (err) return res.status(500);
-                    else { res.render('stat', { title: 'OHE', email: usermail }); }
+                    else { res.render('stat', { title: 'Oprofinder', email: usermail }); }
                 })
             })
             .catch(err => res.status(500).render('error-page', { pwderr: err.message }));

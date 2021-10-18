@@ -76,7 +76,7 @@
     }*/
         
     .active-exp {
-        background: #1d154e;
+        background: #ef6c26;
         padding-left: 10px;
         padding-right: 10px;
         padding-top: 20px !important;
@@ -84,10 +84,21 @@
         border-radius: 10px;
         transition: all 150ms;
         margin-top: 5px;
+        color: white;
+        cursor: default !important;
+    }
+
+    .active-exp button {
+        background: #1d154e !important;
+    }
+
+    .active-exp button:hover {
+        background: #1d154e !important;
     }
 
     .active-exp a {
         font-family: 'poppins bold' !important;
+        color: white !important;
     }
 
     .active-exp a:hover {
@@ -106,6 +117,14 @@
     .large-exp {
         font-size: x-large;
         line-height: 35px;
+    }
+
+    .confused-contn h2,.confused-contn h3 {
+        font-size: x-large !important;
+    }
+
+    .confused-contn h4 {
+        font-size: larger !important;
     }
 }
 

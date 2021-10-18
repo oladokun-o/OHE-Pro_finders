@@ -150,7 +150,8 @@
     }
         
     .active-li {
-        color: #a83c02 !important;
+        background: #ef6c26 !important;
+        color: white !important;
     }
 }
 

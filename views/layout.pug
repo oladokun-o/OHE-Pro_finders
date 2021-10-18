@@ -5,6 +5,7 @@ html(lang="en").theme-light
     meta(http-equiv="X-UA-Compatible" content="ie=edge")
     meta(name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0")    
     title= title
+    script(src="/javascripts/progress.js" defer)
     link(rel='stylesheet', href='/stylesheets/style.css')
     link(rel='icon', type="image/png",  href='/images/favicon.png')
     link(rel='icon', type="image/x-icon", href='/images/favicon.ico')
@@ -36,7 +37,19 @@ html(lang="en").theme-light
         email = '!{email}',
         title = '!{title}';
 
-  body.body-theme.preloader-active
+  body.body-theme.loader-active
+    .load
+      img(src="/images/favicon.png", alt="Oprofinder").text-pop-up-top
+      //.la-square-jelly-box.la-light
+        div
+          div.load-dot
+        div
+      .loader.fade-out
+        .circle
+        .circle
+        .circle
+        .circle
+        .circle
     .col-12.position-relative
       .alert-contn.justify-content-center.text-center.col-12.col-md-12.col-lg-12
         .col-12.col-md-6.alert.fade-out
@@ -60,6 +73,5 @@ html(lang="en").theme-light
     script(src="/javascripts/expert.js")
     script( src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous")
     //link(rel="stylesheet", href="/stylesheets/tawk.to.css")
-
 
 
