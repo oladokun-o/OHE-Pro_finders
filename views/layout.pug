@@ -54,7 +54,9 @@ html(lang="en").theme-light
       .alert-contn.justify-content-center.text-center.col-12.col-md-12.col-lg-12
         .col-12.col-md-6.alert.fade-out
     script.
-      0
+      //$(function () {
+        //$('[data-toggle="tooltip"]').tooltip()
+      //})
     block content
     .void-box.fade-out(onclick="minimizeChat()")
       .loader
@@ -64,12 +66,13 @@ html(lang="en").theme-light
         .circle
         .circle
         .circle
+    script(src="https://unpkg.com/@popperjs/core@2")
     script(src="/jquery.slim.min.js")
     script(src="/jquery.min.js")
     script(src="/javascripts/prereq.js")    
     script(src="/javascripts/mail.js")
-    script(src="/all.js")
-    script(src="/bootstrap.min.js")
+    script(src="/all.js") 
+    script(src="/bootstrap.js")
     script(src="/javascripts/expert.js")
     script( src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous")
     //link(rel="stylesheet", href="/stylesheets/tawk.to.css")

@@ -25,7 +25,7 @@
   "homepage": "https://github.com/honcho-man/OHE-Pro_finders#readme",
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.15.3",
-    "@popperjs/core": "^2.9.2",
+    "@popperjs/core": "^2.10.2",
     "@withvoid/make-validation": "^1.0.5",
     "aws-sdk": "^2.944.0",
     "bcrypt": "^5.0.1",

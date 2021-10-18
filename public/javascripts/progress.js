@@ -23,6 +23,3 @@ const loadOnce = function () {
     load.addClass('slide-out-top')
     $('body').removeClass('loader-active')
 }
-$(function () {
-    $('[data-toggle="tooltip"]').tooltip()
-  })

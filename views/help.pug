@@ -106,8 +106,76 @@ block content
 										#collapseEight.panel-collapse.collapse(role='tabpanel' aria-labelledby='headingEight')
 											.panel-body.last-body.p-3
 												| It costs just 6USD
-												button(type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="right" title="at CBN exchange rate for Naira cards| For expatriates (foreigners): at your current country exchange rate to USD according to your card issuer").pl-1
-													i.fa.fa-info-circle
+												button#button.cost-info(aria-describedby="tooltip") 
+													i.fa.fa-info-circle(aria-hidden='true')
+												#tooltip(role="tooltip")
+													|At CBN exchange rate for Naira cards| For expatriates (foreigners): at your current country exchange rate to USD according to your card issuer
+													#arrow(data-popper-arrow)
+												script(src="https://unpkg.com/@popperjs/core@2")
+												script.
+													const button = document.querySelector('#button');
+															const tooltip = document.querySelector('#tooltip');
+													
+															const popperInstance = Popper.createPopper(button, tooltip, {
+																placement: 'right',
+																modifiers: [
+																	{
+																	name: 'offset',
+																		options: {
+																			offset: [0, 8],
+																		},
+																	},
+																	{
+																	name: 'flip',
+																		options: {
+																			fallbackPlacements: ['top', 'right'],
+																		},
+																	}
+																],
+															});
+													
+															function show() {
+															// Make the tooltip visible
+															tooltip.setAttribute('data-show', '');
+													
+															// Enable the event listeners
+															popperInstance.setOptions((options) => ({
+																...options,
+																modifiers: [
+																...options.modifiers,
+																{ name: 'eventListeners', enabled: true },
+																],
+															}));
+													
+															// Update its position
+															popperInstance.update();
+															}
+													
+															function hide() {
+															// Hide the tooltip
+															tooltip.removeAttribute('data-show');
+													
+															// Disable the event listeners
+															popperInstance.setOptions((options) => ({
+																...options,
+																modifiers: [
+																...options.modifiers,
+																{ name: 'eventListeners', enabled: false },
+																],
+															}));
+															}
+													
+															const showEvents = ['mouseenter', 'focus'];
+															const hideEvents = ['mouseleave', 'blur'];
+													
+															showEvents.forEach((event) => {
+															button.addEventListener(event, show);
+															});
+													
+															hideEvents.forEach((event) => {
+															button.addEventListener(event, hide);
+															});
+													
 												br
 												|for your questions to be answered. Be rest assured that if you are not satisfied with the answers provided to you, you are free to report this issue by telling us via the chatbox and we will ensure to satisfy you till you are satisfied.
 							.col-12.account.border.hide
