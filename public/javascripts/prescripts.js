@@ -20,6 +20,10 @@ $(document).ready((e) => {
         loginText.html('Login')
         loginAnchor.attr('href', '/login')
     }
+    setTimeout(() => {
+        $('.print-btn').removeClass('farther').addClass('swoosh')
+    }, 2000);
+    $('.print-btn').attr('href', 'Oprofinder Privacy Policy.pdf');
 })
 
 var dashboardBtn = $('.back-to-dashboard');

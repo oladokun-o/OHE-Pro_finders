@@ -2236,3 +2236,16 @@ display: block;
     left: 50%;
     transform: translateX(-50%) translateY(-50%);
 }
+
+.print-btn {
+    position: fixed;
+    right: 25px;
+    top: 105px;
+    cursor: pointer;
+    font-weight: lighter !important;
+}
+
+.farther {
+    left: -2500px;
+    right: unset !important;
+}
