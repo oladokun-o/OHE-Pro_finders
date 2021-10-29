@@ -878,10 +878,56 @@ module.exports = {
         })
     },
     getJobList: async function (req, res) {
-        res.render('work', { title: 'Browse Jobs', id: undefined });
+        let token = req.cookies.auth
+        User.findByToken(token, function (err, user) {
+            if (user) {
+                var firstStr = user.firstname,
+                    lastStr = user.lastname,
+                    Initials = firstStr.charAt(0) + '.' + lastStr.charAt(0);
+                res.render(
+                    'work', {
+                    title: 'Browse Jobs',
+                    firstname: user.firstname,
+                    lastname: user.lastname,
+                    fullname: user.firstname + ' ' + user.lastname,
+                    initials: Initials,
+                    id: user._id,
+                    email: user.email,
+                    phone: user.phone,
+                    addressI: user.addressI,
+                    addressII: user.addressII,
+                });
+                console.log('heya')
+            } else {
+                res.render('work', { title: 'Browse Jobs', id: undefined });
+            }
+        })
     },
     getExpatriates: async function (req, res) {
-        res.render('expatriates',{title:'Expatriates (Foreigners) Corner'});
+        let token = req.cookies.auth
+        User.findByToken(token, function (err, user) {
+            if (user) {
+                var firstStr = user.firstname,
+                    lastStr = user.lastname,
+                    Initials = firstStr.charAt(0) + '.' + lastStr.charAt(0);
+                res.render(
+                    'expatriates', {
+                    title: 'Expatriates (Foreigners) Corner',
+                    firstname: user.firstname,
+                    lastname: user.lastname,
+                    fullname: user.firstname + ' ' + user.lastname,
+                    initials: Initials,
+                    id: user._id,
+                    email: user.email,
+                    phone: user.phone,
+                    addressI: user.addressI,
+                    addressII: user.addressII,
+                });
+                console.log('heya')
+            } else {
+                res.render('expatriates',{title:'Expatriates (Foreigners) Corner'});
+            }
+        })
     },
     getExpatriatesList: async function (req, res) {
         Expatriates.find({}, '-_id -description', (err, result) => {                

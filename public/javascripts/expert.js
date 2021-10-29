@@ -29,7 +29,7 @@ selectList.on('change',function () {
     alert('Preferred expert: '+exp+', has been copied to clipboard. Please paste into required field')
     closeSelect()
     setTimeout(() => {
-        if (email || title == 'Dashboard') {
+        if (email) {
             maximizeChat()
         } else{
             window.location.href = '/dashboard?'+exp

@@ -141,11 +141,11 @@ function closeDesc(e) {
 }*/
 
 function getExpert(event) {
-    //console.log(event.title)
+    console.log(event)
     let exp = localStorage.getItem('expert_job') || event.title;
     alert('Preferred expert: '+exp+', has been copied to clipboard. Please paste into required field')
     setTimeout(() => {
-        if (authed == true) {
+        if (email !== undefined) {
             maximizeChat()
         } else {
             window.location.href = '/dashboard?'+exp
