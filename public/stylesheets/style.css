@@ -2243,6 +2243,7 @@ display: block;
     top: 105px;
     cursor: pointer;
     font-weight: lighter !important;
+    z-index: 10;
 }
 
 .farther {

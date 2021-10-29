@@ -23,7 +23,8 @@ $(document).ready((e) => {
     setTimeout(() => {
         $('.print-btn').removeClass('farther').addClass('swoosh')
     }, 2000);
-    $('.print-btn').attr('href', 'Oprofinder Privacy Policy.pdf');
+    $('.print-btn-privacy').attr('href', 'Oprofinder Privacy Policy.pdf');
+    $('.print-btn-tac').attr('href', 'Oprofinder Terms and Conditions.pdf');
 })
 
 var dashboardBtn = $('.back-to-dashboard');
