@@ -32,7 +32,10 @@ router
         res.render('blog', { title: 'Blog' });
     })
     .get('/privacy', function (req, res, next) {
-        res.render('privacy-policies', { title: 'Terms and conditions' });
+        res.render('privacy-policies', { title: 'Privacy Policy' });
+    })
+    .get('/tac', function (req, res, next) {
+        res.render('toc', { title: 'Terms and Conditions' });
     })
     .get('/jobs', loggeduser.getJobList)
     .get('/how-it-works', function (req, res, next) {
