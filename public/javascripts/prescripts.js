@@ -34,6 +34,7 @@ var userId = $('.data-saver').data('val');
 //email update 
 $('.email-form').on('submit', function (e) {
     e.preventDefault();
+    $('.cancel-change-password').attr("disabled", true).addClass('nullified')
     var oldEmail = $("#oldemail").val(),
         data;
     if (oldEmail) {
@@ -51,7 +52,7 @@ $('.email-form').on('submit', function (e) {
         }
     }
     
-    $('.update-email').html('<span>sending <i class="fa fa-spinner fa-spin"></i></span>')
+    $('.update-email').html('<span><i class="fa fa-spinner fa-spin"></i></span>')
     $('.update-email').attr("disabled", true);
     $('.update-email').addClass('nullified');
     setTimeout(() => {
@@ -70,7 +71,7 @@ $('.email-form').on('submit', function (e) {
                         $('.error').html('')
                     })
                 }, 5000)*/
-            $('.update-email').html('<span>confirmation link sent <i class="lni lni-checkmark"></i></span>')
+            $('.update-email').html('<span><i class="lni lni-checkmark"></i></span>')
             $('.update-email').attr("disabled", true);
             $('.email-form').each(function() {
                 this.reset();
@@ -84,7 +85,8 @@ $('.email-form').on('submit', function (e) {
                     $('.error').fadeOut('fast');
                     $('.error').html('')
                 }, 5000)
-            $('.update-email').html('<span> failed <i class="lni lni-close red"></i></span>')
+            $('.cancel-change-password').removeAttr("disabled").removeClass('nullified')
+            $('.update-email').html('<span><i class="lni lni-close red"></i></span>')
             $('.update-email').attr("disabled", true);
             $('.email-form').each(function() {
                 this.reset();

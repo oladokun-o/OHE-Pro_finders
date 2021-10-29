@@ -28,11 +28,11 @@ $('.get-update-form').on('submit', function(e) {
                 })
             },
             error: function(ajaxContext) {
-                $('.error').fadeIn('fast', function() { $('.error').html(ajaxContext.responseText) });
+                $('.alert').fadeIn('fast', function() { $('.alert').html(ajaxContext.responseText) });
                 setTimeout(
                     function() {
-                        $('.error').fadeOut('fast', function() {
-                            $('.error').html('')
+                        $('.alert').fadeOut('fast', function() {
+                            $('.alert').html('')
 
                         });
                     }, 5000)
@@ -68,14 +68,14 @@ $('.forgot-form').on('submit', function(e) {
                     subject: 'Your OHE Password Reset',
                 },
                 success: function() {
-                    $('.error').addClass('greenlight');
-                    $('.error').fadeIn('fast', function() { $('.error').html('Check your mail inbox for recovery link') });
+                    $('.alert').addClass('greenlight');
+                    $('.alert').fadeIn('fast', function() { $('.alert').html('Check your mail inbox for recovery link') });
                     /*setTimeout(
                         function() {
-                            $('.error').fadeOut('fast');
-                            $('.error').fadeOut('slow', function() {
-                                $('.error').removeClass('greenlight');
-                                $('.error').html('')
+                            $('.alert').fadeOut('fast');
+                            $('.alert').fadeOut('slow', function() {
+                                $('.alert').removeClass('greenlight');
+                                $('.alert').html('')
                             })
                         }, 5000)*/
                     $('.proceed-forgot-mail').html('<span>recovery link sent <i class="lni lni-checkmark"></i></span>')
@@ -93,11 +93,11 @@ $('.forgot-form').on('submit', function(e) {
                 },
                 error: function(response) {
                     const secondrequest = JSON.stringify(response.responseText);
-                    $('.error').fadeIn('fast', function() { $('.error').html(secondrequest) });
+                    $('.alert').fadeIn('fast', function() { $('.alert').html(secondrequest) });
                     setTimeout(
                         function() {
-                            $('.error').fadeOut('fast');
-                            //$('.error').html('')
+                            $('.alert').fadeOut('fast');
+                            //$('.alert').html('')
                         }, 3000)
                     $('.proceed-forgot-mail').html('<span> failed <i class="lni lni-close red"></i></span>')
                     $('.proceed-forgot-mail').attr("disabled", true);
@@ -130,15 +130,15 @@ $('.reset-form').on('submit', function(e) {
         },
         success: function(response) {
             const request = JSON.stringify(response.responseText);
-            $('.error').fadeIn('fast', function() { $('.error').html(request) });
-            $('.error').addClass('greenlight');
-            $('.error').fadeIn('fast', function() { $('.error').html('Password Updated') });
+            $('.alert').fadeIn('fast', function() { $('.alert').html(request) });
+            $('.alert').addClass('greenlight');
+            $('.alert').fadeIn('fast', function() { $('.alert').html('Password Updated') });
             /*setTimeout(
                 function() {
-                    $('.error').fadeOut('fast');
-                    $('.error').fadeOut('slow', function() {
-                        $('.error').removeClass('greenlight');
-                        $('.error').html('')
+                    $('.alert').fadeOut('fast');
+                    $('.alert').fadeOut('slow', function() {
+                        $('.alert').removeClass('greenlight');
+                        $('.alert').html('')
                     })
                 }, 5000)*/
             $('.update-pwd').html('<span> done <i class="lni lni-checkmark"></i></span>')
@@ -154,15 +154,16 @@ $('.reset-form').on('submit', function(e) {
                     $('#pass').addClass('nullified');
                     $('#pass2').addClass('nullified');
                     $('#message').fadeOut('slow')
+                    window.location = '/login';
                 }, 1000)
         },
         error: function(response) {
             const request = JSON.stringify(response.responseText);
-            $('.error').fadeIn('fast', function() { $('.error').html(request) });
+            $('.alert').fadeIn('fast', function() { $('.alert').html(request) });
             /*setTimeout(
                 function() {
-                    $('.error').fadeOut('fast');
-                    $('.error').html('')
+                    $('.alert').fadeOut('fast');
+                    $('.alert').html('')
                 }, 5000)*/
             $('.update-pwd').html('<span> failed <i class="lni lni-close red"></i></span>')
             $('.update-pwd').attr("disabled", true);
@@ -213,11 +214,11 @@ $('.contactForm').on('submit', function(e) {
             message: $('#msg').val()
         },
         error: function() {
-            $('.error').fadeIn('fast', function() { $('.error').html('Something went wrong, try again') });
+            $('.alert').fadeIn('fast', function() { $('.alert').html('Something went wrong, try again') });
             setTimeout(
                 function() {
-                    $('.error').fadeOut('fast');
-                    $('.error').html('')
+                    $('.alert').fadeOut('fast');
+                    $('.alert').html('')
                 }, 5000)
 
             $('.contact-btn').html('<span> failed <i class="lni lni-checkmark"></i></span>')
@@ -370,14 +371,14 @@ changePwdForm.on('submit', (e) => {
             },
             success: (res) => {
                 changePwdBtn.html('done')
-                alertBx.removeClass('fade-out').addClass('greenlight').html(res)
+                alertBx.removeClass('fade-out').fadeIn('fast').addClass('greenlight').html(res)
                 setTimeout(() => {
                     window.history.back()
                 }, 3000);
             },
             error: (res) => {                
                 changePwdBtn.html('change')
-                alertBx.removeClass('fade-out').html(res.responseText)
+                alertBx.removeClass('fade-out').fadeIn('fast').html(res.responseText)
                 setTimeout(() => {
                     alertBx.fadeOut('slow')
                 }, 3000);

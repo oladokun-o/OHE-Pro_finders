@@ -49,7 +49,7 @@ var burger = $('.hamburger');
 var menuToggle = document.querySelector('[data-js="menu-toggle"]');
 var HiddenPanel = document.getElementById("HiddenPanel");
 var alertContn = $('.alert-contn'),
-    exp = localStorage.getItem('expert_job');
+    exp = localStorage.getItem('expert_job') || exp;
 menuToggle.addEventListener('click', function() {
     alertContn.removeClass('overflowed')
     document.body.classList.toggle('panel-open');

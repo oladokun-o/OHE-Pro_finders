@@ -17,9 +17,13 @@ const loadOnce = function () {
     setTimeout(() => {
         load.addClass('slide-out-top')
         $('body').removeClass('loader-active')
+        alertContn.removeClass('overflowed')
     }, 5000);
 }, loadingPage = function () {
     alertContn.addClass('overflowed')
     load.addClass('slide-out-top')
     $('body').removeClass('loader-active')
+    setTimeout(() => {
+        alertContn.removeClass('overflowed')
+    }, 1000);
 }

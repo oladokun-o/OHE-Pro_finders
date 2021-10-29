@@ -94,9 +94,9 @@ function closeAlert (parameters) {
 jQuery(function() {
     var chatWidget = localStorage.getItem('chatWidget');
     if (chatWidget == 'maximized') {
-        voidBox.fadeIn('fast');
+        maximizeChat()
     } else {
-        voidBox.fadeOut('fast');
+        minimizeChat()
     }
 })
 //alertBox.fadeIn('slow').html('<i class="fa fa-bell"></i> Please <a onclick="openSelect(this)">select</a> your desired expert to speak with <i onclick="closeAlert()" class="fa fa-times"></i>')
