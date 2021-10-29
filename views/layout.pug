@@ -29,7 +29,7 @@ html(lang="en").theme-light
       var firstname = '!{firstname}',
         lastname = '!{lastname}'
         userId = '!{id}',
-        email = '!{email}',
+        email = '!{email}' || undefined,
         title = '!{title}';
     if (email)
       script(src="/javascripts/tawk.chat.js" defer)
