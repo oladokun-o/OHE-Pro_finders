@@ -145,9 +145,9 @@ function getExpert(event) {
     let exp = localStorage.getItem('expert_job') || event.title;
     alert('Preferred expert: '+exp+', has been copied to clipboard. Please paste into required field')
     setTimeout(() => {
-        if (email || title == 'Dashboard') {
+        if (authed == true) {
             maximizeChat()
-        } else{
+        } else {
             window.location.href = '/dashboard?'+exp
         }
     }, 800);

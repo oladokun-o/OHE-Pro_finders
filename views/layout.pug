@@ -5,7 +5,6 @@ html(lang="en").theme-light
     meta(http-equiv="X-UA-Compatible" content="ie=edge")
     meta(name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0")    
     title= title
-    script(src="/javascripts/progress.js" defer)
     link(rel='stylesheet', href='/stylesheets/style.css')
     link(rel='icon', type="image/png",  href='/images/favicon.png')
     link(rel='icon', type="image/x-icon", href='/images/favicon.ico')
@@ -23,43 +22,33 @@ html(lang="en").theme-light
     link(rel="stylesheet", href="/stylesheets/menu.css")
     link(rel="preconnect" href="https://fonts.gstatic.com")
     link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous")
+    script(src="https://code.jquery.com/jquery-3.6.0.js", integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=", crossorigin="anonymous")
+    script(src="/javascripts/progress.js" defer)
     script(src="/javascripts/prescripts.js" defer)
-    script(src="/jquery.slim.min.js")
-    - var authenticated = email;
-    if (title == "Error!" || !authenticated)
-      //script(src="/javascripts/tawk.chat.js")
-    else
-      script(src="/javascripts/tawk.chat.js" defer)
     script.
       var firstname = '!{firstname}',
         lastname = '!{lastname}'
         userId = '!{id}',
         email = '!{email}',
         title = '!{title}';
-
+    if (email)
+      script(src="/javascripts/tawk.chat.js" defer)
   body.body-theme.loader-active
     .load
-      img(src="/images/favicon.png", alt="Oprofinder").text-pop-up-top
-      //.la-square-jelly-box.la-light
+      .load-img
+        img(src="/images/favicon.png", alt="Oprofinder").text-pop-up-top
+      .lds-roller.loader-.force-fade-out
         div
-          div.load-dot
         div
-      .loader.fade-out
-        .circle
-        .circle
-        .circle
-        .circle
-        .circle
+        div
+        div
+        div 
     .col-12.position-relative
       .alert-contn.justify-content-center.text-center.col-12.col-md-12.col-lg-12
         .col-12.col-md-6.alert.fade-out
-    script.
-      //$(function () {
-        //$('[data-toggle="tooltip"]').tooltip()
-      //})
     block content
     .void-box.fade-out(onclick="minimizeChat()")
-      .loader
+      .loader-chat
         //.bg
         .circle
         .circle
@@ -67,10 +56,9 @@ html(lang="en").theme-light
         .circle
         .circle
     script(src="https://unpkg.com/@popperjs/core@2")
-    script(src="/jquery.slim.min.js")
-    script(src="/jquery.min.js")
     script(src="/javascripts/prereq.js")    
     script(src="/javascripts/mail.js")
+    script(src="jquery.min.js") 
     script(src="/all.js") 
     script(src="/bootstrap.js")
     script(src="/javascripts/expert.js")

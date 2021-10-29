@@ -165,6 +165,33 @@ module.exports = {
                         console.log(err);
                     }
                     res.status(200).send('Sign Up successful!')//.redirect('login')
+                    fs.readFile('./utils/emails/welcome-email.html', { encoding: 'utf-8' }, function (err, html) {
+                        if (err) {
+                            console.log(err);
+                        } else {
+                            var template = handlebars.compile(html);
+                            var replacements = {
+                                email: req.body.email,               
+                            };
+                            var emailUpdate = template(replacements);
+                            var updateEmailData = {
+                                from: db.SMTP_USER,
+                                to: req.body.email,
+                                subject: 'Welcome to Oprofinder!',
+                                html: emailUpdate
+                            }
+                        }
+            
+                        transporter.sendMail(updateEmailData, function (err, info) {
+                            if (err) {
+                                console.log(err);
+                                res.status(500).send(err); // <----- HERE
+                            } else {
+                                console.log("Successfully sent email.");
+                                res.status(200).send('Sign Up successful!')//.redirect('login')
+                            }
+                        });
+                    });    
                 });
             });
         }
@@ -304,7 +331,7 @@ module.exports = {
                 var updateEmailData = {
                     from: db.SMTP_USER,
                     to: req.body.email,
-                    subject: 'Thank You!',
+                    subject: 'Welcome & Thank You!',
                     html: emailUpdate
                 }
             }

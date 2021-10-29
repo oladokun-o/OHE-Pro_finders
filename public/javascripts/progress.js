@@ -1,25 +1,25 @@
 const load = $('.load'),
-        loader = $('.loader'),
+        loader = $('.loader-'),
         sess = sessionStorage.getItem('_user_sess');
 setTimeout(() => {
-    loader.removeClass('fade-out').animate({
-        opacity: "show"
-        }, "slow", "easein")
+    loader.removeClass('force-fade-out').fadeIn('fast')
 }, 3000);
 jQuery(function() {
     if (sess == 0) {
-        loading()
+        loadingPage()
     } else {
         loadOnce()
         sessionStorage.setItem('_user_sess', '0')
     }
 })
 const loadOnce = function () {
+    alertContn.addClass('overflowed')
     setTimeout(() => {
         load.addClass('slide-out-top')
         $('body').removeClass('loader-active')
     }, 5000);
-}, loading = function () {
+}, loadingPage = function () {
+    alertContn.addClass('overflowed')
     load.addClass('slide-out-top')
     $('body').removeClass('loader-active')
 }

@@ -2028,7 +2028,7 @@ select:focus {
     font-family: 'Poppins', sans-serif !important;
 }
 
-.exp-head {
+.exp-head-text {
     background: #1d154e;
     color: white;
     border-radius: 10px;
@@ -2072,9 +2072,9 @@ select:focus {
 
 .exp-list-contn {
     width: 100%;
-    /*border: 1px solid #ef6c264f;
+    border: 1px solid #ef6c264f;
     border-radius: 10px;
-    background-image: url(/images/flags.png);*/
+    background-image: url(/images/flags.png);
     background-repeat: no-repeat;
     background-size: cover;
     padding: 0;
@@ -2087,7 +2087,7 @@ select:focus {
     background: transparent;
     display: flex;
     justify-content: center;
-    align-items: flex-start;
+    align-items: center;
 }
 
 .exp-contn{
@@ -2143,15 +2143,13 @@ select:focus {
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 500 !important;
+    z-index: 10000000000000 !important;
 }
 
 .load img {
     width: 35px;
     color: white;
     font-size: 2.5rem;
-    margin-bottom: -125px;
-    margin-right: -23px;
 }
 
 .load-dot {
@@ -2160,6 +2158,14 @@ select:focus {
     height: 20px;
     border-radius: 50%;
 }
+
+.cost-info {
+    background: transparent !important;
+    border: none;
+    outline: none;
+    color: grey !important;
+}
+
 #tooltip {
     background: #333;
     color: white;
@@ -2210,4 +2216,23 @@ display: none;
 
 #tooltip[data-show] {
 display: block;
+}
+
+.load-img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    width: 50px;
+    height: 50px;
+    margin-bottom: -128px !important;
+    display: flex;
+    justify-content: center;
+}
+
+.loader- {
+    position: absolute !important;
+    top: 55%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
 }

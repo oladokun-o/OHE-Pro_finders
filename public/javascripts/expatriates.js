@@ -22,7 +22,7 @@ jQuery(function() {
 
 const getDescription = function(elem) {
     let jobReq = $(elem).find('a').html().trim(),
-        jobRes = localStorage.getItem('expatriate'),
+        jobRes = localStorage.getItem('expert_job'),
         smExp = $(elem).find('.content');
         //console.log(jobRes, jobReq)
     function request() {
@@ -45,7 +45,7 @@ const getDescription = function(elem) {
             }, 120);
             smExp.removeClass('true')
         });
-        localStorage.setItem('expatriate', jobReq)
+        localStorage.setItem('expert_job', jobReq)
         $(elem).addClass('active-exp')
     }
 
@@ -65,7 +65,7 @@ const getDescription = function(elem) {
     } 
 },
 chatExp = function(elem) {
-    alert(localStorage.getItem('expatriate'))
+    getExpert()
 },
 closeExpLg= function() {
     $('.exp-content').addClass('true scale-out-center')

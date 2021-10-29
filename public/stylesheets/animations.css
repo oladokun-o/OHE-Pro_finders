@@ -2231,7 +2231,7 @@
     }
 }
 
-.loader-body {
+.loader-chat-body {
     background: rgba(0, 153, 255, 1);
     animation: bgg 16087ms ease-in alternate infinite;
   }
@@ -2240,7 +2240,7 @@
     50% { background: rgba(41, 255, 121, 1); }
     100% { background: rgba(255, 74, 88, 1); }
   }
-  .loader {
+  .loader-chat {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -2249,7 +2249,7 @@
     height: 50px;
     margin: auto;
   }
-  .loader .circle {
+  .loader-chat .circle {
     position: absolute;
     width: 70px;
     height: 70px;
@@ -2259,7 +2259,7 @@
     animation-name: orbit;
     animation-duration: 5.5s;
   }
-  .loader .circle:after {
+  .loader-chat .circle:after {
     content: '';
     position: absolute;
     width: 10px;
@@ -2267,19 +2267,19 @@
     border-radius: 50%;
     background: #fff;
   }
-  .loader .circle:nth-child(2) {
+  .loader-chat .circle:nth-child(2) {
     animation-delay: 240ms;
   }
-  .loader .circle:nth-child(3) {
+  .loader-chat .circle:nth-child(3) {
     animation-delay: 480ms;
   }
-  .loader .circle:nth-child(4) {
+  .loader-chat .circle:nth-child(4) {
     animation-delay: 720ms;
   }
-  .loader .circle:nth-child(5) {
+  .loader-chat .circle:nth-child(5) {
     animation-delay: 960ms;
   }
-  .loader .bg {
+  .loader-chat .bg {
     position: absolute;
     width: 70px;
     height: 70px;
@@ -2590,3 +2590,88 @@
  * ---------------------------------------------- */
 
 @-webkit-keyframes heartbeat{from{-webkit-transform:scale(1);transform:scale(1);-webkit-transform-origin:center center;transform-origin:center center;-webkit-animation-timing-function:ease-out;animation-timing-function:ease-out}10%{-webkit-transform:scale(.91);transform:scale(.91);-webkit-animation-timing-function:ease-in;animation-timing-function:ease-in}17%{-webkit-transform:scale(.98);transform:scale(.98);-webkit-animation-timing-function:ease-out;animation-timing-function:ease-out}33%{-webkit-transform:scale(.87);transform:scale(.87);-webkit-animation-timing-function:ease-in;animation-timing-function:ease-in}45%{-webkit-transform:scale(1);transform:scale(1);-webkit-animation-timing-function:ease-out;animation-timing-function:ease-out}}@keyframes heartbeat{from{-webkit-transform:scale(1);transform:scale(1);-webkit-transform-origin:center center;transform-origin:center center;-webkit-animation-timing-function:ease-out;animation-timing-function:ease-out}10%{-webkit-transform:scale(.91);transform:scale(.91);-webkit-animation-timing-function:ease-in;animation-timing-function:ease-in}17%{-webkit-transform:scale(.98);transform:scale(.98);-webkit-animation-timing-function:ease-out;animation-timing-function:ease-out}33%{-webkit-transform:scale(.87);transform:scale(.87);-webkit-animation-timing-function:ease-in;animation-timing-function:ease-in}45%{-webkit-transform:scale(1);transform:scale(1);-webkit-animation-timing-function:ease-out;animation-timing-function:ease-out}}
+.lds-roller {
+    display: inline-block;
+    position: relative;
+    width: 80px;
+    height: 80px;
+  }
+  .lds-roller div {
+    animation: lds-roller 1.8s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+    transform-origin: 40px 40px;
+  }
+  .lds-roller div:after {
+    content: " ";
+    display: block;
+    position: absolute;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #fff;
+    margin: -4px 0 0 -4px;
+  }
+  .lds-roller div:nth-child(1) {
+    animation-delay: -0.036s;
+  }
+  .lds-roller div:nth-child(1):after {
+    top: 63px;
+    left: 63px;
+  }
+  .lds-roller div:nth-child(2) {
+    animation-delay: -0.072s;
+  }
+  .lds-roller div:nth-child(2):after {
+    top: 68px;
+    left: 56px;
+  }
+  .lds-roller div:nth-child(3) {
+    animation-delay: -0.108s;
+  }
+  .lds-roller div:nth-child(3):after {
+    top: 71px;
+    left: 48px;
+  }
+  .lds-roller div:nth-child(4) {
+    animation-delay: -0.144s;
+  }
+  .lds-roller div:nth-child(4):after {
+    top: 72px;
+    left: 40px;
+  }
+  .lds-roller div:nth-child(5) {
+    animation-delay: -0.18s;
+  }
+  .lds-roller div:nth-child(5):after {
+    top: 71px;
+    left: 32px;
+  }
+  .lds-roller div:nth-child(6) {
+    animation-delay: -0.216s;
+  }
+  .lds-roller div:nth-child(6):after {
+    top: 68px;
+    left: 24px;
+  }
+  .lds-roller div:nth-child(7) {
+    animation-delay: -0.252s;
+  }
+  .lds-roller div:nth-child(7):after {
+    top: 63px;
+    left: 17px;
+  }
+  .lds-roller div:nth-child(8) {
+    animation-delay: -0.288s;
+  }
+  .lds-roller div:nth-child(8):after {
+    top: 56px;
+    left: 12px;
+  }
+  @keyframes lds-roller {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  

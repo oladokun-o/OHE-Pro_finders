@@ -23,10 +23,6 @@ $(document).ready(function () {
                     localStorage.setItem('chatWidget', 'maximized')
                 }, 1500);
                 localStorage.removeItem('expert_job')
-            } else if (!exp || Tawk_API.isChatMaximized()) {
-                alertBox.fadeIn('slow').html('<i class="fa fa-bell"></i> Please <a onclick="openSelect(this)">select</a> your desired expert to speak with <i onclick="closeAlert()" class="fa fa-times"></i>')
-                alertContn.addClass('overflowed')
-                sessionStorage.setItem('alert', true)
             }
     };
 });
@@ -94,3 +90,15 @@ function closeSelect() {
 function closeAlert (parameters) {
     closeExpAlert()
 }
+
+jQuery(function() {
+    var chatWidget = localStorage.getItem('chatWidget');
+    if (chatWidget == 'maximized') {
+        voidBox.fadeIn('fast');
+    } else {
+        voidBox.fadeOut('fast');
+    }
+})
+//alertBox.fadeIn('slow').html('<i class="fa fa-bell"></i> Please <a onclick="openSelect(this)">select</a> your desired expert to speak with <i onclick="closeAlert()" class="fa fa-times"></i>')
+//alertContn.addClass('overflowed')
+//sessionStorage.setItem('alert', true)
