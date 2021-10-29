@@ -14,9 +14,9 @@ $(document).ready(function () {
             var voidBox = $('.void-box');
             if (exp) {
                 voidBox.fadeIn('fast');
-                $('.loader').fadeIn('fast')
+                $('.loader-chat').fadeIn('fast')
                 setTimeout(() => {
-                    $('.loader').fadeOut('slow')
+                    $('.loader-chat').fadeOut('slow')
                 }, 1300);
                 setTimeout(() => {
                     Tawk_API.maximize()
@@ -46,6 +46,9 @@ Tawk_API.onChatMinimized  = function(){
 
 Tawk_API.onChatMaximized = function(){
     voidBox.fadeIn('fast');
+    setTimeout(() => {
+        $('.loader-chat').fadeOut('slow')
+    }, 1300);
     localStorage.setItem('chatWidget', 'maximized')
     localStorage.removeItem('expert_job')
     Closemypanel()
@@ -63,9 +66,9 @@ function minimizeChat() {
 
 function maximizeChat() {
     voidBox.fadeIn('fast');
-    $('.loader').fadeIn('fast')
+    $('.loader-chat').fadeIn('fast')
     setTimeout(() => {
-        $('.loader').fadeOut('slow')
+        $('.loader-chat').fadeOut('slow')
     }, 1300);
     setTimeout(() => {
         Tawk_API.maximize()
