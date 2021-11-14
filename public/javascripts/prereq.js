@@ -31,6 +31,7 @@ if (signStat == 'false') {
     }, 2000)
     console.log('2')
 } else {
+    statMsg = '<br> You can go ahead to make payment for <b>TSMB</b> via the dashboard after logging in.'
     setTimeout(()=>{
         alertBox.fadeIn('fast').html('<i class="fa fa-bell"></i> <span class="font-bold text-uppercase">GENERAL NOTICE</span> <i class="fa fa-bell"></i><br>Oprofinder will be launching on the 10th of Janauary, 2022. <i onclick="closeExpAlert()" class="fa close-alert fa-times"></i>')    
         alertContn.addClass('overflowed')
