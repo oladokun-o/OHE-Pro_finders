@@ -137,18 +137,4 @@ chatBtn.on('click', (e) => {
             console.log(res)
         }
     })
-})*/
-
-
-let signStat = sessionStorage.getItem('signup');
-if (signStat == 'false' || signStat == undefined) {
-    setTimeout(()=>{
-        alertBox.fadeIn('fast').html('<i class="fa fa-bell"></i> <span class="font-bold text-uppercase">OPROFINDER IS COMING</span> <i class="fa fa-bell"></i><br>Oprofinder will be launching on the 10th of Janauary, 2022. <br> You can go ahead to make payment for TSMB via the dashboard after <a href="/signup">signing up</a>. <i onclick="closeExpAlert()" class="fa close-alert fa-times"></i>')    
-        alertContn.addClass('overflowed')
-    }, 2000)    
-} else {
-    setTimeout(()=>{
-        alertBox.fadeIn('fast').html('<i class="fa fa-bell"></i> <span class="font-bold text-uppercase">OPROFINDER IS COMING</span> <i class="fa fa-bell"></i><br>Oprofinder will be launching on the 10th of Janauary, 2022. <i onclick="closeExpAlert()" class="fa close-alert fa-times"></i>')    
-        alertContn.addClass('overflowed')
-    }, 2000)
-}
+})*
