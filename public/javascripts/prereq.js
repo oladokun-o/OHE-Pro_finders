@@ -2,8 +2,6 @@ $(document).ready(function() {
     let url = location.search;
     if (url.includes('tsmb')) {
         sessionStorage.setItem('tsmb', 'true')
-    } else {
-        sessionStorage.setItem('tsmb', 'false')
     }
     
 let signStat = sessionStorage.getItem('signup');
