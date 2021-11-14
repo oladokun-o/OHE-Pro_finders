@@ -2,7 +2,41 @@ $(document).ready(function() {
     let url = location.search;
     if (url.includes('tsmb')) {
         sessionStorage.setItem('tsmb', 'true')
+    } else {
+        sessionStorage.setItem('tsmb', 'false')
     }
+    
+let signStat = sessionStorage.getItem('signup');
+var msg1 = '<br> You can go ahead to make payment for <b>TSMB</b> via the dashboard after <a href="/signup">signing up</a>.',
+    msg2 = '',
+    stat = sessionStorage.getItem('tsmb');
+if (stat == 'true') {
+    statmsg = msg1;
+    console.log('a')
+} else {
+    statmsg = msg2;
+    console.log('b')
+}
+if (signStat == 'false') {
+    setTimeout(()=>{
+        alertBox.fadeIn('fast').html('<i class="fa fa-bell"></i> <span class="font-bold text-uppercase">GENERAL NOTICE</span> <i class="fa fa-bell"></i><br>Oprofinder will be launching on the 10th of Janauary, 2022.'+statmsg+' <i onclick="closeExpAlert()" class="fa close-alert fa-times"></i>')    
+        alertContn.addClass('overflowed')
+    }, 2000)    
+    console.log('1')
+} else if (signStat == undefined) {
+    sessionStorage.setItem('signup', 'false')
+    setTimeout(()=>{
+        alertBox.fadeIn('fast').html('<i class="fa fa-bell"></i> <span class="font-bold text-uppercase">GENERAL NOTICE</span> <i class="fa fa-bell"></i><br>Oprofinder will be launching on the 10th of Janauary, 2022.'+statmsg+' <i onclick="closeExpAlert()" class="fa close-alert fa-times"></i>')    
+        alertContn.addClass('overflowed')
+    }, 2000)
+    console.log('2')
+} else {
+    setTimeout(()=>{
+        alertBox.fadeIn('fast').html('<i class="fa fa-bell"></i> <span class="font-bold text-uppercase">GENERAL NOTICE</span> <i class="fa fa-bell"></i><br>Oprofinder will be launching on the 10th of Janauary, 2022. <i onclick="closeExpAlert()" class="fa close-alert fa-times"></i>')    
+        alertContn.addClass('overflowed')
+    }, 2000)
+    console.log('3')
+}
     function dateTime() {
         var format = "";
         var ndate = new Date();
