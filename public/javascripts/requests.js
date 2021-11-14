@@ -22,6 +22,7 @@ $('.form-signup').on('submit', function (e) {
             success: function(response) {
                 //console.log(response.responseText)
                 signupBtnIcon.html('<i class="lni lni-checkmark green"></i>')
+                sessionStorage.setItem('signup', 'true')
                   setTimeout(() => {
                       window.location.href = '/login';
                 }, 1000);
