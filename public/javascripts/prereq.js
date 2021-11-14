@@ -1,4 +1,8 @@
 $(document).ready(function() {
+    let url = location.search;
+    if (url.includes('tsmb')) {
+        sessionStorage.setItem('tsmb', 'true')
+    }
     function dateTime() {
         var format = "";
         var ndate = new Date();
