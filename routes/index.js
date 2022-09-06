@@ -29,7 +29,7 @@ router
         res.render('contact', { title: 'Contact Us' });
     })
     .get('/blog', function (req, res, next) {
-        res.render('blog', { title: 'Blog' });
+        res.redirect('https://blog.oprofinder.com/');
     })
     .get('/privacy', function (req, res, next) {
         res.render('privacy-policies', { title: 'Privacy Policy' });

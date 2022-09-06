@@ -8,7 +8,8 @@ const transporter = require('../utils/mailer')
 const Support = require('../models/support');
 const Price = require('../models/price')
 const SubPrice = require('../models/sub-price')
-const crypto = require('crypto')
+const crypto = require('crypto');
+const newsLetter = require('../models/newsletter');
 
 module.exports = {
     onGetHome: async (req,res) => {
@@ -31,7 +32,7 @@ module.exports = {
                     addressI: user.addressI,
                     addressII: user.addressII,
                 });
-                console.log('heya')
+                //console.log('heya')
             } else {
                 res.render('', 
                 { title: 'Oprofinder' })
@@ -319,33 +320,47 @@ module.exports = {
         });
     },
     onGetUpdates: async function (req, res) {
-        fs.readFile('./utils/emails/email-newsletter.html', { encoding: 'utf-8' }, function (err, html) {
-            if (err) {
-                console.log(err);
-            } else {
-                var template = handlebars.compile(html);
-                var replacements = {
-                    email: req.body.email,               
-                };
-                var emailUpdate = template(replacements);
-                var updateEmailData = {
-                    from: db.SMTP_USER,
-                    to: req.body.email,
-                    subject: 'Welcome & Thank You!',
-                    html: emailUpdate
-                }
+        const newEmail = new newsLetter(req.body)
+        newsLetter.findOne({ email: req.body.email }, (err, email) => {
+            if (!email) {
+                newEmail.save((err, saved) => {
+                    if (err) {
+                        res.status(500).send('An error occured, please try again later');
+                    } else if (saved) {
+                        fs.readFile('./utils/emails/email-newsletter.html', { encoding: 'utf-8' }, function (err, html) {
+                            if (err) {
+                                res.status(500).send('An error occured, please try again later');
+                                console.log(err);
+                            } else {
+                                var template = handlebars.compile(html);
+                                var replacements = {
+                                    email: saved.email,               
+                                };
+                                var emailUpdate = template(replacements);
+                                var updateEmailData = {
+                                    from: db.SMTP_USER,
+                                    to: saved.email,
+                                    subject: 'Welcome & Thank You!',
+                                    html: emailUpdate
+                                }
+                            }
+                
+                            transporter.sendMail(updateEmailData, function (err, info) {
+                                if (err) {
+                                    console.log(err);
+                                    res.status(500).send(err); // <----- HERE
+                                } else {
+                                    console.log("Successfully sent email.");
+                                    res.send("OK"); // <------------- HERE
+                                }
+                            });
+                        });
+                    }
+                })
+            } else if (email) {
+                res.status(500).send('Email already exists!');
             }
-
-            transporter.sendMail(updateEmailData, function (err, info) {
-                if (err) {
-                    console.log(err);
-                    res.status(500).send(err); // <----- HERE
-                } else {
-                    console.log("Successfully sent email.");
-                    res.send("OK"); // <------------- HERE
-                }
-            });
-        });      
+        });
     },
     onPostResetPassword: async function (req, res) {
         User.emailCheck(req.body.email, (err, user) => {

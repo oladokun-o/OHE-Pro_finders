@@ -620,6 +620,10 @@ left: 0;
     padding-top: 5px !important;
 }
 
+.large-menu a span {
+    white-space: nowrap;
+}
+
 .full {
     width: 100%;
 }
@@ -1755,7 +1759,7 @@ left: 0;
 }
 
 .back-to-dashboard div {
-    margin: 0 !important;
+    margin: 0;
 }
 
 .user-avatar {

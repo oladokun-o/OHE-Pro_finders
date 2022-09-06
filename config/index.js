@@ -12,18 +12,18 @@ const config = {
         PORT: process.env.PORT,
         FLUTTER_KEY: process.env.FLUTTER_KEY
     },
-    default: {
+    development: {
         SECRET: process.env.SECRET,
         DATABASE: process.env.MONGODB_URI_DEV,
         DATABASE_NAME: process.env.MONGODB_NAME,
         SMTP_USER: process.env.SERVER_USER,
         SMTP_PASS: process.env.SERVER_PASS,
-        CLIENT_ID: process.env.GOOGLE_CLIENTDEV_ID,
-        CLIENT_SECRET: process.env.GOOGLE_CLIENTDEV_SECRET,
+        CLIENT_ID: process.env.GOOGLE_CLIENT_ID,
+        CLIENT_SECRET: process.env.GOOGLE_CLIENT_SECRET,
         FB_CLIENT_ID: process.env.FB_CLIENT_ID,
         FB_CLIENT_SECRET: process.env.FB_CLIENT_SECRET,
         PORT: process.env.PORT,
-        FLUTTERDEV_KEY: process.env.FLUTTERDEV_KEY
+        FLUTTER_KEY: process.env.FLUTTERDEV_KEY
     }
 }
 

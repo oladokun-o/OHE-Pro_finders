@@ -144,4 +144,7 @@
         transform: translateY(-75px);
         z-index: -1;
     }
+    .user-avatar {
+        right: 30px !important;
+    }
 }
